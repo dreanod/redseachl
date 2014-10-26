@@ -28,3 +28,7 @@ Timeline
 * Presentation
 
 
+TODO
+====
+* Download 10 years of weekly MODIS	Chl data
+* Find Other data sources

@@ -1,3 +1,6 @@
 ./data/
 ./derived/
 .Rproj.user
+*.log
+scripts/load-concordance.tex
+*.synctex.gz

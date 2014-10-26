@@ -30,5 +30,6 @@ Timeline
 
 TODO
 ====
+* Download 1 weekly chl data and play with it
 * Download 10 years of weekly MODIS	Chl data
 * Find Other data sources

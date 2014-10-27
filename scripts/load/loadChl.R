@@ -26,6 +26,8 @@ x_max <- 45
 y_min <- 10
 y_max <- 31
 redsea <- crop(myRaster, c(x_min, x_max, y_min, y_max))
+redsea[redsea == 32767] <- NA
 
 
+writeRaster(redsea, "../../data/redseadata.grd")
 

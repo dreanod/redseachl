@@ -1,3 +1,5 @@
+sessionInfo()
+
 library(R.utils)
 library(raster)
 
@@ -17,13 +19,13 @@ download.file(url, tempZip)
 bunzip2(tempZip, tempDest)
 myRaster <- raster(tempDest)
 
-unlink(tempZip)
-unlink(tempDest)
-
 proj4string(myRaster) <- CRS(crs)
 extent(myRaster) <- c(-180, 180, -90, 90)
 
 redsea <- crop(myRaster, c(lonmin, lonmax, latmin, latmax))
 redsea[redsea == navalue] <- NA
 
-writeRaster(redsea, paste(dataDir, "redseadata.grd"))
+writeRaster(redsea, paste(dataDir, "redseadata.grd", sep="/"))
+
+unlink(tempZip)
+unlink(tempDest)

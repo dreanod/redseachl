@@ -6,3 +6,6 @@ scripts/load-concordance.tex
 *.synctex.gz
 *.aux
 *.Rout
+.Rdata
+*.grd
+*.gri

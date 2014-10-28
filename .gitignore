@@ -1,5 +1,6 @@
 ./data/
 ./derived/
+generated/
 .Rproj.user
 *.log
 scripts/load-concordance.tex

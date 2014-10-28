@@ -1,13 +1,13 @@
 RDIR = .
+OUTDIR = $(RDIR)/generated
 
-RSOURCE = $(wildcard $(RDIR)/*.R)
+URL_BUILD = $(RDIR)/construct_URL.R
+URL_BUILD_OUT = $(OUTDIR)/construct_URL.Rout
 
-OUT_FILES = $(RSOURCE:.R=.Rout)
+all: $(URL_BUILD_OUT)
 
-all: $(OUT_FILES)
-
-$(RDIR)/%.Rout: $(RDIR)/%.R
+$(URL_BUILD_OUT):$(URL_BUILD)
 	R CMD BATCH $<
 
 clean:
-	rm -fv $(OUT_FILES)
+	rm -fv $(OUTDIR)/*

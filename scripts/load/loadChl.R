@@ -26,6 +26,13 @@ for (year in cst$year_begin:cst$year_end) {
 }
 print('Check if files are on the server')
 
+foreach(i=1:length(url_list)) %dopar% {
+  
+  url <- url_list[i]
+  if(!url.exists(url)) stop(paste('error, non existing file:', url))
+  
+}
+
 for (url in url_list) {
   if(!url.exists(url)) stop(paste('error, non existing file:', url))
 }

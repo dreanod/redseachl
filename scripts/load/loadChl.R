@@ -12,6 +12,18 @@ navalue <- 32767
 dataDir <- "../../data"
 url <- "http://oceandata.sci.gsfc.nasa.gov/cgi/getfile/A20021852002192.L3m_8D_CHL_chlor_a_9km.bz2"
 
+chl_files <- c()
+day_end <- 0
+i <- 0
+while(day_end < 365) {
+  i <- i + 1
+  day_start <- (i - 1) * 8 + 1
+  day_end <- day_start + 7
+  if (day_end > 365) day_end <- 365
+  filename <- paste('A2002', day_start, '2002', day_end, '.L3m_8D_CHL_chlor_a_9km.bz2', sep='')
+  chl_files <- c(chl_files, filename)
+}
+
 tempZip  <- tempfile()
 tempDest <- tempfile()
 

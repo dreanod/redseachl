@@ -35,20 +35,33 @@ for (f in chl_files) {
   if(!url.exists(url)) stop('error, non existing file')
 }
 
-tempZip  <- tempfile()
-tempDest <- tempfile()
+print('..............OK')
 
-download.file(url, tempZip)
-bunzip2(tempZip, tempDest)
-myRaster <- raster(tempDest)
+for (i in 1:length(chl_files)) {
+  f <- chl_files[i]
+  url <- paste(host, path, f, sep='/')
+  
+  tempZip  <- tempfile()
+  tempDest <- tempfile()
+  
+  download.file(url, tempZip)
+  bunzip2(tempZip, tempDest)
+  myRaster <- raster(tempDest)
+  
+  proj4string(myRaster) <- CRS(crs)
+  extent(myRaster) <- c(-180, 180, -90, 90)
+  
+  redsea <- crop(myRaster, c(lonmin, lonmax, latmin, latmax))
+  redsea[redsea == navalue] <- NA
+  
+  if (i == 1) {
+    b <- brick(redsea)
+  } else {
+    b <- brick(c(b, redsea))
+  }
+  
+  unlink(tempZip)
+  unlink(tempDest)
+}
 
-proj4string(myRaster) <- CRS(crs)
-extent(myRaster) <- c(-180, 180, -90, 90)
-
-redsea <- crop(myRaster, c(lonmin, lonmax, latmin, latmax))
-redsea[redsea == navalue] <- NA
-
-writeRaster(redsea, paste(dataDir, "redseadata.grd", sep="/"))
-
-unlink(tempZip)
-unlink(tempDest)
+writeRaster(b, paste(dataDir, "chl.grd", sep="/"))

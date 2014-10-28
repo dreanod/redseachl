@@ -2,6 +2,7 @@ sessionInfo()
 
 library(R.utils)
 library(raster)
+library(RCurl)
 
 lonmin <- 31
 lonmax <- 45
@@ -10,7 +11,8 @@ latmax <- 31
 crs <- "+proj=longlat +datum=WGS84"
 navalue <- 32767
 dataDir <- "../../data"
-url <- "http://oceandata.sci.gsfc.nasa.gov/cgi/getfile/A20021852002192.L3m_8D_CHL_chlor_a_9km.bz2"
+host <- 'http://oceandata.sci.gsfc.nasa.gov'
+path <- 'cgi/getfile'
 
 chl_files <- c()
 day_end <- 0
@@ -20,8 +22,17 @@ while(day_end < 365) {
   day_start <- (i - 1) * 8 + 1
   day_end <- day_start + 7
   if (day_end > 365) day_end <- 365
-  filename <- paste('A2002', day_start, '2002', day_end, '.L3m_8D_CHL_chlor_a_9km.bz2', sep='')
+  filename <- paste('A2003', sprintf('%03d', day_start), 
+                    '2003', sprintf('%03d', day_end), 
+                    '.L3m_8D_CHL_chlor_a_9km.bz2', sep='')
   chl_files <- c(chl_files, filename)
+}
+
+print('Check if files are on the server')
+
+for (f in chl_files) {
+  url <- paste(host, path, f, sep='/')
+  if(!url.exists(url)) stop('error, non existing file')
 }
 
 tempZip  <- tempfile()

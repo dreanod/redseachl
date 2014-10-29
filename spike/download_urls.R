@@ -10,7 +10,7 @@ remove_files <- function(urls) {
   }
 }
 
-write_files <- function(urls) {
+write_new_list <- function(urls) {
   fileConn <- file('url.list.old')
   writeLines(urls, fileConn)
   close(fileConn)
@@ -33,11 +33,11 @@ if (file.exists('url.list.old')) {
   url.added <- url.list[url.added.ind]
   download_files(url.added)
   
-  url.unchanged.ind url.list %in% url.list.old
+  url.unchanged.ind <- url.list %in% url.list.old
   url.unchanged <- url.list[url.unchanged.ind]
-  write_new_list(url.unchanged, url.added)
+  write_new_list(c(url.unchanged, url.added))
   
 } else {
   download_files(url.list)
-  write_new_list(url.list, NULL)
+  write_new_list(url.list)
 }

@@ -11,7 +11,7 @@ remove_files <- function(urls) {
 }
 
 write_new_list <- function(urls) {
-  fileConn <- file('generated/url.list.old')
+  fileConn <- file('generated/url.list.downloaded')
   writeLines(urls, fileConn)
   close(fileConn)
 }
@@ -20,8 +20,8 @@ con <- file('generated/url.list', open='r')
 url.list <- readLines(con)
 close(con)
 
-if (file.exists('generated/url.list.old')) {
-  con <- file('generated/url.list.old', open = 'r')
+if (file.exists('generated/url.list.downloaded')) {
+  con <- file('generated/url.list.downloaded', open = 'r')
   url.list.old <- readLines(con)
   close(con)
   

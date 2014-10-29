@@ -1,6 +1,10 @@
+OLD_LIST <- 'generated/url.list.downloaded'
+NEW_LIST <- 'generated/url.list'
+
 download_files <- function(urls) {
   for (url in urls) {
     print(paste('Downloading:', url))
+    write(url, file=OLD_LIST, append=TRUE)
   }
 }
 
@@ -10,18 +14,12 @@ remove_files <- function(urls) {
   }
 }
 
-write_new_list <- function(urls) {
-  fileConn <- file('generated/url.list.downloaded')
-  writeLines(urls, fileConn)
-  close(fileConn)
-}
-
-con <- file('generated/url.list', open='r')
+con <- file(NEW_LIST, open='r')
 url.list <- readLines(con)
 close(con)
 
-if (file.exists('generated/url.list.downloaded')) {
-  con <- file('generated/url.list.downloaded', open = 'r')
+if (file.exists(OLD_LIST)) {
+  con <- file(OLD_LIST, open = 'r')
   url.list.old <- readLines(con)
   close(con)
   
@@ -39,9 +37,7 @@ if (file.exists('generated/url.list.downloaded')) {
   
   url.unchanged.ind <- url.list %in% url.list.old
   url.unchanged <- url.list[url.unchanged.ind]
-  write_new_list(c(url.unchanged, url.added))
   
 } else {
   download_files(url.list)
-  write_new_list(url.list)
 }

@@ -1,9 +1,39 @@
-OLD_LIST <- 'generated/url.list.downloaded'
-NEW_LIST <- 'generated/url.list'
+library(R.utils)
+library(raster)
 
-download_files <- function(urls) {
+out_dir <- 'generated'
+OLD_LIST <- paste(out_dir, 'url.list.downloaded', sep='/')
+NEW_LIST <- paste(out_dir, 'url.list', sep='/')
+
+
+download_url <- function(url) {
+  print(paste('Downloading:', url))
+  
+  tempZip  <- tempfile()
+  tempDest <- tempfile()
+  
+  download.file(url, tempZip)
+  bunzip2(tempZip, tempDest)
+  myRaster <- raster(tempDest)
+  
+  proj4string(myRaster) <- CRS(cst$crs)
+  extent(myRaster) <- c(-180, 180, -90, 90)
+  
+  ext <- cst$extent
+  rast_data <- crop(myRaster, c(ext$lonmin, ext$lonmax, ext$latmin, ext$latmax))
+  
+  filename <- strsplit(url, '/')[[1]]
+  filename <- filename[length(filename)]
+  filename <- paste(filename, '.grd', sep='')
+  writeRaster(rast_data, paste(out_dir, filename, sep="/"))
+  
+  unlink(tempZip)
+  unlink(tempDest)
+}
+
+download_list <- function(urls) {
   for (url in urls) {
-    print(paste('Downloading:', url))
+    download_url(url)
     write(url, file=OLD_LIST, append=TRUE)
   }
 }
@@ -30,7 +60,7 @@ if (file.exists(OLD_LIST)) {
   url.added.ind <- !(url.list %in% url.list.old)
   url.added <- url.list[url.added.ind]
   if (length(url.added) > 0) {
-    download_files(url.added)
+    download_list(url.added)
   } else {
     print('No new file to download.')
   }
@@ -39,5 +69,5 @@ if (file.exists(OLD_LIST)) {
   url.unchanged <- url.list[url.unchanged.ind]
   
 } else {
-  download_files(url.list)
+  download_list(url.list)
 }

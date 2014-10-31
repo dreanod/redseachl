@@ -2,9 +2,7 @@ library(R.utils)
 library(raster)
 
 out_dir <- 'generated'
-OLD_LIST <- paste(out_dir, 'url.list.downloaded', sep='/')
 NEW_LIST <- paste(out_dir, 'url.list', sep='/')
-
 
 download_url <- function(url) {
   print(paste('Downloading:', url))
@@ -42,6 +40,24 @@ remove_files <- function(urls) {
   for (url in urls) {
     print(paste('Removing:', url))
   }
+}
+
+list_loaded_files <- function() {
+  files <- list.files(path=out_dir, pattern='*.grd')
+  loaded.files <- c()
+  for (i in 1:length(files)) {
+    f_split <- strsplit(files[i], split='[.]')[[1]]
+    loaded.files <- c(loaded.files, paste(f_split[1:2], collapse='.'))
+  }
+  return(loaded.files)
+}
+
+get_fileID <- function(url) {
+  id <- strsplit(url, split='/')[[1]]
+  id <- id[length(id)]
+  id <- strsplit(id, split='[.]')[[1]]
+  id <- paste(id[1:2], collapse='.')
+  return(id)
 }
 
 con <- file(NEW_LIST, open='r')

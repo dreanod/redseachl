@@ -47,7 +47,7 @@ list_loaded_files <- function() {
   loaded.files <- c()
   for (i in 1:length(files)) {
     f_split <- strsplit(files[i], split='[.]')[[1]]
-    loaded.files <- c(loaded.files, paste(f_split[1:2], collapse='.'))
+    loaded.files <- c(loaded.files, paste(f_split[1:3], collapse='.'))
   }
   return(loaded.files)
 }
@@ -64,11 +64,11 @@ con <- file(NEW_LIST, open='r')
 url.list <- readLines(con)
 close(con)
 
-if (file.exists(OLD_LIST)) {
-  con <- file(OLD_LIST, open = 'r')
-  url.list.old <- readLines(con)
-  close(con)
-  
+fLoaded <- list_loaded_files()
+
+if (fLoaded == 0) {
+  download_list(url.list)
+} else {
   url.removed.ind <- !(url.list.old %in% url.list)
   url.removed <- url.list.old[url.removed.ind]
   remove_files(url.removed)
@@ -83,7 +83,6 @@ if (file.exists(OLD_LIST)) {
   
   url.unchanged.ind <- url.list %in% url.list.old
   url.unchanged <- url.list[url.unchanged.ind]
-  
-} else {
-  download_list(url.list)
 }
+
+

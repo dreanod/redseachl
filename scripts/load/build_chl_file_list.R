@@ -6,7 +6,7 @@ library(yaml)
 cst <- yaml.load_file('config.yml')
 dataDir <- "../../data"
 
-URLS <- c()
+file_list <- c()
 
 for (year in cst$year_begin:cst$year_end) {
   day_end <- 0
@@ -21,11 +21,10 @@ for (year in cst$year_begin:cst$year_end) {
     filename <- paste('A', year, sprintf('%03d', day_start), 
                       year, sprintf('%03d', day_end), 
                       cst$chl_file_suffix, sep='')
-    url <- paste(cst$chl_url, filename, sep='/')
-    URLS <- c(URLS, url)
+    file_list <- c(file_list, filename)
   }
 }
 
-con <- file('generated/url.list')
-writeLines(URLS , con)
+con <- file('generated/chl_modis_8days_9km.list')
+writeLines(file_list , con)
 close(con)

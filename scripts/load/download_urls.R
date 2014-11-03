@@ -1,8 +1,10 @@
 library(R.utils)
 library(raster)
 
-out_dir <- 'generated'
-NEW_LIST <- paste(out_dir, 'url.list', sep='/')
+out_dir <- file.path('.',  'generated')
+to_download_file <- paste(out_dir, 'chl_modis_8days_9km.list', sep='/')
+data_dir <- file.path(out_dir, 'chl_modis_8days_9km')
+dir.create(data_dir)
 
 download_url <- function(url) {
   print(paste('Downloading:', url))
@@ -29,21 +31,27 @@ download_url <- function(url) {
   unlink(tempDest)
 }
 
-download_list <- function(urls) {
-  for (url in urls) {
-    download_url(url)
-    write(url, file=OLD_LIST, append=TRUE)
+download_list <- function(files) {
+  if (length(files) == 0) {
+    print('Nothing to download')
+  }
+  for (f in files) {
+    print(paste('Downloading:', f))
   }
 }
 
-remove_files <- function(urls) {
-  for (url in urls) {
-    print(paste('Removing:', url))
+remove_files <- function(files) {
+  if (length(files) == 0) {
+    print('Nothing to remove')
+  }
+  
+  for (f in files) {
+    print(paste('Removing:', f))
   }
 }
 
 list_loaded_files <- function() {
-  files <- list.files(path=out_dir, pattern='*.grd')
+  files <- list.files(path=data_dir, pattern='*.grd')
   loaded.files <- c()
   for (i in 1:length(files)) {
     f_split <- strsplit(files[i], split='[.]')[[1]]
@@ -60,29 +68,22 @@ get_fileID <- function(url) {
   return(id)
 }
 
-con <- file(NEW_LIST, open='r')
-url.list <- readLines(con)
+con <- file(to_download_file, open='r')
+to_download <- readLines(con)
 close(con)
 
-fLoaded <- list_loaded_files()
+downloaded <- list_loaded_files()
 
-if (fLoaded == 0) {
-  download_list(url.list)
+if (length(downloaded) == 0) {
+  download_files(to_download)
 } else {
-  url.removed.ind <- !(url.list.old %in% url.list)
-  url.removed <- url.list.old[url.removed.ind]
-  remove_files(url.removed)
+  to_remove_ind <- !(downloaded %in% to_download)
+  to_remove <- downloaded[to_remove_ind]
+  remove_files(to_remove)
   
-  url.added.ind <- !(url.list %in% url.list.old)
-  url.added <- url.list[url.added.ind]
-  if (length(url.added) > 0) {
-    download_list(url.added)
-  } else {
-    print('No new file to download.')
-  }
-  
-  url.unchanged.ind <- url.list %in% url.list.old
-  url.unchanged <- url.list[url.unchanged.ind]
+  will_download_ind <- !(to_download %in% downloaded)
+  will_download <- to_download[will_download_ind]
+  download_list(will_download)
 }
 
 

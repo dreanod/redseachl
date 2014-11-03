@@ -60,14 +60,6 @@ list_loaded_files <- function() {
   return(loaded.files)
 }
 
-get_fileID <- function(url) {
-  id <- strsplit(url, split='/')[[1]]
-  id <- id[length(id)]
-  id <- strsplit(id, split='[.]')[[1]]
-  id <- paste(id[1:2], collapse='.')
-  return(id)
-}
-
 con <- file(to_download_file, open='r')
 to_download <- readLines(con)
 close(con)

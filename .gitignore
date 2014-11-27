@@ -1,12 +1,4 @@
-./data/
-./derived/
-generated/
+data/**
+.Rproj.user/**
 .Rproj.user
-*.log
-scripts/load-concordance.tex
-*.synctex.gz
-*.aux
 *.Rout
-.Rdata
-*.grd
-*.gri

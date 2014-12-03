@@ -4,7 +4,7 @@ build_urls <- function(lat_min, lat_max, lon_min, lon_max, year_start, year_end)
   url_base <- paste(url_base, 'var=chlor_a&', sep='')
   url_base <- paste(url_base, 'north=', lat_max, '&', sep='')
   url_base <- paste(url_base, 'west=', lon_min, '&', sep='')
-  url_base <- paste(url_base, 'east=', lat_max, '&', sep='')
+  url_base <- paste(url_base, 'east=', lon_max, '&', sep='')
   url_base <- paste(url_base, 'south=', lat_min, '&', sep='')
   url_base <- paste(url_base, 'horizStride=1&', sep='')
   

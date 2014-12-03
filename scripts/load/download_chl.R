@@ -51,6 +51,8 @@ for (i in 1:length(URLs)) {
   url <- URLs[i]
   filename <- filenames[i]
   
-  download.file(url, filename, method='curl')
+  # Connection is buggy: Use some flags to make sure to download completely
+  flags <- '--retry 999 --retry-max-time 0'
+  download.file(url, filename, method='curl', extra=flags)
 }
 

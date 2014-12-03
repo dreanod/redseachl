@@ -33,11 +33,11 @@ FILES <- list.files(raw_dir, pattern='*.nc', full.names=TRUE)
 
 chl_b <- brick()
 
-for (filename in FILES) {
+rastersList <- lapply(FILES, function(filename) {
   data <- read_nc(filename)
   
-  for (i in 1:length(data$time)) {
-    chl_r <- chl_a2r(data$lon, data$lat, data$chl[,,i])
-#     chl_b <- brick(chl_b, chl_r)
-  }
-}
+  tmpList <- lapply(1:length(data$time), function(i) {
+    return(chl_a2r(data$lon, data$lat, data$chl[,,i]))
+  })
+  return(tmpList)
+})

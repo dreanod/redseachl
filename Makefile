@@ -1,15 +1,21 @@
 LOAD = ./scripts/load
+DIR = $(wildcard $(LOAD)/*)
 
-all: $(LOAD)/chl/aggregate.Rout $(LOAD)/sst/download.Rout
+all: $(DIR)/download.Rout
+	echo all_rule
+	echo $(DIR)/download.Rout
+
+$(DIR)/download.Rout: dummy.R
+	
+
+dummy.R:
+	echo dummy
 
 $(LOAD)/chl/aggregate.Rout: $(LOAD)/chl/download.Rout
 	R CMD BATCH $(LOAD)/chl/aggregate.R $(LOAD)/chl/aggregate.Rout
 
-$(LOAD)/chl/download.Rout: $(LOAD)/chl/download.R
-	R CMD BATCH $(LOAD)/chl/download.R $(LOAD)/chl/download.Rout
-
-$(LOAD)/sst/download.Rout: $(LOAD)/sst/download.R
-	R CMD BATCH $(LOAD)/sst/download.R $(LOAD)/sst/download.Rout
+%.Rout: %.R
+	R CMD BATCH $< $@
 
 clean:
 	rm -fv $(LOAD)/*/*.Rout

@@ -29,7 +29,7 @@ read_nc <- function(filename) {
 }
 
 raw_dir <- 'data/chl/raw'
-agg_dir <- 'data/chl/aggregates'
+agg_dir <- 'data/chl/aggregate'
 FILES <- list.files(raw_dir, pattern='*.nc', full.names=TRUE)
 
 chl_b <- brick()
@@ -48,5 +48,5 @@ bricksList <- lapply(FILES, function(filename) {
 
 chl_r <- brick(bricksList)
 
-filename <- paste(agg_dir, 'chl.asc', sep='/')
+filename <- paste(agg_dir, 'chl.grd', sep='/')
 writeRaster(chl_r, filename)

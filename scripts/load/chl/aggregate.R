@@ -1,6 +1,7 @@
 library(ncdf4)
 library(abind)
 library(reshape2)
+library(raster)
 
 chl_a2r <- function(lon, lat, x) {
   colnames(x) <-lat
@@ -27,17 +28,25 @@ read_nc <- function(filename) {
   return(list(chl=chl, lon=lon, lat=lat, time=time))
 }
 
-raw_dir <- 'data/raw/CHL'
-agg_dir <- 'data/aggregates'
+raw_dir <- 'data/chl/raw'
+agg_dir <- 'data/chl/aggregates'
 FILES <- list.files(raw_dir, pattern='*.nc', full.names=TRUE)
 
 chl_b <- brick()
 
-rastersList <- lapply(FILES, function(filename) {
+bricksList <- lapply(FILES, function(filename) {
+  print(paste('Reading file:', filename))
   data <- read_nc(filename)
   
-  tmpList <- lapply(1:length(data$time), function(i) {
+  rastersList <- lapply(1:length(data$time), function(i) {
     return(chl_a2r(data$lon, data$lat, data$chl[,,i]))
   })
-  return(tmpList)
+  chl_tmp <- brick(rastersList)
+  chl_tmp <- setZ(chl_tmp, data$time)
+  return(chl_tmp)
 })
+
+chl_r <- brick(bricksList)
+
+filename <- paste(agg_dir, 'chl.asc', sep='/')
+writeRaster(chl_r, filename)

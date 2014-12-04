@@ -42,7 +42,7 @@ lon_min <- 25
 year_start <- 1997
 year_end <- 2012
 
-outDir <- 'data/raw/CHL'
+outDir <- 'data/chl/raw'
 
 URLs <- build_urls(lat_min, lat_max, lon_min, lon_max, year_start, year_end)
 filenames <- build_filenames(outDir, year_start, year_end)

@@ -1,9 +1,9 @@
 LOAD = ./scripts/load
 
-all: $(LOAD)/download_chl.Rout
+all: $(LOAD)/chl/download.Rout
 
-$(LOAD)/download_chl.Rout: $(LOAD)/download_chl.R
+$(LOAD)/download_chl.Rout: $(LOAD)/chl/download.R
 	R CMD BATCH $< $@
 
 clean:
-	rm -fv $(LOAD)/*.Rout
+	rm -fv $(LOAD)/*/*.Rout

@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"cmd",
+				"cmd3"
+			],
+			[
+				"f_da",
+				"f_dateEnd"
+			],
+			[
+				"f_date",
+				"f_dateBeg"
+			],
+			[
+				"f_lat",
+				"f_latmax"
+			],
+			[
+				"f_lon",
+				"f_lonmax"
+			],
+			[
+				"data",
+				"dataset-duacs-dt-global-allsat-msla-h"
+			],
+			[
+				"motu",
+				"motu-client"
+			],
+			[
 				"read",
 				"readLines"
 			],
@@ -212,9 +240,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 167.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"repl: R",
+				"SublimeREPL: R"
+			],
 			[
 				"REPL R",
 				"DocBlockr: Reparse comment block"
@@ -296,7 +328,7 @@
 				"Open IPython Notebook"
 			]
 		],
-		"width": 593.0
+		"width": 568.0
 	},
 	"console":
 	{
@@ -318,12 +350,19 @@
 	},
 	"file_history":
 	[
+		"/Users/denis/Dropbox/repos/redseachl/data/chl/aggregate/chl.grd",
+		"/Users/denis/Dropbox/repos/redseachl/scripts/load/sst/download.R",
+		"/Users/denis/Dropbox/repos/redseachl/scripts/load/chl/download.R",
+		"/Users/denis/Dropbox/repos/redseachl/README.md",
+		"/Users/denis/Dropbox/repos/redseachl/scripts/load/bathy/download.Rout",
+		"/Users/denis/Dropbox/repos/redseachl/scripts/load/bathy/download.R",
+		"/Users/denis/Dropbox/repos/redseachl/.Rproj.user/771DC590/sdb/prop/B2E09AC1",
+		"/Users/denis/Dropbox/repos/redseachl/.Rproj.user/771DC590/build_options",
 		"/Users/denis/Dropbox/repos/redseachl/scripts/load/sst/download.Rout",
 		"/Users/denis/Dropbox/repos/redseachl/scripts/load/chl/download.Rout",
 		"/Users/denis/Dropbox/repos/redseachl/scripts/load/chl/aggregate.R",
 		"/Users/denis/Dropbox/repos/redseachl/.Rproj.user/771DC590/pcs/files-pane.pper",
 		"/Users/denis/Dropbox/repos/redseachl/redseachl.sublime-project",
-		"/Users/denis/Dropbox/repos/redseachl/scripts/load/chl/download.R",
 		"/Users/denis/Dropbox/repos/redseachl/scripts/load/sst/files_list.txt",
 		"/Users/denis/Dropbox/repos/redseachl/data/SSH/sla_mode_else_92_12.mat",
 		"/Users/denis/Dropbox/repos/redseachl/.Rproj.user/771DC590/pcs/source-pane.pper",
@@ -438,14 +477,7 @@
 		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/bayesian_inversion_of_npz_model.sublime-project",
 		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/npy/mcmc_samples_ratioTheta_part1.npy",
 		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/py/gen_daily_chl_npy.py",
-		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/py/clust_tools.py",
-		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/py/clean_workspace.py",
-		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/py/bayesian_inv_state_only.py",
-		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/py/bayesian_inv_all_and_c_opt.py",
-		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/py/bayesian_inv.py",
-		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/PyMc test 2.ipynb",
-		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/py/npz.py",
-		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/py/npz2.py"
+		"/Users/denis/Dropbox/repos/phd/bayesian-inversion-of-npz-model/py/clust_tools.py"
 	],
 	"find":
 	{
@@ -662,8 +694,16 @@
 		"selected_items":
 		[
 			[
+				"chldow",
+				"scripts/load/chl/download.R"
+			],
+			[
+				"bath",
+				"scripts/load/bathy/download.Rout"
+			],
+			[
 				"down",
-				"scripts/load/sst/download.Rout"
+				"scripts/load/par/download.R"
 			],
 			[
 				"par",

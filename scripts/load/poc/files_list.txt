@@ -1,5 +1,3 @@
-Your query generated 570 results, which are displayed below
-
 http://oceandata.sci.gsfc.nasa.gov/cgi/getfile/A20021852002192.L3m_8D_POC_poc_4km.bz2
 http://oceandata.sci.gsfc.nasa.gov/cgi/getfile/A20021932002200.L3m_8D_POC_poc_4km.bz2
 http://oceandata.sci.gsfc.nasa.gov/cgi/getfile/A20022012002208.L3m_8D_POC_poc_4km.bz2
@@ -569,4 +567,3 @@ http://oceandata.sci.gsfc.nasa.gov/cgi/getfile/A20142892014296.L3m_8D_POC_poc_4k
 http://oceandata.sci.gsfc.nasa.gov/cgi/getfile/A20142972014304.L3m_8D_POC_poc_4km.bz2
 http://oceandata.sci.gsfc.nasa.gov/cgi/getfile/A20143052014312.L3m_8D_POC_poc_4km.bz2
 http://oceandata.sci.gsfc.nasa.gov/cgi/getfile/A20143132014320.L3m_8D_POC_poc_4km.bz2
-http://oceandata.sci.gsfc.nasa.gov/cgi/getfile/A20143212014328.L3m_8D_POC_poc_4km.bz2

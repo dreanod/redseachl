@@ -1,21 +1,12 @@
-LOAD = ./scripts/load
-DIR = $(wildcard $(LOAD)/*)
+LOADDIR = scripts/load
+VPATH = $(LOADDIR)
 
-all: $(DIR)/download.Rout
-	echo all_rule
-	echo $(DIR)/download.Rout
+all: bathy/download.log chl/download.Rout cdom/download.log  nao/download.log \
+     par/download.log poc/download.log soi/download.log ssh/download.Rout \
+     sst/download.log
 
-$(DIR)/download.Rout: dummy.R
+%.log: %.sh
+	bash $< 2>&1 | tee $(LOADDIR)/$@
 	
-
-dummy.R:
-	echo dummy
-
-$(LOAD)/chl/aggregate.Rout: $(LOAD)/chl/download.Rout
-	R CMD BATCH $(LOAD)/chl/aggregate.R $(LOAD)/chl/aggregate.Rout
-
 %.Rout: %.R
 	R CMD BATCH $< $@
-
-clean:
-	rm -fv $(LOAD)/*/*.Rout

@@ -38,8 +38,6 @@ raw_dir <- 'data/chl/raw'
 agg_dir <- 'data/chl/aggregate'
 FILES <- list.files(raw_dir, pattern='*.nc', full.names=TRUE)
 
-chl_b <- brick()
-
 bricksList <- lapply(FILES, function(filename) {
   print(paste('Reading file:', filename))
   data <- read_nc(filename)

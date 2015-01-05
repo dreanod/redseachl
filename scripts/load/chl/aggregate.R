@@ -43,6 +43,7 @@ bricksList <- lapply(FILES, function(filename) {
   })
   chl_tmp <- brick(rastersList)
   chl_tmp <- setZ(chl_tmp, data$time)
+  names(chl_tmp) <- data$time
   return(chl_tmp)
 })
 

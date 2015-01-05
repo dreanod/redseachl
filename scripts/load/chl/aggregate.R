@@ -49,4 +49,4 @@ bricksList <- lapply(FILES, function(filename) {
 chl_r <- brick(bricksList)
 
 filename <- paste(agg_dir, 'chl.grd', sep='/')
-writeRaster(chl_r, filename)
+writeRaster(chl_r, filename, overwrite=TRUE)

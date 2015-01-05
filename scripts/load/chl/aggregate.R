@@ -2,6 +2,11 @@ library(ncdf4)
 library(abind)
 library(reshape2)
 library(raster)
+library(yaml)
+
+config <- yaml.load_file('scripts/load/config.yml')
+redSeaExtent <- extent(c(config$lon_min, config$lon_max, 
+                         config$lat_min, config$lat_max))
 
 chl_a2r <- function(lon, lat, x) {
   colnames(x) <-lat
@@ -13,6 +18,7 @@ chl_a2r <- function(lon, lat, x) {
   x <- SpatialPixelsDataFrame(x@coords, x@data, tol=9.15583e-05)
   proj4string(x) <- CRS("+init=epsg:4326")
   chl_r <- raster(x)
+  chl_r <- crop(chl_r, redSeaExtent)
   
   return(chl_r)
 }

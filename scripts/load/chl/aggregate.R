@@ -53,5 +53,12 @@ bricksList <- lapply(FILES, function(filename) {
 
 chl_r <- brick(bricksList)
 
+index = NULL
+for (b in bricksList) {
+  index = c(index, getZ(b))
+}
+chl_r <- setZ(chl_r, as.Date(index))
+names(chl_r) <- as.Date(index)
+
 filename <- paste(agg_dir, 'chl.grd', sep='/')
 writeRaster(chl_r, filename, overwrite=TRUE)

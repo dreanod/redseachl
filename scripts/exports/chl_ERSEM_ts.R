@@ -1,19 +1,23 @@
-load('data/chl/formated/chl.Rda')
+load('data/chl/formated/chlCast.Rda')
 
-chl <- chl_df2
+chl <- chl_df
+chl <- data.matrix(chl)
+lon <- chl[,1]
+lat <- chl[,2]
+chl <- chl[,3:ncol(chl)]
 
 ## Plot Dio's regions
 
-chl$region <- NA
-chl$region[chl$y < 27.75 & chl$y >= 25.5]  <- 'NRS'
-chl$region[chl$y < 25.5  & chl$y >= 22]    <- 'NCRS'
-chl$region[chl$y < 22    & chl$y >= 17.5]  <- 'SCRS'
-chl$region[chl$y < 17.5  & chl$y >= 13.25] <- 'SRS'
+regions <- vector(length = length(lat))
+regions[lat < 27.75 & lat >= 25.5]  <- 'NRS'
+regions[lat < 25.5  & lat >= 22 & lon >= 33]    <- 'NCRS'
+regions[lat < 22    & lat >= 17.5]  <- 'SCRS'
+regions[lat < 17.5  & lat >= 13.25] <- 'SRS'
 
-p <- ggplot(aes(x, y, fill=region), data = chl)
+library(ggplot2)
+data <- data.frame(x=lon, y=lat, region=regions)
+p <- ggplot(aes(x, y, fill=region), data = data)
 p <- p + geom_tile()
-# p <- p + scale_fill_manual(values=rev(brewer.pal(7, "RdYlBu")), 
-#                            labels=seq(7))
 p
 
 ## Generate time series according to Dio's regions

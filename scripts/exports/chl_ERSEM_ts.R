@@ -140,15 +140,23 @@ chl_clim <- data.frame(date=dates[1:46], NRS=chl_NRS_clim, NCRS=chl_NCRS_clim,
                        SCRS=chl_SCRS_clim, SRS=chl_SRS_clim)
 
 p <- ggplot(chl_clim, aes(as.Date(date), exp(NRS))) + geom_line()
+p <- p + ggtitle('CHL climatology of NRS')
+p <- p + ylab('chl concentration (mg/m^3)') + xlab('month (discard the year)')
 ggsave('results/export/chl_ts/NRS_climatology.png')
 
 p <- ggplot(chl_clim, aes(as.Date(date), exp(NCRS))) + geom_line()
+p <- p + ggtitle('CHL climatology of NCRS')
+p <- p + ylab('chl concentration (mg/m^3)') + xlab('month (discard the year)')
 ggsave('results/export/chl_ts/NCRS_climatology.png')
 
 p <- ggplot(chl_clim, aes(as.Date(date), exp(SCRS))) + geom_line()
+p <- p + ggtitle('CHL climatology of SCRS')
+p <- p + ylab('chl concentration (mg/m^3)') + xlab('month (discard the year)')
 ggsave('results/export/chl_ts/SCRS_climatology.png')
 
 p <- ggplot(chl_clim, aes(as.Date(date), exp(SRS))) + geom_line()
+p <- p + ggtitle('CHL climatology of SRS')
+p <- p + ylab('chl concentration (mg/m^3)') + xlab('month (discard the year)')
 ggsave('results/export/chl_ts/SRS_climatology.png')
 
 chl_clim$NRS  <- exp(chl_clim$NRS)

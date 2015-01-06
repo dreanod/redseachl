@@ -20,7 +20,13 @@ regions[lat < 17.5  & lat >= 13.25 & lon < 45] <- 'SRS'
 library(ggplot2)
 data <- data.frame(x=lon, y=lat, region=regions)
 p <- ggplot(aes(x, y, fill=region), data = data)
+p <- p + scale_fill_discrete(breaks=c('FALSE', 'NRS', 'NCRS', 'SCRS', 'SRS'),
+                             labels=c('NA', 'North Red Sea', 
+                                      'North Central Red Sea', 
+                                      'South Central Red Sea', 'South Red Sea'))
 p <- p + geom_tile()
+p <- p + ggtitle('Regions as defined by Raitsos')
+p <- p + ylab('latitude') + xlab('longitude')
 ggsave('results/export/chl_ts/regions.png')
 
 ## Generate time series according to Dio's regions

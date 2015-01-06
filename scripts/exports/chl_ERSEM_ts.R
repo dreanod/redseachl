@@ -21,7 +21,7 @@ library(ggplot2)
 data <- data.frame(x=lon, y=lat, region=regions)
 p <- ggplot(aes(x, y, fill=region), data = data)
 p <- p + geom_tile()
-p
+ggsave('results/export/chl_ts/regions.png')
 
 ## Generate time series according to Dio's regions
 rat_NA <- function(x) {
@@ -33,6 +33,12 @@ sum_reg <- function(df) {
   df_std  <- apply(df, 2, sd, na.rm=TRUE)
   df_mis  <- apply(df, 2, rat_NA)
   return(data.frame(date=dates, mean=df_mean, std=df_std, mis=df_mis))
+}
+
+## Generate climatological data
+chl_NRS_clim <- NULL
+for (i in 1:46) {
+  chl_NRS_clim[i] <- mean(chl_NRS$mean[seq(1, nrow(chl_NRS), 46)])
 }
 
 chl_NRS <- chl[regions == 'NRS',]
@@ -81,3 +87,49 @@ p <- p + ggtitle('ratio of missing values for each region')
 ggsave('results/export/chl_ts/mis.png')
 
 ## Generate climatological data
+chl_NRS <- read.csv('results/export/chl_ts/chlNRS.csv')
+meanNRS <- chl_NRS$mean
+chl_NRS_clim <- NULL
+for (i in 1:46) {
+  chl_NRS_clim = c(chl_NRS_clim, mean(meanNRS[seq(i, nrow(chl_NRS), 46)], 
+                                      na.rm=TRUE))
+}
+
+chl_NCRS <- read.csv('results/export/chl_ts/chlNCRS.csv')
+meanNCRS <- chl_NCRS$mean
+chl_NCRS_clim <- NULL
+for (i in 1:46) {
+  chl_NCRS_clim = c(chl_NCRS_clim, mean(meanNCRS[seq(i, nrow(chl_NCRS), 46)], 
+                                        na.rm=TRUE))
+}
+
+chl_SCRS <- read.csv('results/export/chl_ts/chlSCRS.csv')
+meanSCRS <- chl_SCRS$mean
+chl_SCRS_clim <- NULL
+for (i in 1:46) {
+  chl_SCRS_clim = c(chl_SCRS_clim, mean(meanSCRS[seq(i, nrow(chl_SCRS), 46)],
+                                        na.rm=TRUE))
+}
+
+chl_SRS <- read.csv('results/export/chl_ts/chlSRS.csv')
+meanSRS <- chl_SRS$mean
+chl_SRS_clim <- NULL
+for (i in 1:46) {
+  chl_SRS_clim = c(chl_SRS_clim, mean(meanSRS[seq(i, nrow(chl_SRS), 46)],
+                                      na.rm=TRUE))
+}
+
+chl_clim <- data.frame(date=dates[1:46], NRS=chl_NRS_clim, NCRS=chl_NCRS_clim,
+                       SCRS=chl_SCRS_clim, SRS=chl_SRS_clim)
+
+ggplot(chl_clim, aes(as.Date(date), NRS)) + geom_line()
+ggplot(chl_clim, aes(as.Date(date), NCRS)) + geom_line()
+ggplot(chl_clim, aes(as.Date(date), SCRS)) + geom_line()
+ggplot(chl_clim, aes(as.Date(date), SRS)) + geom_line()
+
+chl_clim$NRS  <- exp(chl_clim$NRS)
+chl_clim$NCRS <- exp(chl_clim$NCRS)
+chl_clim$SCRS <- exp(chl_clim$SCRS)
+chl_clim$SRS  <- exp(chl_clim$SRS)
+
+write.csv(chl_clim, 'results/export/chl_ts/climatology.csv', row.names=FALSE)

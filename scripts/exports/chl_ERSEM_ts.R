@@ -43,19 +43,27 @@ for (i in 1:46) {
 
 chl_NRS <- chl[regions == 'NRS',]
 chl_NRS <- sum_reg(chl_NRS)
+chl_NRS$mean <- exp(chl_NRS$mean)
 write.csv(chl_NRS, file='results/export/chl_ts/chlNRS.csv', row.names=FALSE)
+chl_NRS$mean <- log(chl_NRS$mean)
 
 chl_NCRS <- chl[regions == 'NCRS',]
 chl_NCRS <- sum_reg(chl_NCRS)
+chl_NCRS$mean <- exp(chl_NCRS$mean)
 write.csv(chl_NCRS, file='results/export/chl_ts/chlNCRS.csv', row.names=FALSE)
+chl_NCRS$mean <- log(chl_NCRS$mean)
 
 chl_SCRS <- chl[regions == 'SCRS',]
 chl_SCRS <- sum_reg(chl_SCRS)
+chl_SCRS$mean <- exp(chl_SCRS$mean)
 write.csv(chl_SCRS, file='results/export/chl_ts/chlSCRS.csv', row.names=FALSE)
+chl_SCRS$mean <- log(chl_SCRS$mean)
 
 chl_SRS <- chl[regions == 'SRS',]
 chl_SRS <- sum_reg(chl_SRS)
+chl_SRS$mean <- exp(chl_SRS$mean)
 write.csv(chl_SRS, file='results/export/chl_ts/chlSRS.csv', row.names=FALSE)
+chl_SRS$mean <- log(chl_SRS$mean)
 
 ## Generate figures about summaries
 chl_NRS$reg <- 'NRS'

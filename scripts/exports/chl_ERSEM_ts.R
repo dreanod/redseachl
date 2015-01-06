@@ -19,7 +19,7 @@ p
 ## Generate time series according to Dio's regions
 
 chl_NRS <- subset(chl, region == 'NRS')
-chl_NCRS <- subset(chl, y < 25.5 & y >= 22)
+chl_NCRS <- subset(chl, )
 chl_SCRS <- subset(chl_df2, y < 22 & y >= 17.5)
 chl_SRS <- subset(chl_df2, y < 17.5 & y >= 13.25)
 dates <- unique(chl_NRS$date)

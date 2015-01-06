@@ -163,5 +163,5 @@ chl_clim$NRS  <- exp(chl_clim$NRS)
 chl_clim$NCRS <- exp(chl_clim$NCRS)
 chl_clim$SCRS <- exp(chl_clim$SCRS)
 chl_clim$SRS  <- exp(chl_clim$SRS)
-
+ 
 write.csv(chl_clim, 'results/export/chl_ts/climatology.csv', row.names=FALSE)

@@ -86,18 +86,21 @@ p <- ggplot(subset(chl, variable=='mean'), aes(as.Date(date), value, group=reg))
 p <- p + geom_line(linewidth=.001)
 p <- p + facet_grid(reg ~ .)
 p <- p + ggtitle('logCHL mean for each region')
+p <- p + ylab('logchl (mg/m^3)') + xlab('date')
 ggsave('results/export/chl_ts/mean.png')
 
 p <- ggplot(subset(chl, variable=='std'), aes(as.Date(date), value, group=reg))
 p <- p + geom_line(linewidth=.001)
 p <- p + facet_grid(reg ~ .)
 p <- p + ggtitle('standard deviation of logCHL mean')
+p <- p + ylab('std (mg/m^3)') + xlab('date')
 ggsave('results/export/chl_ts/std.png')
 
 p <- ggplot(subset(chl, variable=='mis'), aes(as.Date(date), value, group=reg))
 p <- p + geom_line(linewidth=.001)
 p <- p + facet_grid(reg ~ .)
 p <- p + ggtitle('ratio of missing values for each region')
+p <- p + ylab('ratio') + xlab('date')
 ggsave('results/export/chl_ts/mis.png')
 
 ## Generate climatological data

@@ -122,10 +122,17 @@ for (i in 1:46) {
 chl_clim <- data.frame(date=dates[1:46], NRS=chl_NRS_clim, NCRS=chl_NCRS_clim,
                        SCRS=chl_SCRS_clim, SRS=chl_SRS_clim)
 
-ggplot(chl_clim, aes(as.Date(date), NRS)) + geom_line()
-ggplot(chl_clim, aes(as.Date(date), NCRS)) + geom_line()
-ggplot(chl_clim, aes(as.Date(date), SCRS)) + geom_line()
-ggplot(chl_clim, aes(as.Date(date), SRS)) + geom_line()
+p <- ggplot(chl_clim, aes(as.Date(date), exp(NRS))) + geom_line()
+ggsave('results/export/chl_ts/NRS_climatology.png')
+
+p <- ggplot(chl_clim, aes(as.Date(date), exp(NCRS))) + geom_line()
+ggsave('results/export/chl_ts/NCRS_climatology.png')
+
+p <- ggplot(chl_clim, aes(as.Date(date), exp(SCRS))) + geom_line()
+ggsave('results/export/chl_ts/SCRS_climatology.png')
+
+p <- ggplot(chl_clim, aes(as.Date(date), exp(SRS))) + geom_line()
+ggsave('results/export/chl_ts/SRS_climatology.png')
 
 chl_clim$NRS  <- exp(chl_clim$NRS)
 chl_clim$NCRS <- exp(chl_clim$NCRS)

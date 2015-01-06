@@ -18,4 +18,5 @@ chl_df2 <- melt(chl_df, id.vars=c('x', 'y'),
                 variable.name='date', value.name='chl')
 
 dir.create('data/chl/formated')
-save(chl_df2, file='data/chl/formated/chl.Rda')
+save(chl_df2, file='data/chl/formated/chlMelt.Rda')
+save(chl_df,  file='data/chl/formated/chlCast.Rda')

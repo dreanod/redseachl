@@ -14,3 +14,5 @@ data/**
 *.out
 *.sbl
 *.toc
+*.bbl
+*.blg

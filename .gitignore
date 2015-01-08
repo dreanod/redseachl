@@ -5,3 +5,4 @@ data/**
 .RData
 *.sublime-workspace
 *.log
+.Rhistory

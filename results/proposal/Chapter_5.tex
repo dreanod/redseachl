@@ -1,0 +1,132 @@
+\chapter{Creating the List of Abbreviations and List of Symbols}\label{chapter5}
+\lstset{basicstyle={\ttfamily,\small}, frame=lines}
+
+\section{Introduction}
+The most versatile package to create the \gls{loa} and \gls{los} is currently the \texttt{glossaries} package. With the \texttt{glossaries} package, one can create those and even more lists all in the same document. Every list is sorted alphabetically and can even have the page numbers where the entries appear (if that's desired) just like an ``Index of terms'' list. 
+
+In the following there is a description on how to use the \texttt{glossaries} package. The material is taken from the documentation of the package and some other examples that can be found online.
+
+
+\section{How to use the \texttt{glossaries} package}\label{sec:howto}
+The \texttt{glossaries} package works more or less like the \texttt{Makeindex}. In fact one needs to use the \texttt{makeindex} command to actually create the lists (see \S\ref{sec:printlists}). The main difference is that when creating an index, one only has to define the index terms in the text, using an \texttt{\textbackslash index\{}\textit{term}\texttt{\}} command. On the other hand, in order to create the \gls{loa} and \gls{los} one needs to define those entries and use a \texttt{\textbackslash gls\{}\textit{term}\texttt{\}} or similar command to reference them in the text. 
+
+The definition of those entries must be in the preamble right after the definition of all the lists and the \texttt{\textbackslash makeglossaries} command. It is probably a good idea to have them in a separate file, which you include (as is done in the example \texttt{Thesis.tex} with the \texttt{\textbackslash include\{Lists\}} command). 
+
+The general format for entries is\\
+\texttt{\textbackslash newglossaryentry\{}\textit{label}\texttt{\}\{}\textit{definition}\texttt{\}}\\
+The first argument (\textit{label}) is a label that \emph{uniquely} identifies this entry. The second argument (\textit{definition}) is a comma-separated list of \texttt{key=}\textit{value} pairs. For example
+\begin{lstlisting}
+\newglossaryentry{datacomp}{name=data compression, description=
+the  process of encoding information using less bits than the 
+original representation uses}
+\end{lstlisting}
+In this example there are two keys, namely the \texttt{name} and the \texttt{description}. The key \texttt{name} has the value ``data compression'' and the key \texttt{description} has the value ``the process... uses''. The \texttt{glossaries} package understands that a key value ends when it encounters a comma and treats the next word as a key. The value of the key \texttt{name} is what will appear in the text when referenced by a \texttt{\textbackslash gls\{datacomp\}} command. The value of the key \texttt{description} is what will appear in the default Glossary (or any other) list.
+
+
+\subsection{Glossary entries}
+\lstset{basicstyle={\ttfamily,\small}, frame=lines}
+Some more examples of glossary or symbols entries are given below.
+\begin{lstlisting}
+\newglossaryentry{elite}{name={\'e}lite, description=select
+group or class, sort=elite}
+\end{lstlisting}
+
+In this example notice the use of \texttt{\{\textbackslash'e\}} notation to produce the accented letter {\'e}. Because \texttt{makeindex} will not know how to sort this alphabetically (\texttt{makeindex} is hardcoded for english), it is a good idea to use the key \texttt{sort} to specify how we want this entry to be sorted. In this example the entry ``\'elite'' will be treated as if it were ``elite''.
+\begin{lstlisting}
+\newglossaryentry{pi}{name={\ensuremath{\pi}}, sort=pi, 
+description={ratio of circumference of circle to its diameter}}
+\end{lstlisting}
+
+In this example the entry is $\pi$. Notice the \texttt{\textbackslash ensuremath\{\}} command which makes sure that the term \texttt{\textbackslash pi} is indeed in math mode (if it isn't then it prepends and appends the \$ sign) so that LaTeX doesn't throw an error. Also notice that the curly brackets enclosing the \texttt{description} value are not mandatory here but they \emph{should} be used if the description value contains a comma. Otherwise the \texttt{glossaries} package will understand that the comma denotes the end of the value and treat the following word as a key. 
+\begin{lstlisting}
+\newglossaryentry{ohm}{name=ohm, symbol={\ensuremath{\Omega}},
+description=unit of electrical resistance}
+\end{lstlisting}
+
+This example defines an entry for both the Glossary list (due to the key \texttt{name}) and the \gls{los} (due to the key \texttt{symbol}).
+
+\subsection{Abbreviation (Acronym) entries}
+Acronym entries can be defined using \texttt{\textbackslash newglossaryentry} command but there is also a handy shortcut, namely the \texttt{\textbackslash newacronym} command. For example
+\begin{lstlisting}
+\newglossaryentry{led}{name=LED, description={light-emitting 
+diode}, first{light-emitting diode (LED)}
+\end{lstlisting}
+is equivalent to the much shorter 
+\begin{lstlisting}
+\newacronym{led}{LED}{light-emitting diode}
+\end{lstlisting}
+Note that the first time the entry \texttt{led} is found, the \texttt{glossaries} package will print the description followed by the acronym in parentheses i.e.\ ``light-emitting diode (LED)'' (this is actually what the key \texttt{first} is for in the \texttt{\textbackslash newglossaryentry} command).
+
+Also calling \texttt{\textbackslash acrlong\{led\}} will produce ``Light-Emitting Diode'' (i.e.\ the \emph{long} version of the entry ---the description) while \texttt{\textbackslash acrshort\{led\}} will produce ``LED'' (i.e.\ the \emph{short} version of the entry ---the acronym).
+
+\subsection{Symbols entries}
+Entries for the List of Symbols follow the exactly same rule as the glossary entries, with the addition of \texttt{type=symbols} in the definition part of the entry. For example
+\begin{lstlisting}
+\newglossaryentry{pi}{type=symbols, name={\ensuremath{\pi}},
+description={ratio of circumference of circle to its diameter}, 
+sort=pi}
+\end{lstlisting}
+If the key \texttt{type} is omitted, the main glossary (i.e.\ the Glossary) is assumed.
+
+\section{Referencing the entries in the text}
+In order to reference the entry in the text one just has to write \texttt{\textbackslash gls\{}\textit{label}\texttt{\}}. For example for the glossary entry \texttt{datacomp} defined in \S\ref{sec:howto}, one just has to write \texttt{\textbackslash gls\{datacomp\}}
+which will produce the value of the key \texttt{name}, i.e.\ ``data compression''. Note that 
+\begin{itemize}
+   \item \texttt{\textbackslash Gls\{datacomp\}} will produce ``Data compression'' (i.e.\ the first is capital), 
+   \item \texttt{\textbackslash GLS\{datacomp\}} will produce ``DATA COMPRESSION'' (i.e.\ all capital), 
+   \item \texttt{\textbackslash glspl\{datacomp\}} will produce ``Data compressions'' (i.e.\ plural),
+   \item \texttt{\textbackslash Glspl\{datacomp\}} will produce ``Data compressions'' and
+   \item \texttt{\textbackslash GLSpl\{datacomp\}} will produce ``DATA COMPRESSIONS''.
+\end{itemize}
+The plural form is formed by just appending an ``s''. If the plural form of an entry is different, one just has to define it in the definition part using the key \texttt{plural}. For example
+\begin{lstlisting}
+\newglossaryentry{bus}{name=data bus, description=a subsystem 
+that transfers data between computer components, plural=buses}
+\end{lstlisting}
+
+There are quite a few more keys in the documentation of the package that allow even more flexibility.
+
+
+\section{Printing the lists}\label{sec:printlists}
+The following piece of code is already in the \texttt{Thesis.tex} file. Here is an explanation of what each line does, in case something need to be modified.
+
+\begin{lstlisting}[numbers=left,numberstyle=\footnotesize]
+\printglossary[type=\acronymtype,style=long, title=List of 
+               Abbreviations, toctitle=List of Abbreviations, 
+               nonumberlist=true] 
+
+\printglossary[type=symbols,style=long]   
+
+\printglossary[style=altlist, toctitle=Glossary, nonumberlist=true] 
+\end{lstlisting}
+
+Lines 1-2 should appear where you want the List of Abbreviations to appear. They will print the entries and show them in the document's \gls{toc}. Notice that I had to change the default title ``List of Acronyms'' to ``List of Abbreviations'' for both the chapter title and the \gls{toc} entry.
+
+Line 4 should appear where you want the List of Symbols to appear. It will print the symbols entries and show them in the document's \gls{toc}.
+
+Lines 6-8 should appear if you would like to have a Glossary (optional). They will print the Glossary entries and show an entry ``Glossary'' in the document's \gls{toc}. The \texttt{nonumberlist=true} suppresses the page numbers in the list.
+
+In order to actually see the lists in your document, you need to run LaTeX once and then run the following commands in the command line (they can also be found in the preamble of the \texttt{Thesis.tex} as comments):
+\begin{lstlisting}
+makeindex -s Thesis.ist -t Thesis.alg -o Thesis.acr Thesis.acn
+makeindex -s Thesis.ist -t Thesis.slg -o Thesis.syi Thesis.sbl
+makeindex -s Thesis.ist -t Thesis.glg -o Thesis.gls Thesis.glo
+\end{lstlisting}
+If your main input file is not \texttt{Thesis.tex}, then replace all the occurences of \texttt{Thesis} with that filename. Then run LaTeX once again.
+
+Sometimes (depending on the entries) this procedure has to be repeated once more.
+
+\section{Test section}
+In this section there is some text,used to show how the \texttt{glossaries} package. See the source file of this chapter and of the Introduction for the exact usage. 
+
+\subsection{General information}
+Our network uses \gls{AD}. By using \gls{AD} with \gls{M$} bases clients that
+have been installed using a \gls{glos:RespF} from \gls{CD}, we can expect a 
+high level of standardization.
+
+\subsection{Some Greek symbols}
+If you multiply a rational with \gls{symb:Pi} you always get an irrational result, because 
+\gls{symb:Pi} itself is irrational. As a matter of fact, so are \gls{symb:Phi} 
+and \gls{symb:Lambda}, too.
+
+

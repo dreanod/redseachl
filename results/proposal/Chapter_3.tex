@@ -4,156 +4,215 @@
 \chapter{Editings}
 \label{chapter3}
 
-\section{Language and Length}
+\section{Task 1: Dataset building and Exploration}
 
-The dissertation or thesis must be written in English.  There is no specific requirement for the page length of a dissertation or thesis.  Work closely with your Thesis Advisor to plan, outline, write, and revise the text of the document. Writing a thesis or dissertation is an iterative process of written revisions.
+Duration: 2 months (by December 2014)
 
-\section{Table of Contents}
+Submission: Journal of Marine Systems
 
-As a page heading, use "TABLE OF CONTENTS" all in capital letters, centered on the page. The format of the table should conform to the pagination guidelines and accurately reflect the outline and organization of the manuscript. List the sections/chapters of the body of the dissertation or thesis; also list preliminary sections starting with the signature approvals page and supplementary sections such as References and Appendices. The table of contents may be single-spaced.
+Collaborator: Dionysios Raitsos
 
-\section{Proofreading and Editing}
+\subsection{Motivation}
 
-All manuscripts should be proofread before being submitted to the Thesis Advisor. The consistency and accuracy of the spelling, punctuation, capitalization, abbreviations, and word divisions are primarily the responsibility of the dissertation or thesis writer, who should consult a dictionary and a manual of style for correct usage. Students need to adopt a consistent style throughout the dissertation or thesis. Students are especially urged to use the "spell-check" feature of the computer software being used and to proofread the manuscript carefully, or to enlist the help of a friend or professional proofreader. The Thesis Advisor will return to the student for correction and resubmission any dissertation or thesis that has not been carefully proofread. Students should also allow at least two weeks for proofreading before the final presentation/examination is scheduled.
+A preliminary task to data modeling, is the gathering, cleaning and exploration of the data. Given the complexity and the size (40 GB) of the data, this is not an easy task. This first data analysis, will reveal if enough data has been gathered to make meaningful forecast, and what accuracy we can expect from the models. This step will also provide information that will help in designing statistical models: most significant variables, differences between regions, relevant data transformation, etc. Finally, this step will identify patterns in the data that will be useful to qualitatively evaluate predictive models.
 
-Similarly, the dissertation or thesis writer is fully responsible for editing the style and grammar of the manuscript and for seeking support and assistance when necessary.
-
-\section{Reproduction}
-
-The following guidelines should be adhered to:
+\subsection{Open Questions}
 
 \begin{itemize}
-\item	Print the final copies of your manuscript on high-quality archival bond paper, minimum 20-pound weight, and 8.5 by 11 inches in size. 
-\item	All textual material should be double-spaced, but long quotations and footnotes may be single-spaced and indented. Follow the style manual chosen by your Thesis Advisor or department because these guidelines vary. 
-\item	The typeface, including headers, page numbers, and footnotes - must be produced with the same font or typeface throughout the document. Exceptions are made only for tables and figures. Suggestions: TIMES NEW ROMAN 12; ARIAL 12; BOOKMAN 12; GARAMOND 12; CAMBRIA 12.
-
+\item Can we efficiently identify outliers in the chlorophyll values?
+\item Is there a way to efficiently fill the missing values in the chlorophyll dataset?
+\item Can the data help understanding the mechanisms behind extreme blooms in the Red Sea?
+\item Can the hypothesizes about the dynamics behind the chlorophyll seasonal cycle be confirmed by the data?
+\item Are there more blooms in the past years?
 \end{itemize}
 
-\section{Footnotes and Endnotes}
+\subsection{Method and Work Done}
 
-Footnotes may be single-spaced in a 10-point size but must be in the same font as the rest of the text. Footnotes should be numbered with superscripted Arabic numbers. Numbering must be continuous throughout the document. Users of LaTeX may use CMR 12 font or any font that meets the above specifications. The print should be letter quality with dark black characters that are consistently clear and dense.
+Identify data sources and load the data…………………………………………………60%
+Clean the data and fill missing values (DINEOF)......................................................50%
+Align and format the data in order to have a unique dataset…………………………...0%
+Explore the dataset………………………………………………………………………..20%
+Study the correlation between chlorophyll and other variables (Linear Regression, GAM, data transformations)
+Select variables (Lasso, single variable regression, multistep regression)
+Study the regional aggregation (ACF)
+Explore spatiotemporal correlations (hovmoller plots, PCA, variograms)
+Estimate the Bayes factor/ % of variance explained (k-nearest neighbors)
+Expected Outcomes
+A cleaned dataset that can be used in the following tasks
+A comprehensive exploration of the available data for chlorophyll study in the Red Sea
+A preliminary variable selection
+A clear picture of the major spatio-temporal patterns in the data
+A critical evaluation of the current hypothesis about the chlorophyll dynamics in the Red Sea
 
-\section{Justification}
 
-Left-aligned, ragged right margins are preferred. Use justified margins only if the computer does this well, i.e., does not separate punctuation from characters or leave large gaps in the text.
+\section{Task 2:  Forecasting Chlorophyll Concentration in Regional Aggregates}
 
-\section{Margin}
+Duration: 2 months (by February 2015)
+
+Submission: Progress in Oceanography
+
+Collaborator: Dionysios Raitsos
+
+\subsection{Motivation}
+
+Chlorophyll data is very complex. It is therefore useful to first simplify it by aggregating it spatially. The space-time dynamics of the chlorophyll data reflects the highly nonlinear dynamics of the underlying physical, chemical and biological phenomenons. As shown by the north-south gradient and the seasonal behavior, the resulting space-time process is nonstationary in time and in space. The high-dimensionality in space can be reduced by considering a regional aggregation of the results. This would allow us to focus on the global scale phenomenons: such as the interactions between neighboring regions, the time-scale of large events and the difference in the physical variables affecting the chlorophyll concentration in each region. In the following tasks, these simple predictive models will also be a reference for evaluating more complex ones. 
+
+\subsection{Open Questions}
 
 \begin{itemize}
-\item Left margin - 1.5 inches
-\item Right margin - 1 inch
-\item Top and bottom	- 1 inch
-
+\item Is the biological aggregation of the Red Sea proposed by (Raitsos 2013) statistically meaningful?
+\item Can clustering methods be used to identify marine ecological zones based on chlorophyll data?
+\item Can a simple forecasting model allow us to understand the causes of chlorophyll blooms?
+\item Can the current hypothesizes about the seasonal chlorophyll dynamics be validated?
 \end{itemize}
 
-Exact margins are absolutely essential so that the thesis can be digitized in its entirety for interlibrary loan. The same width margins must apply to all pages, including those containing graphs, tables, and other illustrative materials.
+\subsection{Method}
 
-\section{Pagination}
+Define datasets (training and test datasets, cross-validation).....................................0%
+Variable selection (Lasso, L1 regression, single-variable linear regression)...............0%
+Define regional aggregations (unsupervised learning, Hierarchical clustering, K-means)...................................................................................................................50%
+Forecasts chlorophyll concentration (linear regression, GAM models, diagnostic, k-nearest neighbors)....................................................................................................0%
+Predicting future extreme blooms (nearest-neighbours, logistic regression, decision trees)...........................................................................................................................0%
 
-All pages except the title page must be numbered at least 0.75" from the top of the page. Begin the numbering with Arabic numbers on the top of the page following the title page. Use continuous Arabic numbers beginning with the signature approvals page (page 2) and continue with every sheet that follows, whether it is text, figures, explanation for figures or photos, tables, maps, appendices, etc., numbering pages to the end. Page numbers must be within the margins at the top of each page.
+\subsection{Expected Outcomes}
 
-Each chapter must be numbered separately, using consecutive Roman numerals to distinguish the individual chapters throughout the dissertation or thesis. Chapters within the text begin on new pages. There should be no page breaks between sections or before tables or figures, unless they occur naturally.
+A regional division of the Red Sea that has been quantitatively evaluated.
+A critic of current hypothesis about the chlorophyll dynamics in the Red Sea.
+A lower bound on the performance of a more sophisticated model.
+An assessment of the limitation of aggregate methods for Chlorophyll data.
+An understanding on how the treatment of spatial correlations can improve the results.
 
-Paginate the parts of the dissertation or thesis in the order as shown in table \ref{table}:
+\section{Task 3: Global geostatistical model for forecasting}
 
-\begin{table}
-\centering\caption{Parts Pagination \cite{guidelines}} \label{table}
-\begin{tabular}{|c|l|c|}\hline
-\textbf{S.~No.} & \textbf{Page Style/Type} & \textbf{Page Numbering} \\\hline\hline
- 1. & Title Page                      & (not numbered)\\ \hline
- 2. & Signature Approvals Page        & 2\\ \hline
- 3. & Copyright Page (if applicable)  & 3\\ \hline
- 4. & Abstract                        & 4\\ \hline
- 5. & Acknowledgments (Optional)      & 5\\ \hline
- 6. & Table of Contents               & 6\\ \hline
- 7. & List of Abbreviations           & 7\\ \hline
- 8. & List of Symbols (Optional)      & 8\\ \hline
- 9. & List of Illustrations           & 9\\ \hline
-10. & List of Tables                  & 10\\ \hline
-11. & Main text of thesis,            & \\
-    & including any Introduction or Summary. & \\ \hline
-12. & Material to follow text,        & \\
-    & such as references, appendices, & \\
-    & and fold-in maps. However,      & \\
-    & such material may be included   & \\
-    & at the end of each chapter,     & \\
-    & making each chapter a complete  & \\
-    & and self-contained paper,       & \\
-    & nonetheless with pagination in  & \\
-    & sequence with the remainder of the thesis. & \\ \hline
-\end{tabular}
-\end{table}
+Duration: 1 month (by March 2015)
 
-\section{Equations, Formulas, Sub/Superscripts}
+Submission: Spatial Statistics
 
-All equations and formulas should be typeset. When a computer or word processor cannot make a symbol, insertions by hand are acceptable. All subscripts and superscripts must be large enough to be clearly read.
+\subsection{Motivation}
 
-\section{Charts, Graphs, Tables, Photographs, and Oversized Maps}
+Geostatistical methods can be used to construct dynamical models for forecasting the chlorophyll concentrations that we can compare to deterministic models. Geostatistics is a robust method to model spatio-temporal data. Recently there has been a lot of research on expanding it to model spatio-temporal data. With Kriging, these models a are powerful ways to do spatio-temporal prediction. As a particular case of Kriging, by predicting the spatial future field given the observation of the present field, we can derive a linear dynamical model. This linear model can be employed in a filtering setting like the Kalman filter. This is a desirable setup, as it is similar to the way deterministic models are employed to do forecasts given past observations. 
 
-Illustrations must be of equally high quality in the "final" copies submitted to the Offices of the Provost, Associate Provost of Graduate Affairs and to the library. For the digital copy of your work submitted to the library, illustrations must be inserted as an image at the appropriate place within the thesis or dissertation.
-
-Please keep in mind:
+\subsection{Open Questions}
 
 \begin{itemize}
-\item Labels or symbols rather than colors should identify lines on a graph.
-\item	Shaded areas---such as countries on a map---will have better contrast if cross-hatching is used instead of color. 
-\item	Photographs should be professional-quality black and white or color.  Most photographs will reproduce acceptably on positive microfilm or microfiche but will lack clarity on photocopies made from the microfilm.  If color copies are necessary, all final copies of the dissertation or thesis should include the color photographs.  
-\item	Charts, graphs, and maps that are larger than the standard 8.5" x 11" page size may be used in your manuscripts.  They should be carefully folded into the manuscript or rolled up and placed in a mailing tube.
-
+\item Can a global geostatistical model fit chlorophyll data?
+\item How non stationary is the data in time and space?
+\item What spatiotemporal covariance functions best fit the chlorophyll data?
+\item Can geostatistical methods be employed in a filtering setup?
 \end{itemize}
 
-\section{Plagiarism Checking}
+\subsection{Method}
 
-All students are required to have their manuscripts checked by Skills Lab personnel using the 'Turn It In' plagiarism software. The resulting originality reports will be submitted to the office of the Associate Provost of Graduate Affairs for review and approval.  Copies of the approved reports will be forwarded to the Graduate Program Coordinators and to the library.  This is a mandatory part of the graduation process.
+This task has already been started and had been the object of a submission for publication. The remaining work includes:
+Use the new dataset and the new covariates
+Compare the results to the ones of with the regional aggregates
+Expected Outcomes
+A methodology to employ a geostatistical model in a filtering problem.
+A characterization of the space-time non stationarity of the data, and the interaction of the temporal and spatial dimensions.
+An understanding of how spatial aggregation and geostatistical models can be used in the same model. 
 
-\section{Use of Copyrighted Material}
+
+\section{Task 4: Local geostatistical model for forecasting}
 
-As the author of the dissertation or thesis manuscript, you will be asked to certify that any previously copyrighted material used in your work, beyond "fair use," is with written permission of the copyright owner, and that KAUST will not be held responsible for any damages which may arise from copyright violations.  When depositing your work in the KAUST digital archive, you will be required to warrant that you have obtained all necessary rights. (Please see 'sample permission letter' on page 19 of \cite{guidelines}).
+Duration: 3 months (by June 2015)
+Submission: Journal of the American Statistical Association (Case Study)
+Collaborator: Raphael Huser
 
-In most cases no problem will arise if your evaluation of the circumstances suggests the use is fair. Your evaluation should weigh four factors:
+\subsection{Motivation}
 
-\begin{itemize}
-\item Purpose and character: Because your use is for non-profit educational purposes, this is a factor favoring fair use. But if you are to derive payment from use of the dissertation or thesis, this would weigh against fair use.
-\item Nature of copyrighted work: Is the work fact based, published, or out-of-print? These factors weigh in favor of fair use.
-\item Amount used:  Using a small portion of a whole work would weigh toward fairness.
-\item Market effect: A use is more likely to be fair if it does not harm the potential market for or value of the copyrighted work. But if it does, this could weigh more heavily against fair use than the other factors.
-\end{itemize}
+This part will bring together the results of the two preceding tasks to develop a predictive model that takes into account the large-scale dynamics and the regional spatio-temporal dynamics. In task 2, a predictive model is built, that represents the large scales behaviour of the Red Sea, but the spatial dimension inside each region is not addressed. We expect local features to play a role, such as the proximity to the coast, the bathymetry, proximity to other regions or major cities, etc. In task 3, we developed a methodology to use a geostatistical model in a dynamic fashion to do pixel-scale forecast. In this task, each regions will be modeled separately by a local geostatistical model that can do local prediction. These models will have access to aggregate covariates from neighboring regions in represent the global scale behaviours. 
 
-Consider each of these factors, but all of them do not have to be favorable to make your use a fair one. When the factors in the aggregate weigh toward fairness, your use is better justified. When the factors tip the scales in the other direction, your need to obtain permission from the copyright holder increases. Don't worry that the answer isn't crystal clear. Just decide whether the factors weigh enough toward fairness so that you are comfortable not seeking permission.
+\subsection{Open Questions}
 
-KAUST Library offers links to more information on copyright and permissions on their theses and dissertations webpages at http://libguides.kaust.edu.sa/theses.
+What are the most adapted space-time covariance models for chlorophyll data?
+How to use global covariates in a geostatistical model?
+What are the differences in the fine-scale dynamics of chlorophyll in each region?
+Can the fine scale behaviour of phytoplankton be predicted accurately?
+What are the spatial features that are important for the chlorophyll dynamics?
 
-\section{Use of Published Material}
+\subsection{Method}
 
-Published articles of which the candidate is author or joint author may be included as part of the dissertation or thesis, with due regard to copyright regulations (see previous section). For the "original copy" of the manuscript, such printed pages must follow the same requirements as outlined in this guide, maintaining margins, type size (at least 12 point), page number sequencing, etc.
+Extract local dataset from previous tasks
+Design the training and test datasets, and the cross-validation method
+Design and evaluate the mean function given the past covariates
+Fit the local geostatistical model to the residuals.
+Evaluate the model predictions and compare the results with task 2 and 3.
+Expected Outcomes
+A methodology to aggregate local geostatistical models
+An improvements in the prediction skills over the models of task 2 and 3.
+An understanding of the differences between each regions.
+A critical evaluation of the space-time covariance models for fitting chlorophyll data.
+A better characterization of the regional chlorophyll dynamics.
 
-\section{Some Common Errors}
+
+\section{Task 5: Assimilation of 1D ecological models and comparison to statistical models}
 
-\begin{itemize}
-\item Unnumbered pages, especially those containing figures or captions to figures.
-\item	Names of authors spelled differently in the text and in the bibliography; reference numbers or dates in the text that do not agree with the bibliography.
-\item	Inconsistent presentation of bibliographic information.
-\item	Incorrect punctuation of abbreviations.  The Latin abbreviation for "and others" contains only one period "et al."  The abbreviations "i.e." and "e.g." are punctuated with two periods and set off by commas from the sentences in which they appear, unless a specific style manual required by your advisor or department suggests otherwise, as some do.
-\item	Inconsistent hyphenation of compound words.
-\item	Inconsistent capitalization of proper nouns used as adjectives.
-\item	Reversed punctuation of quotations.  Periods and commas always precede final quotation marks, even if the quotation consists of a single letter unless your text follows the quotation in the sentence.
+Duration: 3 months (by September 2015)
 
-\end{itemize}
+Submission: Journal of Geophysical Research 
 
-\section{Some Common Formatting Errors}
+Collaborator: George Triantafyllou / Boujeema
 
-\begin{itemize}
-\item The page size should be 8.5  x 11 inches (regular US letter size)
-\item	Incorrectly sized margins - the left margin should be 1.5" inches and all other margins 1 inch.
-\item	All pages should be numbered consecutively (except for the title page) and the numbers should be correctly placed on the page - at least 0.75 inches from the top of the page.  
-\item Pages should be ordered properly, with the title page first, followed by the signature approvals, copyright, and then the abstract pages. Check for missing pages.
-\item	The abstract should be 350 words or less.
-\item	The title page should include the correct date - the date should be the month and year you will receive the degree, for example December 2011.
-\item	The correct number of copies should be submitted.
-\item	You must have permission to use previously published material.
+\subsection{Motivation}
 
-\end{itemize}
+The three previous tasks focus on constructing increasingly sophisticated predictive models for the chlorophyll concentration in the Red Sea. In this part these models will be compared to a 1D ecological model (ERSEM). This model is well detailed and very complex. The goal of this part will be to identify the merits of each modeling approach, and propose ways in which they can complement each other. To allow for comparison, the model will be run in each of the regions found in task 2. Available data will also be assimilated to the model through a smoothing assimilation scheme that will use an expectation-maximization algorithm for parameters estimation. 
 
-% Copyright 2010 Imran Shafique Ansari
-% Contact Email: imran.ansari@kaust.edu.sa
-% Contact Number: +966 59 897 1005
+\subsection{Open Questions}
+
+Are statistical methods competitive for forecasting chlorophyll concentrations?
+How can statistical and deterministic models complements each other?
+Can statistical method forecast interesting dynamical features?
+Are there significant regional differences in the relative performances of both approaches?
+How to estimate the parameters of ecological models? 
+
+\subsection{Method}
+
+Define the metrics for comparison
+Calibrate the ERSEM model on each of the regions
+Define an assimilation scheme and the data for the ERSEM model
+Implement the assimilation scheme
+Run the simulation and aggregate the results
+Do the comparisons with the statistical models
+
+\subsection{Expected Outcomes}
+
+A complete set of measures of the prediction skills of each approach.
+A method to estimate assimilation and model parameters in an assimilated ecological model.
+A set of case studies of the behaviours of each method for forecasting interesting events.
+An understanding of the limitations of geostatistical models to predict nonlinear dynamics. 
+Propositions on how the two approaches can complement each other.
+
+\section{Task 6: Improving an Ecological Model Data Assimilation Scheme through Statistical Predictive Models}
+
+Duration: 3 months (by September 2015)
+
+Submission: Journal of Geophysical Research 
+
+Collaborator: George Triantafyllou / Boujeema
+
+\section{Motivation}
+
+In the previous task, we compared the forecasts of the ecological ERSEM model to that of the statistical models we developed from tasks 2 to 4. In this task we will study how these two approaches can be complementary. Specifically, we will study the use of statistical forecasts model to improve the forecasts of the ERSEM ecological model. The forecasts of the statistical models will be treated as observations, that can be assimilated by the filtering scheme used with the ERSEM model, and will give an improved forecast. When real observations will be available, they will be assimilated sequentially. This, method will allow the different ERSEM models on each cluster to communicate indirectly their states to one another. 
+
+\subsection{Open Questions}
+
+Can statistical predictive models be used to communicate information between deterministic model?
+Would the access to information about other regions improve the model forecasts?
+What are the global patterns of ecological dynamics in the Red Sea?
+
+\subsection{Method}
+
+Define new assimilation scheme
+Define metrics to measure model improvement
+Prepare training and test datasets
+Train statistical model
+Run simulation with assimilation of statistical observation
+Compare with results of task 5
+
+\subsection{Expected Outcomes}
+
+An improvement in the prediction skills of the deterministic approach
+A methodology to couple deterministic ecological models through statistical models
+Insights on the global ecological dynamics of the Red Sea
+
+

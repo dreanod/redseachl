@@ -6,3 +6,11 @@ data/**
 *.sublime-workspace
 *.log
 .Rhistory
+*.acn
+*.glo
+*.ist
+*.lof
+*.lot
+*.out
+*.sbl
+*.toc

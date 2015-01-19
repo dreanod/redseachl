@@ -1,6 +1,6 @@
 library(raster)
 
-dir.create('data/chl/clean')
+dir.create('data/chl/clean/')
 
 FILES <- list.files('data/chl/crop', full.names=TRUE)
 

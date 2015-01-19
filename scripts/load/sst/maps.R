@@ -28,8 +28,8 @@ for (f in FILE[1:2]) {
                                             limits=c(15, 35))
   p <- p + coord_cartesian() 
   p <- p + geom_polygon(aes(x=long, y=lat, group=group), red.sea.outside,
-                        fill='white', contour='black', size=50)
-  p <- p + legend('SST')
+                        fill='white', contour='black')
+  # p <- p + legend('SST')
 
   ggsave(filename=paste('derived/EDA/SST/weekly_maps/', basename(f), '.png', sep=''), plot=p)
 }

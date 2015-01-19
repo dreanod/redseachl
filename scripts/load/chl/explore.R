@@ -14,9 +14,12 @@ for(y in 2002:2014) {
     r <- raster(f)
     values <- c(values, as.vector(r))
   }
-  p <- qplot(values) + xlab('CHL in mg/m^3')
+  p <- qplot(values) 
+  p <- p + scale_x_log10(breaks=c(0.01,0.1,1,10,100), 
+                         labels=c('0.01', '0.1', '1', '10', '100'))
+  p <- p + xlab('CHL in mg/m^3')
   p <- p + ggtitle(paste('chl around Arabia in', y))
-  filename <- paste(export_dir, y, '.png', sep='')
+  filename <- paste(export_dir, '/', y, '.png', sep='')
 
   ggsave(filename=filename, plot=p)
 }

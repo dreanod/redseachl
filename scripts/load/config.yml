@@ -1,13 +1,18 @@
 
-small_extent:
+red_sea_extent:
   lat_min: 8.0
   lat_max: 30.8
   lon_min: 30.6
   lon_max: 46.1
 
-large_extent:
+red_sea_GOA_extent:
   lon_min: 25
   lon_max: 65
   lat_min: 5
   lat_max: 35
 
+red_sea_extent:
+  lon_min: 32
+  lon_max: 44
+  lat_min: 13
+  lat_max: 30

@@ -77,10 +77,33 @@ ggsave(fn, plot=p, width=25, height=5, units='cm')
 
 ## Compute missing values climatology
 
-df$month_day <- NA
-
 fun <- function(x) {
   substring(x[1], 1, 4) <- '2000'
   return(x[1])
 }
-apply(df, 1, fun)
+df$month_day <- apply(df, 1, fun)
+
+d_clim <- sort(unique(df$month_day))
+d_clim <- c(d_clim[1:8], d_clim[seq(9, length(d_clim), 2)])
+m_clim <- vector()
+
+for (t in d_clim) {
+  print(t)
+  df_temp1 <- subset(df, month_day==t)
+  df_temp2 <- subset(df, month_day==as.Date(1, origin=t))
+  df_temp <- rbind(df_temp1, df_temp2)
+  print(nrow(df_temp))
+  m_clim <- c(m_clim, mean(df_temp$missing))
+}
+
+df_clim <- data.frame(month_day=d_clim, missing=m_clim)
+df_clim$month_day <- as.Date(df_clim$month_day)
+
+drange <-seq(as.Date('2000-01-01'), as.Date('2000-12-31'), 'month')
+dlabels <- format(drange, "%b")
+p <- ggplot(df_clim, aes(x=month_day, y=missing))
+p <- p + geom_line() 
+p <- p + scale_x_date(breaks=drange, labels=dlabels)
+p <- p + ggtitle('ratio of missing values in Red Sea (climatology from 2002 to 2014)')
+fn <- paste(output_dir, '/missing_val_red_sea_climatology.png', sep='')
+ggsave(fn, plot=p)

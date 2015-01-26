@@ -34,15 +34,19 @@ build_filenames <- function(outDir, year_start, year_end) {
   return(filenames)
 }
 
-lat_max <- 35
-lat_min <- 5
-lon_max <- 55
-lon_min <- 25
+library(yaml)
+config <- yaml.load_file('scripts/load/config.yml')
+ext <- config$arabia_extent
+
+lat_max <- ext$lat_max
+lat_min <- ext$lat_min
+lon_max <- ext$lon_max
+lon_min <- ext$lon_min
 
 year_start <- 1997
 year_end <- 2012
 
-outDir <- 'data/chl/raw'
+outDir <- 'data/chl_oc_cci/raw'
 
 URLs <- build_urls(lat_min, lat_max, lon_min, lon_max, year_start, year_end)
 filenames <- build_filenames(outDir, year_start, year_end)

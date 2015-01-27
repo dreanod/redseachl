@@ -1,20 +1,23 @@
 library(RColorBrewer)
 library(raster)
 library(ggplot2)
+library(scales)
 
-output_dir <- 'derived/EDA/chl/missing_values'
-dir.create(output_dir, recursive=TRUE)
+outputDir <- 'derived/EDA/chl_oc_cci/missing_values'
+dir.create(outputDir, recursive=TRUE)
 
-FILES <- list.files('data/chl/clean', pattern='*.grd', full.names=TRUE)
+FILES <- list.files('data/chl_oc_cci/clean', pattern='*.grd',
+                    full.names=TRUE)
 N <- length(FILES)
 
-s <- matrix(0, 720, 960)
+s <- array(0, dim(as.matrix(raster(FILES[1]))))
 
 for (f in FILES) {
   print(f)
   r <- as.matrix(raster(f))
   s <- s + is.na(r)
 }
+
 s <- s / N * 100
 r <- raster(FILES[1])
 r[,] <- s
@@ -32,24 +35,20 @@ p <- p + scale_fill_gradientn(colours=rev(brewer.pal(7, 'Spectral')),
 p <- p + coord_cartesian()
 p <- p + geom_polygon(aes(x=long, y=lat, group=group), red.sea.outside,
                       fill='white', contour='black')
-p <- p + ggtitle('% of chl missing values between 2002 and 2014')
-ggsave(paste(output_dir, '/map_total.png', sep=''), p)
+p <- p + ggtitle('% of chl missing values between 1997 and 2012 (OC_CCI)')
+ggsave(paste(outputDir, '/map_total.png', sep=''), p)
 
-## Climatological coverage (Winter and Summer)
+## Climatological coverage (winter and summer)
 date_from_filename <- function(f) {
   b <- basename(f)
   b <- strsplit(b, '[.]')[[1]]
   b <- b[1]
 
-  y <- substring(b, 2, 5)
-  d <- as.numeric(substring(b, 6, 8))
-
-  t <- as.Date(d - 1, origin=paste(y, '-01-01-', sep=''))
-  return(t)
+  return(as.Date(b))
 }
 
-s_winter <- matrix(0, 720, 960)
-s_summer <- matrix(0, 720, 960)
+s_winter <- array(0, dim(as.matrix(raster(FILES[1]))))
+s_summer <- array(0, dim(as.matrix(raster(FILES[1]))))
 n_winter <- 0
 n_summer <- 0
 
@@ -59,11 +58,11 @@ for (f in FILES) {
 
   d <- date_from_filename(f)
   month <- as.numeric(format(d, '%m'))
-  
-  if (month >3 & month < 10) { 
+
+  if (month > 3 & month < 10) {
     s_summer <- s_summer + is.na(r)
     n_summer <- n_summer + 1
-  } 
+  }
   else {
     s_winter <- s_winter + is.na(r)
     n_winter <- n_winter + 1
@@ -89,7 +88,7 @@ p <- p + scale_fill_gradientn(colours=rev(brewer.pal(7, 'Spectral')),
 p <- p + coord_cartesian()
 p <- p + geom_polygon(aes(x=long, y=lat, group=group), red.sea.outside,
                       fill='white', contour='black')
-p <- p + ggtitle('% of chl missing values between 2002 and 2014 during winter')
+p <- p + ggtitle('% of chl missing values between 1997 and 2012 during winter (OC-CCI)')
 ggsave(paste(outputDir, '/map_winter.png', sep=''), p)
 
 df <- as.data.frame(r_summer, xy=TRUE)
@@ -104,5 +103,5 @@ p <- p + scale_fill_gradientn(colours=rev(brewer.pal(7, 'Spectral')),
 p <- p + coord_cartesian()
 p <- p + geom_polygon(aes(x=long, y=lat, group=group), red.sea.outside,
                       fill='white', contour='black')
-p <- p + ggtitle('% of chl missing values between 2002 and 2014 during summer')
+p <- p + ggtitle('% of chl missing values between 1997 and 2012 during summer (OC-CCI)')
 ggsave(paste(outputDir, '/map_summer.png', sep=''), p)

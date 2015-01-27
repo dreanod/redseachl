@@ -15,3 +15,28 @@ red_sea_extent:
   lon_max: 44
   lat_min: 13
   lat_max: 30
+
+NRS:
+  lon_min: 33
+  lon_max: 37
+  lat_min: 25.5
+  lat_max: 27.8
+
+NCRS:
+  lon_min: 34
+  lon_max: 40
+  lat_min: 22
+  lat_max: 25.5
+
+SCRS:
+  lon_min: 36
+  lon_max: 43
+  lat_min: 17.5
+  lat_max: 22
+
+SRS:
+  lon_min: 38
+  lon_max: 44
+  lat_min: 13
+  lat_max: 17.5
+

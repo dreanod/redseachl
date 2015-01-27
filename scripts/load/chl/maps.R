@@ -1,6 +1,7 @@
 library(raster)
 library(ggplot2)
 library(RColorBrewer)
+library(scales)
 
 date_from_filename <- function(f) {
   b <- basename(f)
@@ -28,7 +29,8 @@ for (f in FILE) {
 
   p <- ggplot() + geom_tile(aes(x=long, y=lat, fill=layer), data=df)
   p <- p + scale_fill_gradientn(colours=rev(brewer.pal(7, 'Spectral')),
-                                limits=c(0.02, 50), trans='log',
+                                limits=c(0.05, 10), trans='log', 
+                                oob=squish,
                                 name='chl (mg/m^3)', breaks=c(0.1, 1, 10),
                                 labels=c('0.1', '1', '10'))
   p <- p + coord_cartesian() 

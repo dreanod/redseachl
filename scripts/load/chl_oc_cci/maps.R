@@ -1,6 +1,7 @@
 library(raster)
 library(ggplot2)
 library(RColorBrewer)
+library(scales)
 
 date_from_filename <- function(f) {
   b <- basename(f)

@@ -18,7 +18,7 @@ for(y in 2002:2014) {
   p <- p + scale_x_log10(breaks=c(0.01,0.1,1,10,100), 
                          labels=c('0.01', '0.1', '1', '10', '100'))
   p <- p + xlab('CHL in mg/m^3')
-  p <- p + ggtitle(paste('chl around Arabia in', y))
+  p <- p + ggtitle(paste('chl around Arabia in', y, '(MODIS)'))
   filename <- paste(export_dir, '/', y, '.png', sep='')
 
   ggsave(filename=filename, plot=p)

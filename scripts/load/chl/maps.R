@@ -36,7 +36,8 @@ for (f in FILE) {
   p <- p + coord_cartesian() 
   p <- p + geom_polygon(aes(x=long, y=lat, group=group), red.sea.outside,
                         fill='white', contour='black')
-  p <- p + ggtitle(paste('CHL around Arabia the week of the', d))
+  p <- p + ggtitle(paste('CHL around Arabia the week of the', d, 
+                         '(MODIS)'))
 
   fn <- paste('derived/EDA/chl/weekly_maps/', d, '.png', sep='')
   ggsave(fn, plot=p)

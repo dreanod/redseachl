@@ -15,5 +15,6 @@ for (f in FILES) {
   intercept <- -2
   r <- slope * r + intercept
 
-  writeRaster(r, paste('data/sst/clean/', basename(f), '.grd', sep=''))
+  writeRaster(r, paste('data/sst/clean/', basename(f), '.grd', sep=''),
+              overwrite=TRUE)
 }

@@ -10,5 +10,6 @@ for (f in FILES) {
   r <- raster(f)
   r[r == -32767] = NA # masking missing values
 
-  writeRaster(r, paste('data/chl/clean/', basename(f), '.grd', sep=''))
+  writeRaster(r, paste('data/chl/clean/', basename(f), '.grd', sep=''),
+              overwrite=TRUE)
 }

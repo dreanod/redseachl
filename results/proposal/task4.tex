@@ -9,32 +9,32 @@
 \noindent
 \emph{Collaborator: Raphael Huser}
 
-This part will bring together the results of the two preceding tasks to develop a predictive model that takes into account the large-scale dynamics and the regional spatio-temporal dynamics. In task 2, a predictive model is built, that represents the large scales behaviour of the Red Sea, but the spatial dimension inside each region is not addressed. We expect local features to play a role, such as the proximity to the coast, the bathymetry, proximity to other regions or major cities, etc. In task 3, we developed a methodology to use a geostatistical model in a dynamic fashion to do pixel-scale forecast. In this task, each regions will be modeled separately by a local geostatistical model that can do local prediction. These models will have access to aggregate covariates from neighboring regions in represent the global scale behaviours. 
+This part will bring together the results of the two preceding tasks to develop a predictive model that takes into account the large-scale dynamics and the regional spatio-temporal dynamics. In task 2, a predictive model is built, that represents the large scales behaviour of the Red Sea, but the spatial dimension inside each region is not addressed. We expect local features to play a role, such as the proximity to the coast, the bathymetry, proximity to other regions or major cities, etc. In task 3, we proposed a methodology to use a geostatistical model in a dynamic fashion to do pixel-scale forecast. In this task, each regions will be modeled separately by a local geostatistical model that can provide local prediction. These models will have access to aggregate covariates from neighboring regions to represent the global scale behaviours. 
 
 \paragraph{Open Questions}
 
 \begin{itemize}
-\item What are the most adapted space-time covariance models for chlorophyll data?
-\item How to use global covariates in a geostatistical model?
-\item What are the differences in the fine-scale dynamics of chlorophyll in each region?
-\item Can the fine scale behaviour of phytoplankton be predicted accurately?
-\item What are the spatial features that are important for the chlorophyll dynamics?
+  \item What are the most adapted space-time covariance models for chlorophyll data?
+  \item How to use global covariates in a geostatistical model?
+  \item What are the differences in the fine-scale dynamics of chlorophyll in each region?
+  \item Can the fine scale behaviour of phytoplankton be accurately predicted?
+  \item What are the spatial features that are important for the chlorophyll dynamics?
 \end{itemize}
 
 \paragraph{Method}
 
 \begin{itemize}
-\item Extract local dataset from previous tasks
-\item Design the training and test datasets, and the cross-validation method
-\item Design and evaluate the mean function given the past covariates
-\item Fit the local geostatistical model to the residuals.
-\item Evaluate the model predictions and compare the results with task 2 and 3.
+  \item Extract local dataset from previous tasks.
+  \item Design the training and test datasets, and the cross-validation method.
+  \item Design and evaluate the mean function given the past covariates.
+  \item Fit the local geostatistical model to the residuals.
+  \item Evaluate the model predictions and compare the results with task 2 and 3.
 \end{itemize}
 
 \paragraph{Expected Outcomes}
 
 \begin{itemize}
-\item A methodology to aggregate local geostatistical models
+\item A methodology to aggregate local geostatistical models.
 \item An improvements in the prediction skills over the models of task 2 and 3.
 \item An understanding of the differences between each regions.
 \item A critical evaluation of the space-time covariance models for fitting chlorophyll data.

@@ -2,6 +2,10 @@
 
 \section{Data Loading}
 
+Most of the data necessary for the analysis has been gathered. Almost all of it is freely available on Internet. Shell and R scripts have been written and used for loading the following data all the data excepted the wind. The latter has been provided by Yesubabu Viswanadhapalli, and is the result of the assimilation of QuickScat satellite and in situ data to the WRF regional wind model. There are additional datasets that could be interesting to use in the analysis, but they are mainly climate mode time-series like IMI and EAWR, that are easy to download. More details about the data can be found in table xxx in the appendice.
+
+So far, the MODIS and CCI data have been cropped over the region of interest, cleaned and exported to the format TIFF, which can be read easily by most software, R in particular. Each of these variables has then been aggregated in a single file in the native R raster format. Applying this processing to the remaining raster data should be straightforward. Then, the data will need to be aligned and aggregated on the same temporal and spatial resolution, before aggregating it in table format.
+
 \section{Red Sea Chlorophyll Data Exploration}
 
 \section{Red Sea Ecoregion Clustering}

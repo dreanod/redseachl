@@ -2,19 +2,74 @@
 
 \section{Data Loading}
 
-Most of the data necessary for the analysis has been gathered. Almost all of it is freely available on Internet. Shell and R scripts have been written and used for loading the following data all the data excepted the wind. The latter has been provided by Yesubabu Viswanadhapalli, and is the result of the assimilation of QuickScat satellite and in situ data to the WRF regional wind model. There are additional datasets that could be interesting to use in the analysis, but they are mainly climate mode time-series like IMI and EAWR, that are easy to download. More details about the data can be found in table xxx in the appendice.
+Most of the data necessary for the analysis has been gathered. Almost all of it
+is freely available on Internet. Shell and R scripts have been written and used
+for loading the following data all the data excepted the wind. The latter has
+been provided by Yesubabu Viswanadhapalli, and is the result of the
+assimilation of QuickScat satellite and in situ data to the WRF regional wind
+model. There are additional datasets that could be interesting to use in the
+analysis, but they are mainly climate mode time-series like IMI and EAWR, that
+are easy to download. More details about the data can be found in table xxx in
+the appendice.
 
-So far, the MODIS and CCI data have been cropped over the region of interest, cleaned and exported to the format TIFF, which can be read easily by most software, R in particular. Each of these variables has then been aggregated in a single file in the native R raster format. Applying this processing to the remaining raster data should be straightforward. Then, the data will need to be aligned and aggregated on the same temporal and spatial resolution, before aggregating it in table format.
+So far, the MODIS and CCI data have been cropped over the region of interest,
+cleaned and exported to the format TIFF, which can be read easily by most
+software, R in particular. Each of these variables has then been aggregated in
+a single file in the native R raster format. Applying this processing to the
+remaining raster data should be straightforward. Then, the data will need to be
+aligned and aggregated on the same temporal and spatial resolution, before
+aggregating it in table format.
 
 \section{Red Sea Chlorophyll Data Exploration}
 
-The MODIS and CCI chlorophyll data products have been explored and compared. The MODIS data presents an important amount of missing data that can reach 100\% during summer in the southern Red Sea, making any analysis in this region very difficult. The CCI data product solve this issue by merging three sources of remotely-sensed chlorophyll data (MODIS, MERIS and SeaWiFS) and using a new algorithm for retrieving chlorophyll values when the cloud cover is important. The increases the coverage to 70\% during summer month.
+The MODIS and CCI chlorophyll data products have been explored and compared.
+The MODIS data presents an important amount of missing data that can reach
+100\% during summer in the southern Red Sea, making any analysis in this region
+very difficult. The CCI data product solve this issue by merging three sources
+of remotely-sensed chlorophyll data (MODIS, MERIS and SeaWiFS) and using a new
+algorithm for retrieving chlorophyll values when the cloud cover is important.
+The increases the coverage to 70\% during summer month.
 
-In a previous study (in appendice), the SeaWiFS chlorophyll data has been used. The seasonal signal is the data is strong and has been shown to account for 50\% of the variability. The seasonal anomalies display a strong spatio temporal correlation: the anomlaly at the same location from one week to the other is correlated at 40\%, whereas two locations at 0.5 degrees apart are nearly 60\% correlated. Not shown in this article, I also compared the SST and chlorophyll data, and found an important negative correlation. However, when looking at the anomalies, the correlation disappeared, suggesting that the causes of seasonal and interannual variability are distinct.
- 
-\section{Red Sea Ecoregion Clustering}
+In a previous study (in appendice), the SeaWiFS chlorophyll data has been used.
+The seasonal signal is the data is strong and has been shown to account for
+50\% of the variability. The seasonal anomalies display a strong spatio
+temporal correlation: the anomlaly at the same location from one week to the
+other is correlated at 40\%, whereas two locations at 0.5 degrees apart are
+nearly 60\% correlated. Not shown in this article, I also compared the SST and
+chlorophyll data, and found an important negative correlation. However, when
+looking at the anomalies, the correlation disappeared, suggesting that the
+causes of seasonal and interannual variability are distinct.
+
+\section{Red Sea Eco-Regions Clustering}
+
+I used clustering algorithms in order to derive the Red Sea eco-regions. They
+were applied to monthly log-concentration of chlorophyll. I used SeaWiFS data,
+that has been previously filled using DINEOF. I used the popular k-means, and
+the Gaussian Mixture Model (GMM) clustering algorithms.
+
+I found that GMM provides more interesting results. With any number of
+clusters, we obtain a division of the Red Sea into regions of comparable sizes.
+With 5 clusters, the regions are similar to those defined in
+\citet{Raitsos2013}. In addition to the purely latitudinal division proposed in
+the former, we can guess the effects of the mesoscale eddies thanks the curved
+division between regions. The fact that the curvature is oriented toward the
+south might come from the fact that most nutrients propagate north from the
+Gulf of Aden.
+
+In Chapter 2 of the thesis, I plan to use the dataset constructed in Chapter 1.
+By using CCI chlorophyll data instead of SeaWiFS, the need for data filling is
+minimized. This is desirable, as data filling can introduce biases. It will
+also be possible to use additional variables. For example, we can expect the
+temperature and the bathymetry to have a large impact on the Red Sea
+phytoplankton biology. Sea level anomaly can be useful in that it is indicates
+the presence of mesoscale eddies. Finally, alternative clustering algorithms
+will be tested.
 
 \section{Global Geostatistical Model}
+
+The research described in chapter 3 of the thesis has mostly been done and, is
+the object of an article currently in review. The current version of the
+manuscript can be found in appendice.
 
 \section{Regional 1D Ecological Model}
 

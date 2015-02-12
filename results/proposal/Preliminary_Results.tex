@@ -73,5 +73,30 @@ manuscript can be found in appendice.
 
 \section{Regional 1D Ecological Model}
 
+The 1D regional ecological models used for this thesis have been configured
+and are operational. Three models will be used: for the northern, central and 
+southern Red Sea. The ecology is modeled with ERSEM, and the hydrodynamics
+is modeled with MITgcm.
+
+The results of MITgcm are those from \citet{Yao2014, Yao2014b}, in which a
+simulation of the Red Sea and part of the Gulf of Aden circulation was run over
+50 years. The NCEP data were used for atmospheric forcing, and the ECCO data
+for the open boundary condition in the Gulf of Aden. These results are used for
+the temperature and vertical circulation at the modeled points.
+
+ERSEM simulates the complete water column with the pelagic and benthic
+ecosystems, as well a their coupling. The equations model the flow of carbon,
+nitrogen, phosphorus and silicon in the ecosystem. Living organisms are modeled
+in terms of population processes (growth and mortality) and physiological
+processes (ingestion, respiration, excretion, and egestion). The biota is
+divided into functional groups according to their trophic levels: producers
+(phytoplankton), consumers (zooplankton) and decomposers (bacteria), and
+further subdivided according to their sizes.
+
+The ecological models are initialized with the results of a 3D ecological
+simulation of the Red Sea \citep{Triantafyllou2014}. The nutrient
+concentrations however are initialized using values from the World Ocean Atlas
+2005 (WOA 2005). These values are corrected by a factor chosen empirically.
+
 \section{Data Assimilation for Ecological Models}
 

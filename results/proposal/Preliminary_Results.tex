@@ -1,4 +1,4 @@
-\chapter{Preliminary Results}
+\chapter{Summary of Progress}
 
 \section{Data Loading}
 
@@ -71,7 +71,7 @@ The research described in chapter 3 of the thesis has mostly been done and, is
 the object of an article currently in review. The current version of the
 manuscript can be found in appendice.
 
-\section{Regional 1D Ecological Model}
+\section{Regional 1D Ecological Models}
 
 The 1D regional ecological models used for this thesis have been configured
 and are operational. Three models will be used: for the northern, central and 
@@ -100,3 +100,27 @@ concentrations however are initialized using values from the World Ocean Atlas
 
 \section{Data Assimilation for Ecological Models}
 
+The assimilation scheme for the ecological models has been implemented and is
+operational. The chosen scheme is the hybrid-SEIK, described in
+\citet{Hoteit2002} as the Singular Semi-Evolutive Extented Kalman (SSEIK)
+filter. It is a variant of SEIK, which is derived from SEEK.
+
+The problem of optimal filtering can be solved exactly by the Kalman Filter for
+linear systems. For nonlinear models, one can use the Extended Kalman (EK)
+filter, in which the model is linearized by computing the error covariance
+function.  However, when the state is large, as is often the case for
+oceanographic applications, the EK is intractable. In that case, SEEK can be
+used, where the error covariance function is projected into a smaller subspace.
+This subspace evolves to ensure that most of the error is represented and
+filtered out. SEIK can be viewed as an ensemble variant of the SEEK, where the
+error covariance function is represented exactly by an ensemble of states. This
+avoids the computation of model gradients, and allows the assimilation scheme
+to perform better when this model is strongly non-linear. SEIK has been shown
+to be efficient for large-scale 3D ecosystem simulations
+\citep{Triantfyllou2003}.
+
+In the hybrid-SEIK, the computational cost is reduced to a fraction to that of
+SEIK, by only propagating some of the states, and keeping most of the
+correction subspace fixed. Contrary to \citet{Hoteit2002}, we propagate the
+states that explain the least the total variance in the error covariance
+function.

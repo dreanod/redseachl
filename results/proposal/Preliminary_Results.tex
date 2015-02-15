@@ -20,6 +20,35 @@ remaining raster data should be straightforward. Then, the data will need to be
 aligned and aggregated on the same temporal and spatial resolution, before
 aggregating it in table format.
 
+\begin{table}
+\centering
+\begin{tabular}{l c c r}
+\toprule
+Variable       & Description             & Mission/Source    & Unit       \\
+\midrule
+CHL            & Chlorophyll             & CCI               & mg/m${}^3$ \\
+SST            & Sea Surface Temperature & MODIS             & Celsius    \\
+AOD            & Aerosol Optical Depth   & MODIS             & N/A        \\
+CDOM           & Colored Dissolved       & MODIS             & N/A        \\
+               & Organic Matter          &                   &            \\
+NAO            & North Atlantic          & NOAA              & N/A        \\
+               & Oscillation Index       &                   &            \\
+PAR            & Photosynthetically      & MODIS             &
+  Einstein / m${}^2$ . Day                                                \\
+               & Available Radiations    &                   &            \\
+POC            & Particulate Organic     & MODIS             & mg/m${}^3$ \\
+               & Carbon                  &                   &            \\
+Precipitations &                         & TRMM              & mm/h       \\
+SOI            & Southern Oscillation    & Australian Bureau & N/A        \\
+               & Index                   & of Meteorology    &            \\
+SLA            & Sea Level Anomaly       & Aviso             & cm         \\
+Wind           &                         & Simulated         & m/s        \\
+\bottomrule
+\end{tabular}
+\caption{Downloaded data}
+\label{tab:data}
+\end{table}
+
 \section{Red Sea Chlorophyll Data Exploration}
 
 The MODIS and CCI chlorophyll data products have been explored and compared.

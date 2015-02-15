@@ -58,7 +58,7 @@ nutrients flow \citep{Mann2006}. As a result, TTS are oligotrophic and have low
 chlorophyll concentrations. Until recently, marine biologists believed that
 tropical and subtropical seas have therefore a very low productivity. However,
 recent investigations have contested this idea, suggesting that different
-upwelling mechanisms exist, which bring new nutrients to the surface water
+upwelling mechanisms (winter deep mixing, storms, eddies, etc) exist, which bring new nutrients to the surface water
 \citep{Mann2006}.
 
 Despite being an oligotrophic and challenging environment for marine life, the
@@ -125,7 +125,10 @@ the Red Sea, but it has been largely left unexplored \citep{Triantafyllou2014}.
 frequently happen in June and July, which coincides with the summer chlorophyll
 peak. Finally, climate mode indices have been shown to be strongly correlated
 with air-sea heat exchanges in the Red Sea \citep{Abulnaja2015}, and might
-therefore influence its biology.
+therefore influence its biology. This has been recently confirmed by
+\citet{Raitsos2015}, who have shown that El Nino has a positive impact on the
+chlorophyll concentration, by strenghtening the wind transporting nutrients
+into the Red Sea from the Gulf of Aden.
 
 \section{Remotely-Sensed Chlorophyll Data: Relevance and Challenges for the Red
 Sea}
@@ -134,7 +137,7 @@ Sea}
 
 Chlorophyll is a molecule present in algae, phytoplankton and plants that is
 critical for photosynthesis. It is a poor absorber of green light, and is
-responsible for the coloration of plants. When phytoplankton are present in
+responsible for the coloration of plants \citep{Pal2014}. When phytoplankton are present in
 high concentrations, the water also takes a detectable green coloration (it can
 also take a red or blue coloration depending on the type of dominating
 phytoplankton) \citep{Robinson2010}. This offers an efficient way to observe
@@ -229,17 +232,17 @@ of Oman and the Arabian Gulf \citep{Richlen2010}.
 
 \subsubsection{Ecological Models}
 
-Ecological ordinary differential equation (ODE) deterministic models are a
-popular approaches to model marine ecology. These models represent the ecosytem
-as the interactions of complex physical, chemical and biological processes. The
-interactions are modeled by differential equations that represent the flow of
-carbon, nitrogen, phosphate and silicon. The biota is divided into trophic
-levels, and can be further divided by feeding methods and size classes.
+There is a rich literature on the modeling of marine ecosystem using
+differential equations (see \citet{Fennel2004} for an introduction In these
+models the interactions of complex physical, chemical and biological processes
+are modeled by differential equations that represent the flow of carbon,
+nitrogen, phosphate and silicon. The biota is divided into trophic levels, and
+can be further divided by feeding methods and size classes \citep{Triantafyllou2014}.
 
-These models can be as simple as the nutrient-phytoplankton-zooplankton (NPZ)
-model that only has three variables representing two trophic levels and
+They can be as simple as the nutrient-phytoplankton-zooplankton (NPZ)
+model \citep{Anderson2005} that only has three variables representing two trophic levels and
 nitrate, or as complex as the European regional seas ecosystem model (ERSEM)
-that has dozens of variables. Such a model has been coupled to the MITgcm
+that has dozens of variables \cite{Baretta1995}. Such a model has been coupled to the MITgcm
 circulation model used to simulate the Red Sea ecology
 \citep{Triantafyllou2014}. However the complexity of these models makes them
 difficult to parametrize if not enough data are available, which is usually the
@@ -249,7 +252,7 @@ case \citep{Anderson2005}.
 
 Data assimilation is used to improve the simulations of ecological dynamical
 models and enhance their forecasting capabilities by constraining their
-predictions with available observations. Such prediction capabilities are
+predictions with available observations \cite{Edwards2015}. Such prediction capabilities are
 deployed in operational expert systems, for example to study the impact of
 human activities on the ecosystem of the Gulf of Pagasitikos
 \citep{Korres2012}. The deployment of a similar forecasting system in the Red
@@ -269,7 +272,8 @@ approximation of the Kalman Filter, has been used in \citet{Ciavatta2011,
 Ciavatta2014}. This scheme may however suffer from sampling errors when the
 ensemble size is smaller than the number of observations, as is usually the
 case when assimilating remotely-sensed data. SEEK is a reduced-rank variant of
-the Extended Kalman filter (EK), which is intractable in high-dimensions. It is
+the Extended Kalman filter (EK). It was introduced to run efficiently
+when the state dimension is very large, as is the case in ocean applications. It is
 based  on the projection of the error covariance onto a low dimensional space.
 SEEK has a long history in data assimilation for marine ecology models and is
 still extensively used in recent studies \citep{Fontana2013, Korres2012,
@@ -282,7 +286,7 @@ that SEIK and SEEK are both comparably robust methods for highly nonlinear
 systems.
 
 Ecological models are challenging applications for state of the art data
-assimilation schemes.  First, biogeochemical variables are usually positive
+assimilation schemes \citep{Edwards2015}. First, biogeochemical variables are usually positive
 concentration, whereas Kalman filters expect Gaussian variables, and
 log-transformation may fail at avoiding this issue \citep{Ciavatta2011}. In an
 attempt to mitigate this problem, \citet{Fontana2013} has introduced Gaussian
@@ -306,7 +310,7 @@ concentration, mostly in small regions with complex dynamics (see references
 below). Some statistical models, such as linear regression, Gaussian additive
 models, or tree regression have the advantage of being easy to interpret
 \citep{Gareth2013}, and could be used to understand the dynamics driving the
-chlorophyll concentration.
+chlorophyll concentration \citep{Raitsos2012}.
 
 \subsubsection{Statistical Models}
 
@@ -346,8 +350,9 @@ oligotrophic northern Red Sea, and between the open ocean and the coastal
 waters \citep{Raitsos2013}.  One should also expect the different regions of
 the Red Sea to interact.
 
-Classical geostatistics is the most widely used spatial statistical model. It
-models spatial data as the realization of a two-dimensional Gaussian process
+Contrary to the statistical models presented abose geostatistical models 
+are a natural way to model spatial data.
+They model spatial data as the realization of a two-dimensional Gaussian process
 Geostatistics can be easily extended to spatio-temporal datasets. Many flexible
 ways of constructing space-time covariance functions for these models have been
 recently proposed \citep{Gneiting2002, Cressie1999, Stein2005}. Space-time

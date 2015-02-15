@@ -1,48 +1,83 @@
 \section{Chapter 1: Dataset Building and Exploration}
 
-\noindent
-\emph{Duration: 2 months (by December 2014)}
+\noindent \emph{Duration: 2 months (by December 2014)}
 
-\noindent
-\emph{Submission: Journal of Marine Systems}
+\noindent \emph{Submission: Journal of Marine Systems}
 
-\noindent
-\emph{Collaborator: Dionysios Raitsos}
+\noindent \emph{Collaborator: Dionysios Raitsos}
 
-A preliminary task to data modeling, is the gathering, cleaning and exploration of the data. Given the complexity and the size (40 GB) of the data, this is not an easy task. This first data analysis, will reveal if enough data has been gathered to make meaningful forecast, and what accuracy we can expect from the models. This step will also provide information that will help in designing statistical models: most significant variables, differences between regions, relevant data transformation, etc. Finally, this step will identify patterns in the data that will be useful to qualitatively evaluate predictive models.
+\vspace{5mm}
+
+A preliminary task to data modeling, is the gathering, cleaning and exploration
+of the data. Given the complexity and the size (40 GB) of the dataset, this is not
+an easy task. This first data analysis, will reveal if enough data has been
+gathered to make meaningful forecast, and what accuracy we can expect from the
+models. This step will also provide information that will help in designing
+statistical models: most significant variables, differences between regions,
+relevant data transformation, etc. Finally, this step will identify patterns in
+the data that will be useful to qualitatively evaluate predictive models.
 
 \paragraph{Open Questions}
 
-\begin{itemize}
+\begin{itemize} 
+
 \item Can we efficiently identify outliers in the chlorophyll values?
-\item Is there a way to efficiently fill the missing values in the chlorophyll dataset?
-\item Can the data help understanding the mechanisms behind extreme blooms in the Red Sea?
-\item Can the hypothesizes about the dynamics behind the chlorophyll seasonal cycle be confirmed by the data?
-\item Are there more blooms in the past years?
+
+\item Is there a way to efficiently fill the missing values in the chlorophyll
+dataset?
+
+\item Can the data help understanding the mechanisms behind extreme blooms in
+the Red Sea?
+
+\item Will the data support the hypothesizes about the dynamics behind the
+chlorophyll seasonal cycle in the Red Sea?
+
 \end{itemize}
 
-\paragraph{Method and Work Done}
+\paragraph{Methods}
 
-\begin{enumerate}
-  \item Identify data sources and load the data.
-  \item Clean the data and fill missing values (DINEOF).
-  \item Align and format the data to build a unique dataset.
-  \item Explore the dataset.
-  \begin{itemize}
-    \item Study the correlation between chlorophyll and other variables (Linear Regression, GAM, data transformations).
-    \item Select variables (Lasso, single variable regression, multistep regression).
-    \item Study the regional aggregation (ACF).
-    \item Explore spatiotemporal correlations (hovmoller plots, PCA, variograms).
-    \item Estimate the Bayes factor.
-  \end{itemize}
+\begin{enumerate} 
+
+\item Identify data sources and acquire the data.
+
+\item Clean the data and fill in missing values (DINEOF).
+
+\item Align and format the data to build a cleaned dataset.
+
+\item Explore the dataset.
+
+\begin{itemize} 
+
+\item Study the correlation between chlorophyll and other variables (Linear
+Regression, GAM, data transformations).
+
+\item Select variables (Lasso, single variable regression, multistep
+regression).
+
+\item Study the regional aggregation (ACF).
+
+\item Explore spatiotemporal correlations (hovmoller plots, PCA, variograms).
+
+\item Estimate the Bayes factor.
+
+\end{itemize}
+
 \end{enumerate}
 
 \paragraph{Expected Outcomes}
 
-\begin{itemize}
-  \item A cleaned dataset that can be used in the following tasks
-  \item A comprehensive exploration of the available data for chlorophyll study in the Red Sea
-  \item A preliminary variable selection
-  \item A clear picture of the major spatio-temporal patterns in the data
-  \item A critical evaluation of the current hypothesis about the chlorophyll dynamics in the Red Sea
+\begin{itemize} 
+
+\item A cleaned dataset that can be used in the following tasks.
+
+\item A comprehensive exploration of the available data to study chlorophyll
+variability in the Red Sea.
+
+\item A preliminary variable selection.
+
+\item A clear picture of the major spatio-temporal patterns in the data.
+
+\item A critical evaluation of the current hypotheses about the chlorophyll
+dynamics in the Red Sea.
+
 \end{itemize}

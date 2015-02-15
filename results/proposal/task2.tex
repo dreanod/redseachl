@@ -1,41 +1,78 @@
-\section{Chapter 2: Forecasting Chlorophyll Concentration in Regional Aggregates}
+\section{Chapter 2: Forecasting Chlorophyll Concentration in Regional
+Aggregates}
 
-\noindent
-\emph{Duration: 2 months (by February 2015)}
+\noindent \emph{Duration: 2 months (by February 2015)}
 
-\noindent
-\emph{Submission: Progress in Oceanography}
+\noindent \emph{Submission: Progress in Oceanography}
 
-\noindent
-\emph{Collaborator: Dionysios Raitsos}
+\noindent \emph{Collaborator: Dionysios Raitsos}
 
-Chlorophyll data is very complex. It is therefore useful to first simplify it by aggregating it spatially. The space-time dynamics of the chlorophyll data reflects the highly nonlinear dynamics of the underlying physical, chemical and biological phenomenons. As shown by the north-south gradient and the seasonal behavior, the resulting space-time process is nonstationary in time and in space. The high-dimensionality in space can be reduced by considering a regional aggregation of the results. This would allow us to focus on the global scale phenomenons: such as the interactions between neighboring regions, the time-scale of large events and the difference in the physical variables affecting the chlorophyll concentration in each region. In the following tasks, these simple predictive models will also be a reference for evaluating more complex ones. 
+\vspace{5mm}
+
+Chlorophyll data is very complex. It is therefore useful to first simplify it
+by aggregating it spatially. The space-time dynamics of the chlorophyll data
+reflects the highly nonlinear dynamics of the underlying physical, chemical and
+biological phenomenons. As shown by the north-south gradient and the seasonal
+behavior, the resulting space-time process is nonstationary in time and in
+space. The high-dimensionality in space can be reduced by considering a
+regional aggregation of the data. This would allow us to focus on the global
+scale phenomenons: such as the interactions between neighboring regions, the
+time-scale of large events and the difference in the physical variables
+affecting the chlorophyll concentration in each region. In the following tasks,
+these simple predictive models will also be a reference for evaluating more
+complex ones. 
 
 \paragraph{Open Questions}
 
 \begin{itemize}
-  \item Is the biological aggregation of the Red Sea proposed in \cite{Raitsos2013} statistically meaningful?
-  \item Can clustering methods be used to identify marine ecological zones based on chlorophyll data?
-  \item Can a simple forecasting model allow us to understand the causes of chlorophyll blooms?
-  \item Can the current hypothesizes about the seasonal chlorophyll dynamics be validated?
+
+\item Is the biological aggregation of the Red Sea proposed in
+\cite{Raitsos2013} statistically meaningful?
+
+\item Can clustering methods be used to identify marine ecological zones based
+on chlorophyll data?
+
+\item Would a simple forecasting model allow us to identify the causes of
+chlorophyll blooms?
+
 \end{itemize}
 
-\paragraph{Method}
+\paragraph{Methods}
 
 \begin{enumerate}
-  \item Define datasets (training and test datasets, cross-validation)
-  \item Variable selection (Lasso, L1 regression, single-variable linear regression)
-  \item Define regional aggregations (unsupervised learning, Hierarchical clustering, K-means)
-  \item Forecasts chlorophyll concentration (linear regression, GAM models, diagnostic, k-nearest neighbors)
-  \item Predicting future extreme blooms (nearest-neighbours, logistic regression, decision trees)
+
+\item Define datasets (training and test datasets, cross-validation).
+
+\item Variable selection (Lasso, L1 regression, single-variable linear
+regression).
+
+\item Define regional aggregations (unsupervised learning, Hierarchical
+clustering, K-means).
+
+\item Build regional statistical models to forecast chlorophyll concentration
+(linear regression, GAM models, diagnostic, k-nearest neighbors).
+
+\item Predicting future extreme blooms (nearest-neighbours, logistic
+regression, decision trees)
+
 \end{enumerate}
 
 \paragraph{Expected Outcomes}
 
 \begin{itemize}
-  \item A regional division of the Red Sea that has been quantitatively evaluated.
-  \item A critical evaluation of current hypothesis about the chlorophyll dynamics in the Red Sea.
-  \item A lower bound on the performance of a more sophisticated model.
-  \item An assessment of the limitation of aggregate methods for Chlorophyll data.
-  \item An understanding on how the treatment of spatial correlations can improve the results.
+
+\item A division of the Red Sea into environmentaly distinct regions that has
+been quantitatively evaluated.
+
+\item A critical evaluation of current hypotheses about the chlorophyll
+dynamics in the Red Sea.
+
+\item A lower bound for the performance of a more sophisticated model.
+
+\item An assessment of the limitation of aggregate methods for Chlorophyll
+data.
+
+\item An understanding of how the treatment of spatial correlations may improve
+cholorphyll forecasting.
+
 \end{itemize}

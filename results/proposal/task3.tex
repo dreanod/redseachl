@@ -1,34 +1,54 @@
 \section{Chapter 3: Global Geostatistical Model for Chlorophyll Forecasting}
 
-\noindent
-\emph{Duration: 1 month (by March 2015)}
+\noindent \emph{Duration: 1 month (by March 2015)}
 
-\noindent
-\emph{Submission: Spatial Statistics}
+\noindent \emph{Submission: Spatial Statistics}
 
-Geostatistical methods can be used to construct dynamical models for forecasting the chlorophyll concentrations that we can compare to deterministic models. Geostatistics is a robust method to model spatio-temporal data. Recently there has been a lot of interest for expanding it to model spatio-temporal data. Through the use of Kriging interpolation, these models provide powerful tools for do spatio-temporal prediction. As a particular case of Kriging, by predicting the spatial future field given the observation of the present field, we can derive a linear dynamical model. This linear model can be employed in a filtering setting like the Kalman filter. This is a desirable framework, and is similar to the way deterministic models are employed to make forecasts given past observations. 
+\vspace{5mm}
+
+Geostatistical methods can be used to construct dynamical models for
+forecasting the chlorophyll concentrations. Geostatistics is a robust method to
+model spatial data.  Recently there has been increasing interest for expanding
+it to model spatio-temporal data. Through the use of Kriging interpolation,
+these models provide powerful tools for spatio-temporal prediction. As a
+particular case of Kriging, by predicting the spatial future field given the
+observation of the present field, we can derive a linear dynamical model for
+forecasting the data. This linear model may be employed in a filtering setting
+like the Kalman filter. This is a desirable framework, and is similar to the
+way deterministic models are employed to make forecasts given past
+observations. 
 
 \paragraph{Open Questions}
 
 \begin{itemize}
-  \item Can a global geostatistical model fit chlorophyll data?
-  \item How non stationary is the data in time and space?
-  \item What spatiotemporal covariance functions best fit the chlorophyll data?
-  \item Can geostatistical methods be employed in a filtering setup?
+
+\item Can we construct a global geostatistical model that fits well enought
+chlorophyll data in the Red Sea?
+
+\item How non stationary the chlorophyll data is in time and space?
+
+\item Which spatio-temporal covariance functions best fit the chlorophyll data?
+
+\item Can geostatistical methods be employed in a filtering setup?
+
 \end{itemize}
 
-\paragraph{Method}
+\paragraph{Method} 
+\mbox{}\\
 
-This task has already been started and had been the object of a submission for publication. The remaining work includes:
-\begin{itemize}
-  \item Use the new dataset and the new covariates
-  \item Compare the results to the ones of with the regional aggregates
-\end{itemize}
+Most of the work proposed in this task has already been accomplished and has
+been the object of a submission for publication. It remains to compare this
+model to the models from the previous chapters.
 
 \paragraph{Expected Outcomes}
 
 \begin{itemize}
-  \item A methodology to employ a geostatistical model in a filtering problem.
-  \item A characterization of the space-time non stationarity of the data, and the interaction of the temporal and spatial dimensions.
-  \item An understanding of how spatial aggregation and geostatistical models can be used in the same model. 
+
+\item A new methodology to employ a geostatistical model in a filtering setup.
+
+\item A characterization of the space-time non stationarity of the data.
+
+\item A framework for using spatial aggregation and geostatistical models in
+the same model.
+
 \end{itemize}

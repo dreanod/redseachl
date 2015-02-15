@@ -1,98 +1,89 @@
 \chapter{Summary of Progress}
 
-\section{Data Loading}
+\section{Data Preparation}
 
-Most of the data necessary for the analysis has been gathered. Almost all of it
-is freely available on Internet. Shell and R scripts have been written and used
-for loading the following data all the data excepted the wind. The latter has
-been provided by Yesubabu Viswanadhapalli, and is the result of the
-assimilation of QuickScat satellite and in situ data to the WRF regional wind
-model. There are additional datasets that could be interesting to use in the
-analysis, but they are mainly climate mode time-series like IMI and EAWR, that
-are easy to download. More details about the data can be found in table xxx in
-the appendice.
+All of the datasets necessary for the analysis has been gathered. Almost all of
+it has been downloaded from public sources on the Internet, using Shell and R
+scripts.  The wind dataset has been provided by Yesubabu Viswanadhapalli, and
+is the result of the assimilation of QuickScat satellite and in situ data to
+the Weather Research and Forecasting (WRF) regional Red Sea model. There are
+additional datasets that will be useful for the analysis, but they are mainly
+climate mode time-series like IMI and EAWR, that are easy to download. The
+downloaded data is listed in table \ref{tab:data}.
 
 So far, the MODIS and CCI data have been cropped over the region of interest,
 cleaned and exported to the format TIFF, which can be read easily by most
-software, R in particular. Each of these variables has then been aggregated in
-a single file in the native R raster format. Applying this processing to the
-remaining raster data should be straightforward. Then, the data will need to be
-aligned and aggregated on the same temporal and spatial resolution, before
-aggregating it in table format.
+software, R in particular. Each dataset has then been aggregated in a single
+file in the native R raster format. Applying this processing to the remaining
+raster data should be straightforward. Then, the data will need to be aligned
+and aggregated on the same temporal and spatial resolution, before aggregating
+it in table format.
 
-\begin{table}
-\centering
-\begin{tabular}{l c c r}
-\toprule
-Variable       & Description             & Mission/Source    & Unit       \\
-\midrule
-CHL            & Chlorophyll             & CCI               & mg/m${}^3$ \\
-SST            & Sea Surface Temperature & MODIS             & Celsius    \\
-AOD            & Aerosol Optical Depth   & MODIS             & N/A        \\
-CDOM           & Colored Dissolved       & MODIS             & N/A        \\
-               & Organic Matter          &                   &            \\
-NAO            & North Atlantic          & NOAA              & N/A        \\
-               & Oscillation Index       &                   &            \\
-PAR            & Photosynthetically      & MODIS             &
-  Einstein / m${}^2$ . Day                                                \\
-               & Available Radiations    &                   &            \\
-POC            & Particulate Organic     & MODIS             & mg/m${}^3$ \\
-               & Carbon                  &                   &            \\
-Precipitations &                         & TRMM              & mm/h       \\
-SOI            & Southern Oscillation    & Australian Bureau & N/A        \\
-               & Index                   & of Meteorology    &            \\
-SLA            & Sea Level Anomaly       & Aviso             & cm         \\
-Wind           &                         & Simulated         & m/s        \\
-\bottomrule
-\end{tabular}
-\caption{Downloaded data}
-\label{tab:data}
-\end{table}
+\begin{table} \centering \begin{tabular}{l c c r} \toprule Variable       &
+Description             & Mission/Source    & Unit       \\ \midrule CHL
+& Chlorophyll             & CCI               & mg/m${}^3$ \\ SST            &
+Sea Surface Temperature & MODIS             & Celsius    \\ AOD            &
+Aerosol Optical Depth   & MODIS             & N/A        \\ CDOM           &
+Colored Dissolved       & MODIS             & N/A        \\ & Organic Matter
+&                   &            \\ NAO            & North Atlantic          &
+NOAA              & N/A        \\ & Oscillation Index       &
+&            \\ PAR            & Photosynthetically      & MODIS             &
+Einstein / m${}^2$ . Day                                                \\ &
+Available Radiations    &                   &            \\ POC            &
+Particulate Organic     & MODIS             & mg/m${}^3$ \\ & Carbon
+&                   &            \\ Precipitations &                         &
+TRMM              & mm/h       \\ SOI            & Southern Oscillation    &
+Australian Bureau & N/A        \\ & Index                   & of Meteorology
+&            \\ SLA            & Sea Level Anomaly       & Aviso             &
+cm         \\ Wind           &                         & Simulated         &
+m/s        \\ \bottomrule \end{tabular} \caption{Downloaded data}
+\label{tab:data} \end{table}
 
-\section{Red Sea Chlorophyll Data Exploration}
+\section{Red Sea Chlorophyll Data Analysis}
 
 The MODIS and CCI chlorophyll data products have been explored and compared.
-The MODIS data presents an important amount of missing data that can reach
-100\% during summer in the southern Red Sea, making any analysis in this region
-very difficult. The CCI data product solve this issue by merging three sources
-of remotely-sensed chlorophyll data (MODIS, MERIS and SeaWiFS) and using a new
-algorithm for retrieving chlorophyll values when the cloud cover is important.
-The increases the coverage to 70\% during summer month.
+The MODIS data include an important amount of missing data which may reach
+100\% during summer in the southern Red Sea, increasing the complexity of any
+analysis in this region. The CCI data product solves this issue by merging
+three sources of remotely-sensed chlorophyll data (MODIS, MERIS and SeaWiFS)
+and using a new algorithm for retrieving chlorophyll values when the cloud
+cover is important.  This increases the coverage to 70\% during summer months
+in the southern Red Sea.
 
-In a previous study (in appendice), the SeaWiFS chlorophyll data has been used.
-The seasonal signal is the data is strong and has been shown to account for
-50\% of the variability. The seasonal anomalies display a strong spatio
-temporal correlation: the anomlaly at the same location from one week to the
-other is correlated at 40\%, whereas two locations at 0.5 degrees apart are
-nearly 60\% correlated. Not shown in this article, I also compared the SST and
-chlorophyll data, and found an important negative correlation. However, when
-looking at the anomalies, the correlation disappeared, suggesting that the
-causes of seasonal and interannual variability are distinct.
+The SeaWiFS chlorophyll data has been used in the submitted companion article
+of chapter 3 (see Appendice B).  The seasonal signal in the data is strong and
+has been shown to account for 50\% of the variability. The seasonal anomalies
+display a strong spatio-temporal correlation: the temporal correlation of
+anomalies is 40\%, whereas two locations at 0.5 degrees apart are nearly 60\%
+correlated. Not shown in this article, I also compared the SST and chlorophyll
+data, and found an important negative correlation. However, when looking at the
+anomalies, the correlation vanished, suggesting that the causes of seasonal and
+interannual variability are distinct.
 
-\section{Red Sea Eco-Regions Clustering}
+\section{Red Sea Regional Clustering}
 
-I used clustering algorithms in order to derive the Red Sea eco-regions. They
+I used clustering algorithms in order to derive the Red Sea eco-regions. These
 were applied to monthly log-concentration of chlorophyll. I used SeaWiFS data,
-that has been previously filled using DINEOF. I used the popular k-means, and
-the Gaussian Mixture Model (GMM) clustering algorithms.
+that has been filled using DINEOF. I used the popular K-means, and the Gaussian
+Mixture Model (GMM) clustering algorithms.
 
-I found that GMM provides more interesting results. With any number of
-clusters, we obtain a division of the Red Sea into regions of comparable sizes.
-With 5 clusters, the regions are similar to those defined in
-\citet{Raitsos2013}. In addition to the purely latitudinal division proposed in
-the former, we can guess the effects of the mesoscale eddies thanks the curved
-division between regions. The fact that the curvature is oriented toward the
-south might come from the fact that most nutrients propagate north from the
-Gulf of Aden.
+I found that GMM provides more robust results. With any number of clusters, we
+obtain a division of the Red Sea into regions of comparable sizes.  With 5
+clusters, the regions are very similar to those identified by
+\citet{Raitsos2013}.  Contrary to the purely latitudinal division proposed by
+the former, we observe that the separation between clusters is curved at the
+position of major Red Sea eddies.  The fact that the curvature is oriented
+toward the south suggests that most nutrients propagate northward from the Gulf
+of Aden.
 
-In Chapter 2 of the thesis, I plan to use the dataset constructed in Chapter 1.
-By using CCI chlorophyll data instead of SeaWiFS, the need for data filling is
-minimized. This is desirable, as data filling can introduce biases. It will
-also be possible to use additional variables. For example, we can expect the
+In Chapter 2, I plan to use the dataset constructed in Chapter 1.  By using CCI
+chlorophyll data instead of SeaWiFS, the need for data filling is minimized.
+This is desirable, as data filling can introduce biases. It will also be
+possible to use additional variables. For example, we can expect the
 temperature and the bathymetry to have a large impact on the Red Sea
-phytoplankton biology. Sea level anomaly can be useful in that it is indicates
-the presence of mesoscale eddies. Finally, alternative clustering algorithms
-will be tested.
+phytoplankton biology. Sea level anomaly can be useful in that it indicates the
+presence of mesoscale eddies. Finally, alternative clustering algorithms will
+be tested.
 
 \section{Global Geostatistical Model}
 
@@ -102,15 +93,16 @@ manuscript can be found in appendice.
 
 \section{Regional 1D Ecological Models}
 
-The 1D regional ecological models used for this thesis have been configured
-and are operational. Three models will be used: for the northern, central and 
-southern Red Sea. The ecology is modeled with ERSEM, and the hydrodynamics
-is modeled with MITgcm.
+The 1D regional ecological models used for this thesis have been configured and
+are operational. Three models will be used: for the northern, central and
+southern Red Sea. The ecology is modeled with ERSEM, and the hydrodynamics is
+modeled with the MITgcm.
 
-The results of MITgcm are those from \citet{Yao2014, Yao2014b}, in which a
+The results of the MITgcm are those from \citet{Yao2014, Yao2014b}, in which a
 simulation of the Red Sea and part of the Gulf of Aden circulation was run over
-50 years. The NCEP data were used for atmospheric forcing, and the ECCO data
-for the open boundary condition in the Gulf of Aden. These results are used for
+50 years. The NCEP data were used for atmospheric forcing, and the ocean ECCO data
+for the open boundary conditions in the Gulf of Aden. The output of the 
+50  years run are used for
 the temperature and vertical circulation at the modeled points.
 
 ERSEM simulates the complete water column with the pelagic and benthic
@@ -124,10 +116,10 @@ further subdivided according to their sizes.
 
 The ecological models are initialized with the results of a 3D ecological
 simulation of the Red Sea \citep{Triantafyllou2014}. The nutrient
-concentrations however are initialized using values from the World Ocean Atlas
+concentrations are initialized using values from the World Ocean Atlas
 2005 (WOA 2005). These values are corrected by a factor chosen empirically.
 
-\section{Data Assimilation for Ecological Models}
+\section{Data Assimilation into the 1D Ecological Models}
 
 The assimilation scheme for the ecological models has been implemented and is
 operational. The chosen scheme is the hybrid-SEIK, described in

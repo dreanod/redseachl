@@ -1,13 +1,5 @@
 \section{Chapter 1: Dataset Building and Exploration}
 
-\noindent \emph{Duration: 2 months (by December 2014)}
-
-\noindent \emph{Submission: Journal of Marine Systems}
-
-\noindent \emph{Collaborator: Dionysios Raitsos}
-
-\vspace{5mm}
-
 A preliminary task to data modeling, is the gathering, cleaning and exploration
 of the data. Given the complexity and the size (40 GB) of the dataset, this is not
 an easy task. This first data analysis, will reveal if enough data has been
@@ -38,7 +30,7 @@ chlorophyll seasonal cycle in the Red Sea?
 
 \begin{enumerate} 
 
-\item Identify data sources and acquire the data.
+\item Identify data sources and gather the data.
 
 \item Clean the data and fill in missing values (DINEOF).
 
@@ -49,16 +41,18 @@ chlorophyll seasonal cycle in the Red Sea?
 \begin{itemize} 
 
 \item Study the correlation between chlorophyll and other variables (Linear
-Regression, GAM, data transformations).
+Regression, GAM, data transformations) in order to know which ones will
+be important in the model.
 
-\item Select variables (Lasso, single variable regression, multistep
-regression).
+\item Do variable selection (Lasso, single variable regression, multistep
+regression): as too many variables may introduce noise in the models or make
+the fitting slower.
 
-\item Study the regional aggregation (ACF).
+\item Study the regional aggregation (ACF), to characterize the 
+clusters.
 
-\item Explore spatiotemporal correlations (hovmoller plots, PCA, variograms).
-
-\item Estimate the Bayes factor.
+\item Explore spatiotemporal correlations (hovmoller plots, PCA, variograms)
+to get an understanding on the spatial features data.
 
 \end{itemize}
 

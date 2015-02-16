@@ -87,23 +87,42 @@ be tested.
 
 \section{Global Geostatistical Model}
 
-The research described in chapter 3 of the thesis has mostly been done and, is
-the object of an article currently in review. The current version of the
-manuscript can be found in appendice.
+The research described in chapter 3 of the thesis has mostly been
+done and, is the object of an article currently in review. The current version
+of the manuscript can be found in appendice. We include the abstract below:
+
+\begin{quotation}
+A statistical model is proposed to filter satellite-derived chlorophyll
+concentration from the Red Sea, and to predict future chlorophyll
+concentrations. The seasonal trend is first estimated after filling missing
+chlorophyll data using an Empirical Orthogonal Function (EOF)-based algorithm
+(Data Interpolation EOF). The anomalies are then modeled as a stationary
+Gaussian process. A method proposed by \citet{Gneiting2002} is used to
+construct positive-definite space-time covariance models for this process.
+After choosing an appropriate statistical model and identifying its parameters,
+Kriging is applied in the space-time domain to make a one step-ahead prediction
+of the anomalies. The latter serves as the prediction model of a reduced-order
+Kalman filter, which is applied to assimilate and predict future observations
+of chlorophyll concentrations. The proposed method decreases the root mean
+square (RMS) prediction error by about 11\% compared with the seasonal
+prediction.
+\end{quotation}
 
 \section{Regional 1D Ecological Models}
 
 The 1D regional ecological models used for this thesis have been configured and
 are operational. Three models will be used: for the northern, central and
-southern Red Sea. The ecology is modeled with ERSEM, and the hydrodynamics is
+southern Red Sea. The extreme south of the Red Sea is not modeled, as its dynamics
+is poorly understand and we miss in situ data.
+The ecology is modeled with ERSEM, and the hydrodynamics is
 modeled with the MITgcm.
 
 The results of the MITgcm are those from \citet{Yao2014, Yao2014b}, in which a
 simulation of the Red Sea and part of the Gulf of Aden circulation was run over
-50 years. The NCEP data were used for atmospheric forcing, and the ocean ECCO data
-for the open boundary conditions in the Gulf of Aden. The output of the 
-50  years run are used for
-the temperature and vertical circulation at the modeled points.
+50 years. The NCEP data were used for atmospheric forcing, and the ocean ECCO
+data for the open boundary conditions in the Gulf of Aden. The output of the 50
+years run are used for the temperature and vertical circulation at the modeled
+points.
 
 ERSEM simulates the complete water column with the pelagic and benthic
 ecosystems, as well a their coupling. The equations model the flow of carbon,
@@ -112,19 +131,21 @@ in terms of population processes (growth and mortality) and physiological
 processes (ingestion, respiration, excretion, and egestion). The biota is
 divided into functional groups according to their trophic levels: producers
 (phytoplankton), consumers (zooplankton) and decomposers (bacteria), and
-further subdivided according to their sizes.
+further subdivided according to their sizes \citep{Baretta1995}.
 
 The ecological models are initialized with the results of a 3D ecological
 simulation of the Red Sea \citep{Triantafyllou2014}. The nutrient
-concentrations are initialized using values from the World Ocean Atlas
-2005 (WOA 2005). These values are corrected by a factor chosen empirically.
+concentrations are initialized using values from the World Ocean Atlas 2005
+(WOA 2005).
 
 \section{Data Assimilation into the 1D Ecological Models}
 
 The assimilation scheme for the ecological models has been implemented and is
 operational. The chosen scheme is the hybrid-SEIK, described in
-\citet{Hoteit2002} as the Singular Semi-Evolutive Extented Kalman (SSEIK)
-filter. It is a variant of SEIK, which is derived from SEEK.
+\citet{Hamill2000}. It can be seen as a variant of the 3DVAR variational
+assimilation scheme. 3DVAR assumes that the error forecast covariance is
+fixed in time. In the case of the hybrid, the covariance is a linear combination
+of the 3DVAR covariance and the time-evolving SEIK covariance matrix.
 
 The problem of optimal filtering can be solved exactly by the Kalman Filter for
 linear systems. For nonlinear models, one can use the Extended Kalman (EK)
@@ -140,8 +161,7 @@ to perform better when this model is strongly non-linear. SEIK has been shown
 to be efficient for large-scale 3D ecosystem simulations
 \citep{Triantfyllou2003}.
 
-In the hybrid-SEIK, the computational cost is reduced to a fraction to that of
-SEIK, by only propagating some of the states, and keeping most of the
-correction subspace fixed. Contrary to \citet{Hoteit2002}, we propagate the
-states that explain the least the total variance in the error covariance
-function.
+The Expectation-Maximization scheme to estimate the filter parameters has also
+been derived. It is similar to that proposed by \citet{Tandeo2014}, 
+except that the model is non linear. The scheme will be used to improve
+the estimates of the observation and model covariance errors.

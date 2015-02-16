@@ -1,15 +1,8 @@
 \section{Chapter 2: Forecasting Chlorophyll Concentration in Regional
 Aggregates}
 
-\noindent \emph{Duration: 2 months (by February 2015)}
-
-\noindent \emph{Submission: Progress in Oceanography}
-
-\noindent \emph{Collaborator: Dionysios Raitsos}
-
-\vspace{5mm}
-
-Chlorophyll data is very complex. It is therefore useful to first simplify it
+The complexity of marine ecosystem is reflected in that of chlorophyll data. 
+It is therefore useful to first simplify it
 by aggregating it spatially. The space-time dynamics of the chlorophyll data
 reflects the highly nonlinear dynamics of the underlying physical, chemical and
 biological phenomenons. As shown by the north-south gradient and the seasonal
@@ -41,19 +34,16 @@ chlorophyll blooms?
 
 \begin{enumerate}
 
-\item Define datasets (training and test datasets, cross-validation).
+\item Define the datasets on which the model will be trained and tested,
+as well as the cross-validation methodology.
 
-\item Variable selection (Lasso, L1 regression, single-variable linear
-regression).
+\item Apply unsupervised learning algorithms to the dataset to divide
+the Red Sea into clusters corresponding to different environmental
+conditions.
 
-\item Define regional aggregations (unsupervised learning, Hierarchical
-clustering, K-means).
+\item Build regional statistical models to forecast chlorophyll concentration.
 
-\item Build regional statistical models to forecast chlorophyll concentration
-(linear regression, GAM models, diagnostic, k-nearest neighbors).
-
-\item Predicting future extreme blooms (nearest-neighbours, logistic
-regression, decision trees)
+\item Evaluate the models on the prediction of extreme blooms.
 
 \end{enumerate}
 

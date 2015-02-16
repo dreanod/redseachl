@@ -1,0 +1,45 @@
+\afterpage{
+
+%\clearpage% Flush earlier floats (otherwise order might not be correct)
+
+\thispagestyle{empty}% empty page style (?)
+
+\begin{landscape}% Landscape page
+\begin{table}
+\centering % Center table
+
+\begin{tabular}{l c c r} 
+
+\toprule 
+
+Variable       &Description             & Mission/Source    & Unit       \\
+
+\midrule 
+
+CHL                     & Chlorophyll             & CCI               & mg/m${}^3$ \\ SST            &
+Sea Surface Temperature & MODIS             & Celsius    \\ 
+
+AOD            &Aerosol Optical Depth   & MODIS             & N/A        \\ 
+CDOM           &  Colored Dissolved       & MODIS             & N/A        \\ 
+& Organic Matter
+&                   &            \\ NAO            & North Atlantic          &
+NOAA              & N/A        \\ & Oscillation Index       &
+&            \\ PAR            & Photosynthetically      & MODIS             &
+Einstein / m${}^2$ . Day                                                \\ &
+Available Radiations    &                   &            \\ POC            &
+Particulate Organic     & MODIS             & mg/m${}^3$ \\ & Carbon
+&                   &            \\ Precipitations &                         &
+TRMM              & mm/h       \\ SOI            & Southern Oscillation    &
+Australian Bureau & N/A        \\ & Index                   & of Meteorology
+&            \\ SLA            & Sea Level Anomaly       & Aviso             &
+cm         \\ Wind           &                         & Simulated         &
+m/s        \\ \bottomrule \end{tabular} 
+
+\caption{Downloaded data}
+\label{tab:data}
+\end{table}
+\end{landscape}
+
+\clearpage% Flush page
+}
+

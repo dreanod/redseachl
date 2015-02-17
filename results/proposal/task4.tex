@@ -35,13 +35,17 @@ dynamics in the Red Sea?
 
 \begin{itemize}
 
-\item Extract local dataset from previous tasks.
+\item Extract local datasets from previous tasks on which we will train
+regional geostatistical models.
 
-\item Design the training and test datasets, and the cross-validation method.
+\item Design the training and test datasets, and the cross-validation method,
+as in chapter 2.
 
-\item Design and evaluate the mean function given the past covariates.
+\item Estimate the chlorophyll mean functions for each region in function of
+the past covariates, to make the model useful for forecasting.
 
-\item Fit the local geostatistical model to the residuals.
+\item Fit local geostatistical models to the residuals, to model them as
+space-time Gaussian processes.
 
 \item Evaluate the model predictions and compare the results with chapters 2
 and 3.
@@ -57,8 +61,8 @@ and 3.
 \item An improvements in the prediction skills over the models of chapters 2
 and 3.
 
-\item An understanding of the differences between the regions that have
-been identified in chapter 2.
+\item An understanding of the differences between the regions that have been
+identified in chapter 2.
 
 \item A critical evaluation of the space-time covariance models for fitting
 chlorophyll data.

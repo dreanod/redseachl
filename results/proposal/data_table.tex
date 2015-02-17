@@ -1,40 +1,37 @@
 \afterpage{
 
-%\clearpage% Flush earlier floats (otherwise order might not be correct)
+\thispagestyle{empty}
 
-\thispagestyle{empty}% empty page style (?)
-
-\begin{landscape}% Landscape page
+\begin{landscape}
 \begin{table}
-\centering % Center table
-
-\begin{tabular}{l c c r} 
+\centering 
+\begin{tabular}{l c c ccc c} 
 
 \toprule 
-
-Variable       &Description             & Mission/Source    & Unit       \\
-
+Variable & Description             & Mission/Source    & Unit                 & Temporal   & Period & Spatial    \\
+         &                         &                   &                      & Resolution &        & Resolution \\
 \midrule 
 
-CHL                     & Chlorophyll             & CCI               & mg/m${}^3$ \\ SST            &
-Sea Surface Temperature & MODIS             & Celsius    \\ 
+CHL      & Chlorophyll             & CCI               & mg/m${}^3$           & 8-days     & 1997-2012 & 4km   \\
+SST      & Sea Surface Temperature & MODIS             & Celsius              & 8-days     & 2002-2015 & 4km   \\
+AOD      & Aerosol Optical Depth   & MODIS             & N/A                  & daily      & 2000-2015 & 28km  \\
+CDOM     & Colored Dissolved       & MODIS             & N/A                  & 8-days     & 2002-2015 & 4km   \\
+         & Organic Matter          &                   &                      &            &           &       \\
+NAO      & North Atlantic          & NOAA              & N/A                  & daily      & 1979-2015 &  N/A  \\
+         & Oscillation Index       &                   &                      &            &           &       \\
+PAR      & Photosynthetically      & MODIS             & Einstein/m${}^2$.Day & 8-days     & 2002-2015 &  4km  \\
+         & Available Radiations    &                   &                      &            &           &       \\
+POC      & Particulate Organic     & MODIS             & mg/m${}^3$           & 8-days     & 2002-2015 &  4km  \\
+         & Carbon                  &                   &                      &            &           &       \\
+RAIN     & Precipitations          & TRMM              & mm/h                 & daily      & 1998-2015 & 28km  \\
+SOI      & Southern Oscillation    & Australian Bureau & N/A                  & daily      & 1999-2015 &  N/A  \\
+         & Index                   & of Meteorology    &                      &            &           &       \\
+SLA      & Sea Level Anomaly       & Aviso             & cm                   & daily      & 1993-2013 &  28km \\
+WIND     & Vector Wind Field       & Simulated         & m/s                  & 3-hourly   & 2000-2014 &  10km \\
 
-AOD            &Aerosol Optical Depth   & MODIS             & N/A        \\ 
-CDOM           &  Colored Dissolved       & MODIS             & N/A        \\ 
-& Organic Matter
-&                   &            \\ NAO            & North Atlantic          &
-NOAA              & N/A        \\ & Oscillation Index       &
-&            \\ PAR            & Photosynthetically      & MODIS             &
-Einstein / m${}^2$ . Day                                                \\ &
-Available Radiations    &                   &            \\ POC            &
-Particulate Organic     & MODIS             & mg/m${}^3$ \\ & Carbon
-&                   &            \\ Precipitations &                         &
-TRMM              & mm/h       \\ SOI            & Southern Oscillation    &
-Australian Bureau & N/A        \\ & Index                   & of Meteorology
-&            \\ SLA            & Sea Level Anomaly       & Aviso             &
-cm         \\ Wind           &                         & Simulated         &
-m/s        \\ \bottomrule \end{tabular} 
+\bottomrule
 
+\end{tabular}
 \caption{Downloaded data}
 \label{tab:data}
 \end{table}

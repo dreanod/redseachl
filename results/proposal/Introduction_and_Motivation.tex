@@ -9,9 +9,10 @@ Phytoplankton are unicellular, free-floating, photosynthetic algae that live in
 the upper layers of bodies of water (ocean, lakes, rivers or ponds). There
 exists a wide diversity of phytoplankton species. Up to date, about 5000 of
 them have been identified \citep{Tett1995}. Phytoplankton are also highly
-variable in sizes, ranging from 0.2μm for cyanobacteria to 200μm for the
-largest species of diatom \citep{Pal2014}. In the oceans, phytoplankton live in
-the surface layer where there is enough sunlight for photosynthesis. 
+variable in sizes, ranging from \SI{0.2}{\micro\metre} for cyanobacteria to
+\SI{200}{\micro\metre} for the largest species of diatom \citep{Pal2014}. In
+the oceans, phytoplankton live in the surface layer where there is enough
+sunlight for photosynthesis. 
 
 Phytoplankton play a fundamental role for the ocean ecology. They are at the
 basis of the marine food web and trap most of the energy used by pelagic
@@ -124,7 +125,7 @@ the Red Sea, but it has been largely left unexplored \citep{Triantafyllou2014}.
 \citet{Raitsos2013} noticed for example that sand storms in the Red Sea most
 frequently happen in June and July, which coincides with the summer chlorophyll
 peak. Finally, climate mode indices have been shown to be strongly correlated
-with air-sea heat exchanges in the Red Sea \citep{Abulnaja2015}, and might
+with air-sea heat exchanges in the Red Sea \citep{Abualnaja2015}, and might
 therefore influence its biology. This has been recently confirmed by
 \citet{Raitsos2015}, who have shown that El Nino has a positive impact on the
 chlorophyll concentration, by strenghtening the wind transporting nutrients
@@ -286,7 +287,7 @@ Butenschon2012}.  SEIK is an ensemble variant of the SEEK  and a deterministic
 version of the EnKF that do not suffer from observations sampling errors, as it
 updates the filter and forecast exactly as in the Kalman filter, but requires a
 resampling step to generate a new ensemble for the next forecast step. SEIK has
-been used by \citep{Triantafyllou2012, Korres2012}. \citet{Korres2012} shows
+been used by \citep{Triantafyllou2013, Korres2012}. \citet{Korres2012} shows
 that SEIK and SEEK are both comparably robust methods for highly nonlinear
 systems. \citet{Hoteit2005} has shown that SEIK outperforms SEEK when using a
 high-resolution non linear model.
@@ -299,12 +300,12 @@ variables, and log-transformation may fail at avoiding this issue
 \citet{Fontana2013} has introduced Gaussian anamorphosis transformations.
 Second, ecological blooms are intermittent and highly nonlinear, conditions
 that are challenging for Kalman filter-based assimilation schemes
-\citep{Triantafyllou2012, Korres2012}. Third, SEIK, EnKF and SEEK project the
+\citep{Triantafyllou2013, Korres2012}. Third, SEIK, EnKF and SEEK project the
 error covariance onto some subspace, resulting in an underestimation of the
 estimation error. \citet{Butenschon2012} studied different ways to propagate
 the error covariance in order to alleviate this issue. Finally, the model error
 statistics are required by Kalman-derived filters, but are difficult to
-estimate. \citet{Triantafyllou2012} proposed to use the $H_\infty$ method with
+estimate. \citet{Triantafyllou2013} proposed to use the $H_\infty$ method with
 SEIK in order alleviate this requirement.
 
 Particle filters represent a class of data assimilation scheme that are not
@@ -350,7 +351,7 @@ chlorophyll concentration.  \citet{Wang2013} also used recurrent neural
 networks for daily chlorophyll forecasting in Lake Taihu, China.
 \citet{Mulia2013} combined Neural Network and genetic algorithm for nowcasting
 and forecasting of the chlorophyll concentration up to 14 days ahead, in the
-tidal dominated coast of Singapore.  Finally, \citet{Lee2013} used neural
+tidal dominated coast of Singapore.  Finally, \citet{Lee2003} used neural
 networks for the forecasting of algal bloom with one or two weeks lags in the
 coastal waters of Hong-Kong.
 
@@ -417,10 +418,10 @@ revolutionized our understanding of marine ecology, it only gives information
 about the phytoplankton at the sea surface. Our knowledge is even more limited
 in the Red Sea, due to the paucity of in situ data.
 
-We will develop efficient approaches to model the Red Sea chlorophyll,
-explore the possibility of improving the state of the art data assimilative
-ecosystem modeling, and introduce the use of geostatistics to the field of
-marine ecology.
+We will develop efficient approaches to model the Red Sea chlorophyll, explore
+the possibility of improving the state of the art data assimilative ecosystem
+modeling, and introduce the use of geostatistics to the field of marine
+ecology.
 
 Currently, both deterministic and statistical approaches have been used to
 predict chlorophyll. However, these approaches have never been compared, nor

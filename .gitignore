@@ -17,4 +17,5 @@ data/**
 *.toc
 *.bbl
 *.blg
+*.spl
 scripts/proposal/data/*

@@ -1,73 +1,97 @@
 \section{Introduction}
 
+\paragraph{What are marine ecosystem models}
+ERSEM, NPZ.
+
+\paragraph{Marine ecosystem models have scientific and practical applications}
+Forecasting, harmful algae blooms, scientific inquiry when not enough data.
+
+\paragraph{Complex 3D ecological models have limitations}
+Indetermination and computational cost.
+
+\paragraph{Assimilation in necessary but increases the computational cost}
+Ecological systems are chaotic system that require assimilation to
+maintain a good prediction skill. But assimilation increases the computational
+cost. Assimilation of eco models remains a challenge.
+
+\paragraph{The hybrid-SEIK}
+Has never been use for eco models before.
+
+\paragraph{Ocean colour data has been assimilated a lot to eco models}
+chlorophyll is a green colored pigment critical for photosynthesis and found
+in plants and algae \citep{Pal2014}. Give a detectable green coloration
+to the water when phytoplankton is present \citep{Robinson2010}.
+Remotely sensed ocean colour data give highly available data with 
+high coverage both in time and space \citep{Robinson2010}. Ocean colour
+data products like chl are very good proxy for phytoplankton concentration.
+
+\paragraph{But has some limitations}
+CHL dataset have missing data because of clouds. Which is a big problem in 
+the southern Red Sea in summer where the coverage is almost zero
+\cite{Racault}. Moreover the chl is difficult to estimate in case II
+optically complex waters, especially near the caosts. It also particularly
+affects the southern Red Sea which is very shallow.
+
+\paragraph{Solutions to missing data}
+One of the most popular approach for data filling of remotely-sensed 
+chlorophyll data is DINEOF introduced by \citet{Beckers2003}.
+
+\paragraph{The Red Sea is a relatively unexplored sea}
+Not a lot of studies, not a lot of in situ data.
+Must use models and remotely-sensed data.
+RS is TTS with strong stratification that limits vertical diffusion of nutrients.
+\citep{Mann2006}.
+Other than the gulf of Aden \citep{Yao2015}, 
+the RS has no known significant input of nutrients and
+is oligotrophic \citep{Raitsos2013, Weikert1987}.
+Red Sea has a rich ecosystem and unique ecosystem that has adapted its
+extreme environment \citep{Raitsos2011}.
+RS relatively well preserved but increasingly fragilized by human activities.
+Sharp increase of temperature in the past decade threatend the RS environment.
+\citep{Raitsos2011}.
+
+\paragraph{Major biological patterns}
+Current hypotheses about primary production in Red Sea.
+There is a lack of missing data therefore the large scale ecological 
+dynamics is poorly known \citep{Raitsos2013, Triantafyllou2014}.
+The role of aerosol deposition could be important but has not been investigated
+yet \citep{Raitsos2013}.
+Eddies are believed to play important role \citep{Raitsos2013, Zhan2014}.
+Chlorophyll increase from north to south \citep{Raitsos2013}.
+Secondary summer bloom (but not in NRS) \citep{Raitsos2013}.
+Strong Interannual variability \citep{Raitsos2013}.
+Exchange of water with GOA is a major driver of productivity for the 
+whole Red Sea \citep{Triantafyllou2014}.
+SRS winter bloom attributed to wind-driven intrusion \citep{Raitsos2013}.
+Deep convection in winter plays a big role in the northern Red Sea
+\citep{Raitsos2013}.
+Red Sea circulation impacted by eddies that could impact productivity
+\citep{Zhai2013}. Central red Sea anti cyclonic eddy is believed to
+control June peak \citep{Raitsos2013}.
+Climate mode indices have impact ton the Red Sea \citep{Raitsos2015}.
+
+
+\paragraph{Objective:}
 3D ecological models are expensive to run. Can we divide the Red Sea into
 regions and have 1D models running in each of them in parallel?
-
 In this article we cluster the Red Sea in 3 different eco-regions using
 automatic unsupervised learning algorithms. We then run an assimilative 1D
 ecological model on each of the region and analyze the results.
 
-\begin{quotation} 
-
-Phytoplankton are unicellular, free-floating, photosynthetic
-algae that live in the upper layers of bodies of water (ocean, lakes, rivers or
-ponds). There exists a wide diversity of phytoplankton species. Up to date,
-about 5000 of them have been identified \citep{Tett1995}. Phytoplankton are
-also highly variable in sizes, ranging from \SI{0.2}{\micro\metre} for
-cyanobacteria to \SI{200}{\micro\metre} for the largest species of diatom
-\citep{Pal2014}. In the oceans, phytoplankton live in the surface layer where
-there is enough sunlight for photosynthesis. 
-
-Phytoplankton play a fundamental role for the ocean ecology. They are at the
-basis of the marine food web and trap most of the energy used by pelagic
-ecosystems \citep{Pal2014}. Zooplankton graze phytoplankton, which are in turn
-consumed by higher trophic levels. It has been estimated that nearly 98\% of
-the ocean primary productivity comes from phytoplankton \citep{Pal2014}.
-Phytoplankton are also responsible for maintaining the dissolved oxygen level
-necessary for other species to survive. However, high phytoplankton
-concentration may also impact their environment by creating dead zones. When
-they die and sink, the bacteria that decompose them can consume all the
-available oxygen \citep{Pal2014}, and this may cause massive mortality in the
-fauna. Because of its short life cycle, phytoplankton respond very well to
-changes in its environment, making it a key parameter to monitor water quality
-\citep{Wu2014}.
-
-Phytoplankton place at the bottom of the marine food chain makes it an
-important factor for fisheries. Productive fishing zones such as the regions in
-the Arabian seas, Californian coast, north-west African coast and Chilean
-coast, are due to the upwelling of cold nutrient rich water favourable to
-phytoplankton growth. As such, remotely-sensed chlorophyll data have been
-routinely used since the last decade to help fisheries predict the timing of
-phytoplankton blooms \citep{Robinson2010}. On the other hand, the El-Nino
-phenomenon creates less favourable conditions for phytoplankton in the Eastern
-Pacific, resulting in a dramatic reduction of fish catches of fisheries in the
-western coast of South America \citep{Robinson2010}. In contrast, in the Red
-Sea, the MEI (Multivariate ENSO Index) has been found to positively correlate
-with chlorophyll concentration, a fact that could be of importance for regional
-fisheries \citep{Raitsos2015}.
-
-Phytoplankton also plays the role of a biological CO2 pump and strongly impact
-the Earth climate. During photosynthesis, phytoplankton captures carbon and
-releases oxygen. A part of this organic material stays in the food web, either
-transmitted to higher trophic level, or degraded  by bacteria. Another part,
-sinks to the bottom of the ocean to form sediments. It is estimated that
-phytoplankton accounts for 48\% of Earth carbon fixation \citep{Pal2014}.
-
-\end{quotation}
+\paragraph{Introduce chapters}
 
 \begin{quotation} 
 
-Typical tropical seas (TTS), like the Red Sea, are
-characterized by a highly stratified structure, where warm nutrient-depleted
-surface water is separated from the cold nutrient-rich deep water by a steep
-gradient of temperature zone called pycnocline. The pycnocline acts as barrier
-that limits the upward nutrients flow \citep{Mann2006}. As a result, TTS are
-oligotrophic and have low chlorophyll concentrations. Until recently, marine
-biologists believed that tropical and subtropical seas have therefore a very
-low productivity. However, recent investigations have contested this idea,
-suggesting that different upwelling mechanisms (winter deep mixing, storms,
-eddies, etc) exist, which bring new nutrients to the surface water
-\citep{Mann2006}.
+Typical tropical seas (TTS), like the Red Sea, are characterized by a highly
+stratified structure, where warm nutrient-depleted surface water is separated
+from the cold nutrient-rich deep water by a steep gradient of temperature zone
+called pycnocline. The pycnocline acts as barrier that limits the upward
+nutrients flow \citep{Mann2006}. As a result, TTS are oligotrophic and have low
+chlorophyll concentrations. Until recently, marine biologists believed that
+tropical and subtropical seas have therefore a very low productivity. However,
+recent investigations have contested this idea, suggesting that different
+upwelling mechanisms (winter deep mixing, storms, eddies, etc) exist, which
+bring new nutrients to the surface water \citep{Mann2006}.
 
 Despite being an oligotrophic and challenging environment for marine life, the
 Red Sea presents a surprisingly rich and diverse ecosystem \citep{Raitsos2011},

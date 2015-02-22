@@ -51,12 +51,20 @@ Mixture Model (GMM) clustering algorithms.
 
 I found that GMM provides more robust results. With any number of clusters, we
 obtain a division of the Red Sea into regions of comparable sizes.  With 5
-clusters, the regions are very similar to those identified by
+clusters, the regions (shown in figure \ref{cluster}) are very similar to those identified by
 \citet{Raitsos2013}.  Contrary to the purely latitudinal division proposed by
 the former, we observe that the separation between clusters is curved at the
 position of major Red Sea eddies.  The fact that the curvature is oriented
 toward the south suggests that most nutrients propagate northward from the Gulf
 of Aden.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=.15]{figures/clusters_k5.png}
+    \caption{Clustering of Red Sea using GMM, with filled monthly SeaWiFS
+             chlorophyll data.}
+    \label{cluster}
+\end{figure}
 
 In Chapter 2, I plan to use the dataset constructed in Chapter 1.  By using CCI
 chlorophyll data instead of SeaWiFS, the need for data filling is minimized.
@@ -127,7 +135,9 @@ operational. The chosen scheme is the hybrid-SEIK, described in
 \citet{Hamill2000}. It can be seen as a variant of the 3DVAR variational
 assimilation scheme. 3DVAR assumes that the error forecast covariance is
 fixed in time. In the case of the hybrid, the covariance is a linear combination
-of the 3DVAR covariance and the time-evolving SEIK covariance matrix.
+of the 3DVAR covariance and the time-evolving SEIK covariance matrix. Figure
+\ref{assim} shows the assimilation scheme improves the fit of the model to
+the chlorophyll data.
 
 The problem of optimal filtering can be solved exactly by the Kalman Filter for
 linear systems. For nonlinear models, one can use the Extended Kalman (EK)
@@ -142,6 +152,16 @@ avoids the computation of model gradients, and allows the assimilation scheme
 to perform better when this model is strongly non-linear. SEIK has been shown
 to be efficient for large-scale 3D ecosystem simulations
 \citep{Triantafyllou2003}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=.45]{figures/chl_factor.png}
+    \caption{Surface chlorophyll in the northern Red Sea from CCI data (green),
+             from a free run of the 1D ecological model (white), with data
+             assimilation (yellow)}
+    \label{assim}
+\end{figure}
+
 
 The Expectation-Maximization scheme to estimate the filter parameters has also
 been derived. It is similar to that proposed by \citet{Tandeo2014}, 

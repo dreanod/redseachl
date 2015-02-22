@@ -17,3 +17,4 @@ data/**
 *.toc
 *.bbl
 *.blg
+scripts/proposal/data/*

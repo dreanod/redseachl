@@ -85,7 +85,8 @@ is deficient in major nutrients \citep{Weikert1987}, and the only significant
 input of water comes from the Gulf of Aden \citep{Yao2015}. This explains a
 general pattern of chlorophyll concentration increase from north to south
 \citep{Raitsos2013}, with the lowest concentration found in the northern
-central Red Sea. The Red Sea also displays a distinct seasonality, with a peak
+central Red Sea. This pattern can be seen in figure \ref{meanchl}.
+The Red Sea also displays a distinct seasonality, with a peak
 in concentration during the winter.  A weak summer peak is also observed around
 July, everywhere except in the northernmost region \citep{Raitsos2013}. Despite
 this regularity, a strong interannual variability is observed, with blooms that
@@ -94,6 +95,13 @@ can reach mesotrophic concentration levels \citep{Raitsos2013}. According to
 driven by physical circulation. In the rest of this section, we explore some of
 the mechanisms that have been linked to the major features of chlorophyll
 concentration.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=.15]{figures/chl_average.png}
+    \caption{Average chlorophyll concentration from CCI data}
+    \label{meanchl}
+\end{figure}
 
 The exchange of water with the nutrient-rich Gulf of Aden is a major driving
 mechanism for the whole Red Sea \citep{Triantafyllou2014}. It is the most
@@ -171,7 +179,7 @@ case I waters (open sea) \citep{Brewin2013}. However, the data contains a large
 amount of missing values because of persistent clouds, sun-glint and sensor
 saturation \citep{Racault}. This problem is particularly acute during the
 summer in the southern Red Sea where the data coverage is almost null
-\citep{Racault}.
+\citep{Racault}, as shown in figure \ref{misval_modis}.
 
 Chlorophyll concentration estimation in optically complex case II waters is a
 recurrent problem in this remotely-sensed data that particularly affects the
@@ -180,6 +188,13 @@ be overestimated \citep{Raitsos2013}. However, all high values are not
 necessarily bad, as highly productive coral reefs are also present in this
 region \citep{Raitsos2013}.  However, these values have not been validated yet,
 due to the lack of in situ measurements \citep{Raitsos2013}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=.15]{figures/modis_missing_values_summer.png}
+    \caption{Percentage of missing values in the MODIS chlorophyll dataset}
+    \label{misval_modis}
+\end{figure}
 
 One solution to missing and bad values is to use a data filling algorithm, of
 which one of the most popular is the Date INterpolating Empirical Orthogonal
@@ -195,11 +210,19 @@ in \citet{Alvera2007}.
 The OC-CCI is a new chlorophyll data product that considerably increases the
 Red Sea coverage. It merges the data from sensors SeaWiFS, MODIS and MERIS.
 Overall, it achieves a 75-80\% coverage in the entire Red Sea basin against
-50-65\% for a single sensor \citep{Racault}. This is mostly due to the use of
+50-65\% for a single sensor \citep{Racault}. During the summer, the improvement
+is dramatic, as shown in figure \ref{misval_cci}. This is mostly due to the use of
 the POLYMER algorithm \citep{Steinmetz2011} that allows to exploit MERIS data
 collected during hazy conditions. However, this new dataset has not been fully
 explored to revisit the assumptions made on the large-scale Red Sea
 phytoplankton productivity.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=.15]{figures/cci_missing_values_summer.png}
+    \caption{Percentage of missing values in the CCI chlorophyll dataset}
+    \label{misval_cci}
+\end{figure}
 
 \section{Modeling and Forecasting Chlorophyll: Data-Driven and Physics-Driven
 Approaches, and Applications}

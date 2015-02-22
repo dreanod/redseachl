@@ -1,11 +1,9 @@
-\documentclass[12pt]{elsarticle}
+\documentclass[review, authoryear]{elsarticle}
 
 \usepackage{IEEEtrantools}
 \usepackage{amsmath}
 \usepackage{mathrsfs}
-% \usepackage{subcaption}
 \usepackage{graphicx}
-% \usepackage{subcaption}
 \usepackage{setspace}
 \usepackage{amsfonts}
 \usepackage{subfig}
@@ -16,10 +14,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lineno}
 \usepackage{fixltx2e}
+\usepackage{natbib}
+\usepackage{siunitx}
 
 \begin{document}
 
-\doublespacing
 
 \begin{frontmatter}
 
@@ -49,73 +48,15 @@
 
 \linenumbers
 
+\input{introduction}
 
-\section{Introduction}
+\input{data}
 
-3D ecological models are expensive to run. Can we divide the Red Sea
-into regions and have 1D models running in each of them in parallel?
+\input{model}
 
-In this article we cluster the Red Sea in 3 different eco-regions
-using automatic unsupervised learning algorithms. We then run an 
-assimilative 1D ecological model on each of the region and analyze 
-the results.
+\input{results}
 
-\section{Data}
-
-\subsection{Chlorophyll data}
-
-We use CCI monthly and 8-days CHL data.
-
-\subsection{DINEOF}
-
-CCI data present missing data, in particular, in the southern Red Sea
-during summer. In order to have a complete dataset on which can apply a 
-clustering algorithm, we use DINEOF, a data filling algorithm. The Chl
-data is averaged over each region to give a data time-series for each of
-them.
-
-\subsection{Clustering}
-
-We use clustering algorithm to divide the Red Sea into regions with
-similar behavior. We tried K-means and Gaussian Mixture Model, a generalization
-of the former.GMM was found to give better results.
-
-\section{Model and Assimilation}
-
-\subsection{1D-ERSEM model}
-
-We use a 1D coupled ERSEM model. The physical forcing comes from
-a 3D circulation simulation of the Red Sea [Yao 2014]. The ecological
-models are initialized with the results of the 3D Red Sea ecology 
-simulation [Triantfyllou2013].
-
-\subsection{Data Assimilation}
-
-To improve the results of the simulation we use the hybrid-SEIK
-assimilation scheme, detailed in this subsection.
-
-\section{Results}
-
-\subsection{Model evaluation}
-
-Here, we compare the results of the free-run with the assimilated-run.
-We show that we have a good prediction skill, and that the assimilation
-improves the model.
-
-\subsection{Analysis}
-
-Here we look at the results and interpret them biologycally. Do we find
-comparable results as Acker, Raitsos, Weiker, etc. What can we say about the
-hypothesis that they made about he process that drive primary productivity in
-the Red Sea.
-
-\section{Conclusion}
-
-Are several 1D paralled 1D models a good alternative to 3D simulations?
-
-What did we learn about the Red Sea ecology?
-
-Future works?
+\input{conclusion}
 
 \section*{Acknowledgment}
 
@@ -124,6 +65,6 @@ University of Science and Technology (KAUST).
 
 \section{Bibliography}
 
-\bibliographystyle{elsarticle-num} \bibliography{bibtex}
+\bibliographystyle{agufull08} \bibliography{References}
 
 \end{document}

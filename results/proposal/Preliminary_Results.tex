@@ -2,17 +2,18 @@
 
 \section{Data Preparation}
 
-All of the datasets necessary for the analysis has been gathered. Almost all of
+All of the datasets necessary for the analysis has been gathered. Most of
 it has been downloaded from public sources on the Internet, using Shell and R
-scripts.  The wind dataset has been provided by Yesubabu Viswanadhapalli, and
-is the result of the assimilation of QuickScat satellite and in situ data to
+scripts. The wind dataset has been provided by Yesubabu Viswanadhapalli, and
+is the result of the assimilation of QuickScat satellite and all available
+in situ data in the Red Sea into
 the Weather Research and Forecasting (WRF) regional Red Sea model. There are
 additional datasets that will be useful for the analysis, but they are mainly
 climate mode time-series like IMI and EAWR, that are easy to download. The
-downloaded data is listed in table \ref{tab:data}.
+downloaded data is listed and described in table \ref{tab:data}.
 
 So far, the MODIS and CCI data have been cropped over the region of interest,
-cleaned and exported to the format TIFF, which can be read easily by most
+cleaned and exported to the format TIFF, which can be easily read by most
 software, R in particular. Each dataset has then been aggregated in a single
 file in the native R raster format. Applying this processing to the remaining
 raster data should be straightforward. Then, the data will need to be aligned
@@ -24,7 +25,7 @@ it in table format.
 \section{Red Sea Chlorophyll Data Analysis}
 
 The MODIS and CCI chlorophyll data products have been explored and compared.
-The MODIS data include an important amount of missing data which may reach
+The MODIS data include an important amount of missing data, which may reach
 100\% during summer in the southern Red Sea, increasing the complexity of any
 analysis in this region. The CCI data product solves this issue by merging
 three sources of remotely-sensed chlorophyll data (MODIS, MERIS and SeaWiFS)
@@ -33,7 +34,7 @@ cover is important.  This increases the coverage to 70\% during summer months
 in the southern Red Sea.
 
 The SeaWiFS chlorophyll data has been used in the submitted companion article
-of chapter 3 (see Appendice B).  The seasonal signal in the data is strong and
+of Chapter 3 (see Appendice B).  The seasonal signal in the data is strong and
 has been shown to account for 50\% of the variability. The seasonal anomalies
 display a strong spatio-temporal correlation: the temporal correlation of
 anomalies is 40\%, whereas two locations at 0.5 degrees apart are nearly 60\%
@@ -77,7 +78,7 @@ be tested.
 
 \section{Global Geostatistical Model}
 
-The research described in chapter 3 of the thesis has mostly been
+The research described in Chapter 3 of the thesis has mostly been
 done and, is the object of an article currently in review. The current version
 of the manuscript can be found in appendice. We include the abstract below:
 
@@ -102,10 +103,10 @@ prediction.
 
 The 1D regional ecological models used for this thesis have been configured and
 are operational. Three models will be used: for the northern, central and
-southern Red Sea. The extreme south of the Red Sea is not modeled, as its dynamics
-is poorly understand and we miss in situ data.
-The ecology is modeled with ERSEM, and the hydrodynamics is
-modeled with the MITgcm.
+southern Red Sea. The extreme south of the Red Sea is not modeled, as its
+dynamics is poorly understand and no in situ data are available to validate the
+satellite products. The ecology is modeled with ERSEM, and the hydrodynamics
+is modeled with the MITgcm.
 
 The results of the MITgcm are those from \citet{Yao2014, Yao2014b}, in which a
 simulation of the Red Sea and part of the Gulf of Aden circulation was run over
@@ -131,13 +132,16 @@ concentrations are initialized using values from the World Ocean Atlas 2005
 \section{Data Assimilation into the 1D Ecological Models}
 
 The assimilation scheme for the ecological models has been implemented and is
-operational. The chosen scheme is the hybrid-SEIK, described in
-\citet{Hamill2000}. It can be seen as a variant of the 3DVAR variational
-assimilation scheme. 3DVAR assumes that the error forecast covariance is
-fixed in time. In the case of the hybrid, the covariance is a linear combination
-of the 3DVAR covariance and the time-evolving SEIK covariance matrix. Figure
-\ref{assim} shows the assimilation scheme improves the fit of the model to
-the chlorophyll data.
+operational. The chosen scheme is a hybrid-SEIK, with the hybrid approach
+implemented as described in \citet{Hamill2000}.  The scheme is called hybrid as
+it combines the flow-dependent background estimates from the ensemble of an
+EnKF with as static background, taken for example from a three-dimensional
+variational 3DVAR system. The idea behind it is to complete the rank-deficient
+EnKF background by another background that has been designed to capture the
+climatological variability of the system.  In our hybrid implementation, the
+covariance is a linear combination of the 3DVAR covariance and the
+time-evolving SEIK covariance matrix. Figure \ref{assim} shows the assimilation
+scheme improves the fit of the model to the chlorophyll data.
 
 The problem of optimal filtering can be solved exactly by the Kalman Filter for
 linear systems. For nonlinear models, one can use the Extended Kalman (EK)
@@ -150,7 +154,7 @@ filtered out. SEIK can be viewed as an ensemble variant of the SEEK, where the
 error covariance function is represented exactly by an ensemble of states. This
 avoids the computation of model gradients, and allows the assimilation scheme
 to perform better when this model is strongly non-linear. SEIK has been shown
-to be efficient for large-scale 3D ecosystem simulations
+to be efficient for large-scale 3D ecosystem data assimilation
 \citep{Triantafyllou2003}.
 
 \begin{figure}
@@ -165,5 +169,5 @@ to be efficient for large-scale 3D ecosystem simulations
 
 The Expectation-Maximization scheme to estimate the filter parameters has also
 been derived. It is similar to that proposed by \citet{Tandeo2014}, 
-except that the model is non linear. The scheme will be used to improve
+except that the model is nonlinear. The scheme will be used to improve
 the estimates of the observation and model covariance errors.

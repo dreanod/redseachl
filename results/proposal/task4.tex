@@ -1,16 +1,17 @@
 \section{Chapter 4: Local Geostatistical Model for Chlorophyll Forecasting}
 
-This part will bring together the results of the two preceding tasks to develop
-a geostatistical model that takes into account the large-scale dynamics and the
-regional spatio-temporal dynamics. In task 2, a predictive model is built, that
-represents the large scales behaviour of the Red Sea, but the spatial dimension
-inside each region is not addressed. We expect local features to play a role,
-such as the proximity to the coast, the bathymetry, proximity to other regions
-or major cities, etc. In task 3, we proposed a methodology to use a
-geostatistical model in a dynamic fashion to do pixel-scale forecast. In this
-task, each regions will be modeled separately by a local geostatistical model
-that can provide local prediction. These models will have access to aggregate
-covariates from neighboring regions to represent the global scale behaviours. 
+This chapter will bring together the results of the two preceding chapters to
+develop a geostatistical model that takes into account the large-scale dynamics
+and the regional spatio-temporal dynamics. In chapter 2, a predictive model is
+built, that represents the large scales behaviour of the Red Sea, but the
+spatial dimension inside each region is not considered. We expect local
+features to play an important role, such as the proximity to the coast, the
+bathymetry, proximity to other regions or major cities, etc. In task 3, we
+proposed a methodology to use a geostatistical model in a dynamical fashion to
+do pixel-scale forecast. In this task, each regions will be modeled separately
+by a local geostatistical model that can provide local prediction. These models
+will have access to aggregate covariates from neighboring regions to represent
+the global scale behaviours. 
 
 \paragraph{Open Questions}
 
@@ -35,14 +36,14 @@ dynamics in the Red Sea?
 
 \begin{itemize}
 
-\item Extract local datasets from previous tasks on which we will train
+\item Extract local datasets from previous tasks based on which we will train
 regional geostatistical models.
 
 \item Design the training and test datasets, and the cross-validation method,
 as in chapter 2.
 
-\item Estimate the chlorophyll mean functions for each region in function of
-the past covariates, to make the model useful for forecasting.
+\item Estimate the chlorophyll mean functions for each region as function of
+the past covariates, to improve the model forecasting skills.
 
 \item Fit local geostatistical models to the residuals, to model them as
 space-time Gaussian processes.
@@ -58,11 +59,11 @@ and 3.
 
 \item A methodology to aggregate local geostatistical models.
 
-\item An improvements in the prediction skills over the models of chapters 2
+\item Improved prediction skills compared to the models developed in Chapters 2
 and 3.
 
 \item An understanding of the differences between the regions that have been
-identified in chapter 2.
+identified in Chapter 2.
 
 \item A critical evaluation of the space-time covariance models for fitting
 chlorophyll data.

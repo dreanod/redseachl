@@ -1,13 +1,14 @@
 \section{Chapter 1: Dataset Building and Exploration}
 
-A preliminary task to data modeling, is the gathering, cleaning and exploration
-of the data. Given the complexity and the size (40 GB) of the dataset, this is not
-an easy task. This first data analysis, will reveal if enough data has been
-gathered to make meaningful forecast, and what accuracy we can expect from the
-models. This step will also provide information that will help in designing
-statistical models: most significant variables, differences between regions,
-relevant data transformation, etc. Finally, this step will identify patterns in
-the data that will be useful to qualitatively evaluate predictive models.
+A preliminary task to statistical data modeling is the gathering, cleaning and
+exploration of the data. Given the complexity and the size (40 GB) of the
+dataset, this is not an simple task. This first data analysis will reveal if
+enough data has been gathered to make meaningful forecasts, and what accuracy
+we can expect from the models. This chapter will also provide information that
+will help in designing statistical models: most significant variables,
+differences between regions, relevant data transformation, etc. Finally, this
+chapter will identify patterns in the data that will be useful to qualitatively
+evaluate predictive models.
 
 \paragraph{Open Questions}
 
@@ -22,7 +23,7 @@ dataset?
 the Red Sea?
 
 \item Will the data support the hypothesizes about the dynamics behind the
-chlorophyll seasonal cycle in the Red Sea?
+chlorophyll seasonal variabilities in the Red Sea?
 
 \end{itemize}
 
@@ -40,19 +41,18 @@ chlorophyll seasonal cycle in the Red Sea?
 
 \begin{itemize} 
 
-\item Study the correlation between chlorophyll and other variables (Linear
-Regression, GAM, data transformations) in order to know which ones will
-be important in the model.
+\item Study the correlation between chlorophyll and other variables using,
+linear regression, GAM, data transformations, etc.
 
-\item Do variable selection (Lasso, single variable regression, multistep
-regression): as too many variables may introduce noise in the models or make
-the fitting slower.
+\item Apply variable selection techniques such as, lasso, single variable
+regression, or multistep regression, to reduce the number of variables in the
+model.
 
-\item Study the regional aggregation (ACF), to characterize the 
+\item Study the regional aggregation (ACF), to characterize the regional
 clusters.
 
-\item Explore spatiotemporal correlations (hovmoller plots, PCA, variograms)
-to get an understanding on the spatial features of the data.
+\item Explore spatiotemporal correlations (hovmoller plots, PCA, variograms) to
+understand the spatial features of the chlorophyll data.
 
 \end{itemize}
 

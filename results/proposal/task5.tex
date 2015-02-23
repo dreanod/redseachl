@@ -3,13 +3,14 @@ Comparison to Statistical Models}
 
 The three previous chapters focus on constructing increasingly sophisticated
 statistical predictive models for the chlorophyll concentration in the Red Sea.
-In this chapter these models will be evaluated against a 1D ecological model
+In this chapter these models will be evaluated against 1D ecological models
 (ERSEM). The goal of this part will be to identify the merits of each modeling
-approach, and propose ways in which they can complement each other.  The models
-will be run in each of the regions found in chapter 2.  Available data will
-also be assimilated to the model through an ensemble Kalman-based smoothing
-assimilation scheme that we will further equip with an efficient
-expectation-maximization algorithm for parameters estimation.
+approach, and propose ways in which they can complement each other. 1D
+ecological models will be run in each of the regions that have been identified
+in Chapter 2.  Available data will also be assimilated to the models using
+ensemble Kalman-based filtering and smoothing schemes which we will further
+equip with an efficient expectation-maximization algorithm for parameters
+estimation.
 
 \paragraph{Open Questions}
 
@@ -20,7 +21,7 @@ concentrations?
 
 \item How may statistical and deterministic models complement each other?
 
-\item May statistical methods forecast interesting dynamical features?
+\item May statistical methods forecast relevant dynamical features?
 
 \item Are there significant regional differences in the relative performances
 of both approaches?
@@ -33,22 +34,21 @@ of both approaches?
 
 \begin{enumerate}
 
-\item Calibrate the ERSEM model on each of the regions to have useful
-regional models running.
+\item Implement 1D ERSEM models in each of the identified regions.
 
-\item Define an assimilation scheme and the data that will be assimilated
-by each regional model.
+\item Select and further develop an assimilation scheme and the data that will
+be assimilated by each regional model.
 
 \item Implement the assimilation scheme.
 
-\item Run the simulation and aggregate the results to allow for comparison
-with the statistical models introduced in the previous chapters.
+\item Run the simulation and aggregate the results to allow for comparison with
+the statistical models introduced in the previous chapters.
 
 \item Define the metrics for comparison between statistical and deterministic
 models.
 
-\item Conduct the comparison with the statistical models and summarize
-the results.
+\item Conduct the comparison with the statistical models and summarize the
+results.
 
 \end{enumerate}
 
@@ -66,7 +66,7 @@ blooming events.
 \item An understanding of the limitations of geostatistical models to predict
 nonlinear dynamics. 
 
-\item Propositions on how the statistical and dynamical approaches can
+\item Propositions on how the statistical and dynamical approaches may
 complement each other.
 
 \end{itemize}

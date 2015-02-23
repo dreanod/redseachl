@@ -7,11 +7,11 @@ chapters 2 to 4. In this chapter we will study how these two approaches can be
 complementary. Specifically, we will study the use of statistical forecasts
 model to improve the forecasts of the ERSEM ecological model. The forecasts of
 the statistical models will be treated as observations, that can be assimilated
-by the filtering scheme used with the ERSEM model, which will hopefully lead to
-improved forecasts. On the other hand, real observations will be assimilated
-sequentially when they become available. This method will allow the different
-ERSEM models on each cluster to communicate indirectly their states to one
-another. 
+by filtering or smoothing schemes implemented with the ERSEM model, which will
+hopefully lead to improved forecasts. On the other hand, real observations will
+be assimilated sequentially when they become available. This method will allow
+the different ERSEM models implemented on each cluster to indirectly
+communicate their estimates between each other.
 
 \paragraph{Open Questions}
 
@@ -34,17 +34,16 @@ forecasts?
 \item Develop a new assimilation scheme to assimilate statistical predictions
 and improve the 1D regional deterministic models.
 
-\item Define metrics to measure model improvement over the results of
-chapter 5.
+\item Define metrics to measure model improvement over the results of Chapter
+5.
 
 \item Prepare training and test datasets, as in previous chapters.
 
-\item Train statistical models to predict chlorophyll as in chapter 2.
+\item Train statistical models to predict chlorophyll as in Chapter 2.
 
 \item Run simulations with assimilation of statistical and real observations.
 
-\item Compare with results of chapter 5 to see if the method improves
-over the deterministic model alone.
+\item Compare with the results of Chapter 5.
 
 \end{enumerate}
 
@@ -59,5 +58,8 @@ approach.
 ecological models through statistical models.
 
 \item Insights on the global ecological dynamics of the Red Sea.
+
+\item An efficient general approach to model and forecast chlorophyll
+concentrations.
 
 \end{itemize}

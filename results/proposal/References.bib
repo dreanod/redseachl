@@ -618,7 +618,7 @@ infinitely divisible functions},
 
 @incollection{Gneiting2010,
    author = {Gneiting, Tilmann and Guttorp, Peter},
-   title = {Continuous Parameter Stochastic Process Theory},
+   title = {Continuous Parameter Spatio-Temporal Processes},
    booktitle = {Handbook of Spatial Statistics},
    editor = {Gelfand, Alan E. and Diggle, Peter J. and Fuentes, Montserrat and Guttorp, Peter},
    series = {Chapman \& Hall/CRC Handbooks of Modern Statistical Methods},
@@ -1196,3 +1196,54 @@ http://journals.ametsoc.org/doi/pdf/10.1175/1520-0493%282000%29128%3C2905%3AAHEK
    type = {Journal Article}
 }
 
+@article{Altaf2014,
+   author = {Altaf, M. U. and Butler, T. and Mayo, T. and Luo, X. and Dawson, C. and Heemink, A. W. and Hoteit, I.},
+   title = {A Comparison of Ensemble {Kalman} Filters for Storm Surge Assimilation},
+   journal = {Monthly Weather Review},
+   volume = {142},
+   pages = {2899-2914},
+   abstract = {This study evaluates and compares the performances of several variants of the popular ensemble Kalman filter for the assimilation of storm surge data with the advanced circulation (ADCIRC) model. Using meteorological data from Hurricane Ike to force the ADCIRC model on a domain including the Gulf of Mexico coastline, the authors implement and compare the standard stochastic ensemble Kalman filter (EnKF) and three deterministic square root EnKFs: the singular evolutive interpolated Kalman (SEIK) filter, the ensemble transform Kalman filter (ETKF), and the ensemble adjustment Kalman filter (EAKF). Covariance inflation and localization are implemented in all of these filters. The results from twin experiments suggest that the square root ensemble filters could lead to very comparable performances with appropriate tuning of inflation and localization, suggesting that practical implementation details are at least as important as the choice of the square root ensemble filter itself. These filters also perform reasonably well with a relatively small ensemble size, whereas the stochastic EnKF requires larger ensemble sizes to provide similar accuracy for forecasts of storm surge.},
+   keywords = {strongly nonlinear-systems
+adaptive covariance inflation
+sequential data assimilation
+scale data assimilation
+square-root filters
+theoretical aspects
+model
+transform
+forecasts
+scheme},
+   ISSN = {0027-0644},
+   DOI = {10.1175/Mwr-D-13-00266.1},
+   url = {<Go to ISI>://WOS:000340013200018
+http://journals.ametsoc.org/doi/pdf/10.1175/MWR-D-13-00266.1},
+   year = {2014},
+   type = {Journal Article}
+}
+
+
+@article{Nerger2005,
+   author = {Nerger, L. and Hiller, W. and Schröter, J.},
+   title = {A comparison of error subspace {Kalman} filters},
+   journal = {Tellus},
+   volume = {57A},
+   number = {5},
+   pages = {715-735},
+   abstract = {Three advanced filter algorithms based on the Kalman filter are reviewed and presented in a unified notation. They are the well-known ensemble Kalman filter (EnKF), the singular evolutive extended Kalman (SEEK) filter, and the less common singular evolutive interpolated Kalman (SEIK) filter. For comparison, the mathematical formulations of the filters are reviewed in relation to the extended Kalman filter as error subspace Kalman filters. The algorithms are presented in their original form and possible variations are discussed. A comparison of the algorithms shows their theoretical capabilities for efficient data assimilation with large-scale non-linear systems. In particular, problems of the analysis equations are apparent in the original EnKF algorithm due to the Monte Carlo sampling of ensembles. Theoretically, the SEIK filter appears to be a numerically very efficient algorithm with high potential for use with non-linear models. The superiority of the SEIK filter is demonstrated on the basis of identical twin experiments using a shallow-water model with non-linear evolution. Identical initial conditions for all three filters allow for a consistent comparison of the data assimilation results. These show how choices of particular state ensembles and assimilation schemes lead to significant variations of the filter performance. This is related to different qualities of the predicted error subspaces, as is demonstrated in an examination of the predicted state covariance matrices.},
+   keywords = {atmospheric data assimilation
+sequential data assimilation
+quasi-geostrophic model
+tropical pacific
+altimeter data
+part i
+ocean
+oceanography
+smoother
+systems},
+   ISSN = {0280-6495},
+   DOI = {10.1111/J.1600-0870.2005.00141.X},
+   url = {<Go to ISI>://WOS:000232138300003
+http://www.tellusa.net/index.php/tellusa/article/download/14732/16540},
+   year = {2005},
+   type = {Journal Article}
+}

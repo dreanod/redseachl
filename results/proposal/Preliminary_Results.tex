@@ -127,7 +127,34 @@ further subdivided according to their sizes \citep{Baretta1995}.
 The ecological models are initialized with the results of a 3D ecological
 simulation of the Red Sea \citep{Triantafyllou2014}. The nutrient
 concentrations are initialized using values from the World Ocean Atlas 2005
-(WOA 2005).
+(WOA 2005). We show the model outputs for the northern Red Sea (Figure
+\ref{chl2}), the central Red Sea (Figure \ref{chl1}), and the southern Red Sea
+(Figure \ref{chl3}). The models are able to reproduce the seasonality of
+chlorophyll concentration, with high values in winter and lower values in the
+summer. As noticed in \citet{Raitsos2013}, the winter blooms are associated
+with deep mixing, particularly in the northern Red Sea.  During summer, there
+is a subsurface chlorophyll maximum in the three regions.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=.13]{figures/chl2.png}
+    \caption{Assimilated chlorophyll in the northern Red Sea}
+    \label{chl2}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=.13]{figures/chl1.png}
+    \caption{Assimilated chlorophyll in the central Red Sea}
+    \label{chl1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=.13]{figures/chl3.png}
+    \caption{Assimilated chlorophyll in the southern Red Sea}
+    \label{chl3}
+\end{figure}
 
 \section{Data Assimilation into the 1D Ecological Models}
 
@@ -140,8 +167,7 @@ variational 3DVAR system. The idea behind it is to complete the rank-deficient
 EnKF background by another background that has been designed to capture the
 climatological variability of the system.  In our hybrid implementation, the
 covariance is a linear combination of the 3DVAR covariance and the
-time-evolving SEIK covariance matrix. Figure \ref{assim} shows the assimilation
-scheme improves the fit of the model to the chlorophyll data.
+time-evolving SEIK covariance matrix.
 
 The problem of optimal filtering can be solved exactly by the Kalman Filter for
 linear systems. For nonlinear models, one can use the Extended Kalman (EK)
@@ -157,13 +183,39 @@ to perform better when this model is strongly non-linear. SEIK has been shown
 to be efficient for large-scale 3D ecosystem data assimilation
 \citep{Triantafyllou2003}.
 
+We show the chlorophyll surface concentration predicted by the models (with and
+without assimilation), and the satellite measurements in the three regions in
+Figures \ref{chl_models2}, \ref{chl_models1} and \ref{chl_models3}.  The models
+reproduce the seasonality of the chlorophyll concentration with low
+concentrations in the summer, and a winter bloom. However, the model tends to
+overestimate the chlorophyll concentration in winter in the northern Red Sea,
+and to underestimate it in the summer in the southern and central Red Sea.
+Furthermore, the summer bloom in the southern Red Sea is not well predicted.
+However, the assimilation is able to correct these biases, and leads to better
+estimates of chlorophyll concentration.
+
 \begin{figure}
     \centering
-    \includegraphics[scale=.45]{figures/chl_factor.png}
-    \caption{Surface chlorophyll in the northern Red Sea from CCI data (green),
-             from a free run of the 1D ecological model (white), with data
-             assimilation (yellow)}
-    \label{assim}
+    \includegraphics[scale=.15]{figures/chl_models2.png}
+    \caption{Surface chlorophyll in the northern Red Sea from CCI data,
+             assimilated, and non assimilated 1D ecological model}
+    \label{chl_models2}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=.15]{figures/chl_models1.png}
+    \caption{Surface chlorophyll in the central Red Sea from CCI data,
+             assimilated, and non assimilated 1D ecological model}
+    \label{chl_models1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=.15]{figures/chl_models3.png}
+    \caption{Surface chlorophyll in the southern Red Sea from CCI data,
+             assimilated, and non assimilated 1D ecological model}
+    \label{chl_models3}
 \end{figure}
 
 The Expectation-Maximization (EM) scheme to estimate the filter parameters has

@@ -224,38 +224,46 @@ that the model is nonlinear. The scheme will be used to improve the estimates
 of the observation and model covariance errors. We expose the steps of the EM
 scheme here.
 
+\newcommand\x{\mathbf{x}}
+\newcommand\y{\mathbf{y}}
+\newcommand\eeta{\mathbf{\boldsymbol\eta}}
+\newcommand\vvarepsilon{\mathbf{\boldsymbol\varepsilon}}
+
 We consider the state-space system:
 \begin{IEEEeqnarray}{rClR}
-  x_k & = & f_k(x_{k-1}) + \eta_k,    & k=0,...,K\\
-  y_k & = & h_k(x_k) + \varepsilon_k, & k=1,...,K.
+  \x_k & = & f_k(\x_{k-1}) + \eeta_k,    & k=0,...,K\\
+  \y_k & = & h_k(\x_k) + \vvarepsilon_k, & k=1,...,K.
 \end{IEEEeqnarray}
-The first equation is the state equation, where $x_k$ is the state of the
-system (unknown), $f_k$ is the nonlinear model that integrated the state
-between time $t_{k-1}$ and $t_k$, and $\eta_k \sim N(0,Q)$ iid is the model
-error. The second equation is the measurement equation, where $y_k$ is the
+The first equation is the state equation, where $\x_k$ is a vectro
+representing the state of the
+system (unknown), $f_k$ is the nonlinear model that integrates the state
+between time $t_{k-1}$ and $t_k$, and $\eeta_k \sim N(0,Q)$ iid is the model
+error. The second equation is the measurement equation, where $\y_k$ is the
 observation available at time $t_k$, $h$ is the observation operator that maps
-the system state to the observation, and $\varepsilon_k \sim N(0,R)$ iid is the
-measurement error. The initial state follows a distribution $x_0 \sim N(x_b,
+the system state to the observation, and $\vvarepsilon_k \sim N(0,R)$ iid is the
+measurement error. The initial state follows a distribution $\x_0 \sim N(\x_b,
 B)$.
 
 The goal of the EM scheme is to estimate the unknown parameters $Q$, $R$,
-$x_b$, and $B$ that we regroup under the variable $\Theta$. EM is an iterative
+$\x_b$, and $B$ that we regroup under the variable $\Theta$. EM is an iterative
 procedure to compute the maximum likelihood estimator:
 \begin{IEEEeqnarray}{c}
-  \Theta_{\text{ML}} = \text{arg}\max(\log p(y_{1:k}|\Theta)),
+  \Theta_{\text{ML}} = \text{arg}\max(\log p(\y_{1:K}|\Theta)),
 \end{IEEEeqnarray}
 when the function to optimize cannot be expressed in an analytical form.
+$\y_{1:K}$ designates all the observations from time step 1 to time step
+$K$.
 
 Given an initial estimate $\Theta^{(0)}$, the following two steps are iterated
 until convergence:
 
 \paragraph{Expectation Step:}
-The function $G(\Theta) = E_{|\Theta=\Theta^{(r)}}[\log p(x_{0:k}|\Theta,
-y_{1:k})]$ is computed. In the case where $f$ and $h$ are linear, the
-distribution can be exactly computed by computing the smoothing means and
-covariances of each state with the Kalman filter, as shown in
-\citet{Shumway1982}. Otherwise, the distribution can be estimated using, for
-example, an ensemble smoother \citep{Tandeo2014}.
+The function $G(\Theta) = E_{|\Theta=\Theta^{(r)}}[\log p(\x_{0:K}|\Theta,
+y_{1:K})]$ is computed. In the case where $f$ and $h$ are linear, the
+distribution can be exactly computed using the Kalman smoother procedure
+\citep{Shumway1982}. Otherwise, the distribution can be estimated using, for
+example, an ensemble smoother \citep{Tandeo2014}. This is the strategy we
+use, since the ecological models are non linear.
 
 \paragraph{Maximization Step:}
 The function $G$ is maximized to give a new estimate of the parameters:

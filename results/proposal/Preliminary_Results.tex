@@ -2,21 +2,21 @@
 
 \section{Data Preparation}
 
-All of the datasets necessary for the analysis has been gathered. Most of
-it has been downloaded from public sources on the Internet, using Shell and R
-scripts. The wind dataset has been provided by Yesubabu Viswanadhapalli, and
-is the result of the assimilation of QuickScat satellite and all available
-in situ data in the Red Sea into
-the Weather Research and Forecasting (WRF) regional Red Sea model. There are
-additional datasets that will be useful for the analysis, but they are mainly
-climate mode time-series like IMI and EAWR, that are easy to download. The
-downloaded data is listed and described in table \ref{tab:data}.
+All the datasets necessary for the analysis has been gathered. Most of it has
+been downloaded from public sources on the Internet, using Shell and R scripts.
+The wind dataset has been provided by Yesubabu Viswanadhapalli, and is the
+result of the assimilation of all available atmospheric satellite and in situ
+data in the Red Sea into the Weather Research and Forecasting (WRF) regional
+Red Sea model. There are additional datasets that will be useful for the
+analysis. These are mainly climate mode time-series such as the Indian Monsoon
+Index (IMI) and the East Atlantic - West Russian (EAWR) patterns, that are easy
+to obtain. The downloaded data is listed and described in table \ref{tab:data}.
 
 So far, the MODIS and CCI data have been cropped over the region of interest,
 cleaned and exported to the format TIFF, which can be easily read by most
 software, R in particular. Each dataset has then been aggregated in a single
 file in the native R raster format. Applying this processing to the remaining
-raster data should be straightforward. Then, the data will need to be aligned
+grid data should be straightforward. Then, the data will need to be aligned
 and aggregated on the same temporal and spatial resolution, before aggregating
 it in table format.
 
@@ -40,8 +40,8 @@ display a strong spatio-temporal correlation: the temporal correlation of
 anomalies is 40\%, whereas two locations at 0.5 degrees apart are nearly 60\%
 correlated. Not shown in this article, I also compared the SST and chlorophyll
 data, and found an important negative correlation. However, when looking at the
-anomalies, the correlation vanished, suggesting that the causes of seasonal and
-interannual variability are distinct.
+anomalies, the correlation was not significant, suggesting that the causes of
+seasonal and interannual variability are distinct.
 
 \section{Red Sea Regional Clustering}
 
@@ -69,21 +69,21 @@ of Aden.
 
 In Chapter 2, I plan to use the dataset constructed in Chapter 1.  By using CCI
 chlorophyll data instead of SeaWiFS, the need for data filling is minimized.
-This is desirable, as data filling can introduce biases. It will also be
+This is desirable, as data filling may introduce biases. It will also be
 possible to use additional variables. For example, we can expect the
 temperature and the bathymetry to have a large impact on the Red Sea
 phytoplankton biology. Sea level anomaly can be useful in that it indicates the
 presence of mesoscale eddies. Finally, alternative clustering algorithms will
 be tested.
 
-\section{Global Geostatistical Model}
+\section{A Global Geostatistical Model}
 
 The research described in Chapter 3 of the thesis has mostly been
-done and, is the object of an article currently in review. The current version
-of the manuscript can be found in appendice. We include the abstract below:
+done and, is the object of an article currently under review. The current version
+of the manuscript can be found in the appendix. We include the abstract below:
 
 \begin{quotation}
-A statistical model is proposed to filter satellite-derived chlorophyll
+\emph{A statistical model is proposed to filter satellite-derived chlorophyll
 concentration from the Red Sea, and to predict future chlorophyll
 concentrations. The seasonal trend is first estimated after filling missing
 chlorophyll data using an Empirical Orthogonal Function (EOF)-based algorithm
@@ -96,24 +96,24 @@ of the anomalies. The latter serves as the prediction model of a reduced-order
 Kalman filter, which is applied to assimilate and predict future observations
 of chlorophyll concentrations. The proposed method decreases the root mean
 square (RMS) prediction error by about 11\% compared with the seasonal
-prediction.
+prediction.}
 \end{quotation}
 
 \section{Regional 1D Ecological Models}
 
-The 1D regional ecological models used for this thesis have been configured and
+The 1D regional ecological models have been configured and
 are operational. Three models will be used: for the northern, central and
 southern Red Sea. The extreme south of the Red Sea is not modeled, as its
 dynamics is poorly understand and no in situ data are available to validate the
 satellite products. The ecology is modeled with ERSEM, and the hydrodynamics
 is modeled with the MITgcm.
 
-The results of the MITgcm are those from \citet{Yao2014, Yao2014b}, in which a
-simulation of the Red Sea and part of the Gulf of Aden circulation was run over
-50 years. The NCEP data were used for atmospheric forcing, and the ocean ECCO
-data for the open boundary conditions in the Gulf of Aden. The output of the 50
-years run are used for the temperature and vertical circulation at the modeled
-points.
+The physical forcing from the MITgcm are those of \citet{Yao2014, Yao2014b}, in
+which a simulation of the Red Sea and part of the Gulf of Aden circulation was
+run over 50 years. The NCEP data were used for atmospheric forcing, and the
+ocean ECCO data for the open boundary conditions in the Gulf of Aden. The
+output of the 50 years run are used for the temperature and vertical
+circulation at the modeled points.
 
 ERSEM simulates the complete water column with the pelagic and benthic
 ecosystems, as well a their coupling. The equations model the flow of carbon,
@@ -124,7 +124,7 @@ divided into functional groups according to their trophic levels: producers
 (phytoplankton), consumers (zooplankton) and decomposers (bacteria), and
 further subdivided according to their sizes \citep{Baretta1995}.
 
-The ecological models are initialized with the results of a 3D ecological
+The ecological models are initialized from the results of a 3D ecological
 simulation of the Red Sea \citep{Triantafyllou2014}. The nutrient
 concentrations are initialized using values from the World Ocean Atlas 2005
 (WOA 2005). We show the model outputs for the northern Red Sea (Figure
@@ -156,7 +156,7 @@ is a subsurface chlorophyll maximum in the three regions.
     \label{chl3}
 \end{figure}
 
-\section{Data Assimilation into the 1D Ecological Models}
+\section{Data Assimilation into 1D Ecological Models}
 
 The assimilation scheme for the ecological models has been implemented and is
 operational. The chosen scheme is a hybrid-SEIK, with the hybrid approach
@@ -219,10 +219,10 @@ estimates of chlorophyll concentration.
 \end{figure}
 
 The Expectation-Maximization (EM) scheme to estimate the filter parameters has
-also been derived. It is similar to that proposed by \citet{Tandeo2014}, except
-that the model is nonlinear. The scheme will be used to improve the estimates
-of the observation and model covariance errors. We expose the steps of the EM
-scheme here.
+also been derived. It is similar to that proposed by \citet{Tandeo2014}, which
+we generalize to nonlinear models. The scheme will be further extended to estimate
+of the observation and model covariance errors. We outline the steps of the EM
+scheme hereafter.
 
 \newcommand\x{\mathbf{x}}
 \newcommand\y{\mathbf{y}}
@@ -234,23 +234,22 @@ We consider the state-space system:
   \x_k & = & f_k(\x_{k-1}) + \eeta_k,    & k=0,...,K\\
   \y_k & = & h_k(\x_k) + \vvarepsilon_k, & k=1,...,K.
 \end{IEEEeqnarray}
-The first equation is the state equation, where $\x_k$ is a vectro
-representing the state of the
-system (unknown), $f_k$ is the nonlinear model that integrates the state
-between time $t_{k-1}$ and $t_k$, and $\eeta_k \sim N(0,Q)$ iid is the model
-error. The second equation is the measurement equation, where $\y_k$ is the
-observation available at time $t_k$, $h$ is the observation operator that maps
-the system state to the observation, and $\vvarepsilon_k \sim N(0,R)$ iid is the
-measurement error. The initial state follows a distribution $\x_0 \sim N(\x_b,
-B)$.
+The first equation is the state equation, where $\x_k$ is a vector representing
+the state of the system (unknown), $f_k$ is the nonlinear model that integrates
+the state between time $t_{k-1}$ and $t_k$, and $\eeta_k \sim N(0,Q)$ iid is
+the model error. The second equation is the measurement equation, where $\y_k$
+is the observation available at time $t_k$, $h$ is the observation operator
+that maps the system state to the observation, and $\vvarepsilon_k \sim N(0,R)$
+iid is the measurement error. The initial state follows a distribution $\x_0
+\sim N(\x_b, B)$.
 
-The goal of the EM scheme is to estimate the unknown parameters $Q$, $R$,
+We use the EM scheme in order to estimate the unknown parameters $Q$, $R$,
 $\x_b$, and $B$ that we regroup under the variable $\Theta$. EM is an iterative
 procedure to compute the maximum likelihood estimator:
 \begin{IEEEeqnarray}{c}
   \Theta_{\text{ML}} = \text{arg}\max(\log p(\y_{1:K}|\Theta)),
 \end{IEEEeqnarray}
-when the function to optimize cannot be expressed in an analytical form.
+when it is impossible to analytically express the function to optimize.
 $\y_{1:K}$ designates all the observations from time step 1 to time step
 $K$.
 
@@ -263,13 +262,13 @@ y_{1:K})]$ is computed. In the case where $f$ and $h$ are linear, the
 distribution can be exactly computed using the Kalman smoother procedure
 \citep{Shumway1982}. Otherwise, the distribution can be estimated using, for
 example, an ensemble smoother \citep{Tandeo2014}. This is the strategy we
-use, since the ecological models are non linear.
+use, since the ecological models are nonlinear.
 
 \paragraph{Maximization Step:}
-The function $G$ is maximized to give a new estimate of the parameters:
+The function $G$ is maximized to compute a new estimate of the parameters:
 \begin{IEEEeqnarray}{c}
-  \Theta^{(r+1)} = \text{arg}\max_{\Theta} G(\Theta)
+  \Theta^{(r+1)} = \text{arg}\max_{\Theta} G(\Theta).
 \end{IEEEeqnarray}
-EM is guaranteed to converge when $G$ can be computed exactly. Experiments with
-with a linear system showed that EM can still converge when using the ensemble
-smoother.
+EM is guaranteed to converge when $G$ can be exactly computed. Results from
+preliminary experiments with a linear system showed that EM may still converge
+when using an ensemble smoother.

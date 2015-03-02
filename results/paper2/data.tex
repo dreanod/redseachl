@@ -37,26 +37,93 @@
 
 \paragraph{We use CCI chlorophyll data because it has more coverage.}
 
+\begin{itemize}
+  \item MODIS data has a lot of missing data especially during summer
+in the South
+  \item CCI data, merges three different sensors and uses the POLYMER
+algorithm.
+  \item As a result the coverage increases dramatically.
+  \item This is the first dataset that has significant coverage in
+the southern Red Sea, and that is why we will use it.
+  \item We use 4km resolution L3 CHL product between such and such
+coordinates.
+  \item We use weekly data for the clustering and 8days data for
+the assimilation
+\end{itemize}
+
 \paragraph{With a quick look at the data this is what we see...}
+
+\begin{itemize}
+  \item plot coverage
+  \item plot average chlorophyll
+  \item plot seasonal chlorophyll
+\end{itemize}
 
 \subsection{DINEOF}
 
 \paragraph{There are still missing data in CCI, so we use DINEOF for
 data filling because...}
 
+\begin{itemize}
+  \item DINEOF is an EOF based non parametric data filling methods
+  \item introduced orignally by \citet{Beckers2003}
+  \item Has been applied to geoscience datasets, in particular to
+chl datasets
+  \item Shown in \citet{Taylor2013} to be more efficient that its
+competition.
+\end{itemize}
+
 \paragraph{More or less this is the way DINEOF works...}
+
+\begin{itemize}
+  \item Describe here the algo
+\end{itemize}
 
 \paragraph{This is how we applied DINEOF...}
 
+\begin{itemize}
+  \item Choices of parameters and cross validation method and why we
+made these choices.
+\end{itemize}
+
 \paragraph{Now we show the results of DINEOF}
+
+\begin{itemize}
+  \item Show minimization of error plot.
+  \item Show the filling of a region.
+\end{itemize}
 
 \subsection{Clustering}
 
 \paragraph{To do 1D models, we cluster the Red Sea using clustering
 algorithms. We chose GMM because...}
 
+\begin{itemize}
+  \item There are many clustering algorithms on the market: for example...
+  \item Discuss advantages and inconvenients of some of them (find reference)
+  \item Finally we tried some of them and found that GMM was given better
+results, in comparison to what we expected.
+\end{itemize}
+
 \paragraph{This is more or less the way GMM works...}
+
+\begin{itemize}
+  \item Describe how GMM algo works
+\end{itemize}
 
 \paragraph{This is how we used it...}
 
+\begin{itemize}
+  \item We wanted 3 broad regions in the northern, central and southern Red Sea.
+  \item We ran GMM with k varying from 3 to 7.
+  \item We looked at some of this tests to see if the clusters where good.
+  \item At the end we settled with k=? because it was good for our purposes and
+the regions where closed to to what \citet{Raitsos2013} found.
+\end{itemize}
+
 \paragraph{This is what we got...}
+
+\begin{itemize}
+  \item Show plot of clusters
+  \item Comment on clusters, and what was found by \citet{Raitsos2013}.
+\end{itemize}

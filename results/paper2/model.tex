@@ -4,12 +4,48 @@
 
 \paragraph{Description of ERSEM}
 
+\begin{itemize}
+  \item ERSEM develop originally for the northern Sea
+  \item Complete ecology modeling
+  \item Been applied in many ecosystem
+  \item in particular used for the Red Sea simulation \citet{Triantafyllou2013}
+  \item Very complex: many parameters and variables
+\end{itemize}
+
 \paragraph{Initialization/Parameters/Forcing}
+
+\begin{itemize}
+  \item We initialize with the values found by \citet{Triantafyllou2013}
+  \item The nutrients are initialized using the values of WOA
+  \item Parameters are chosen like this
+  \item Forcing come from the simulation by \citet{Yao2014b, Yao2014}
+\end{itemize}
 
 \subsection{Data Assimilation}
 
 \paragraph{We chose hybrid-SEIK DA scheme because...}
 
+\begin{itemize}
+  \item Data assimilation is necessary to improve the forecasting skill of
+complex geophysical models
+  \item It constrains models that are imperfect and whose parametrization is
+difficult to do.
+  \item SEEK has a long history in assimilation into ecological models.
+  \item Its ensemble variant SEIK, has been shown to behave better for very
+nonlinear systems
+  \item However, SEIK requires to run the model many time in parallel.
+  \item To reduce the ensemble size and improve the efficiency, we use the
+hybrid formulation proposed in \citet{Hamill2011}.
+\end{itemize}
+
 \paragraph{Equations of hybrid-SEIK}
 
+\begin{itemize}
+  \item Show the steps of the hybrid-SEIK scheme
+\end{itemize}
+
 \paragraph{Parameters}
+
+\begin{itemize}
+  \item How we choose the scheme parameters and why.
+\end{itemize}

@@ -72,84 +72,25 @@ currently in the Red Sea
 
 \paragraph{What we are going to do in this paper step by step}
 
+\begin{itemize}
+  \item Fill the data with DINEOF
+  \item Apply clustering to the Red Sea
+  \item Implement 1D models
+  \item Run models with assimilation
+  \item Analyze results and compare to findings in previous studies
+\end{itemize}
+
 \paragraph{What is new in this paper and why}
+
+\begin{itemize}
+  \item We use CCI data: which is a new dataset, not fully exploited in
+Red Sea.
+  \item We do eco-region clustering for the first time in the Red Sea.
+  \item We have assimilation of ecological model with hybrid-SEIK published
+for the first time.
+  \item We improve our understanding of the Red Sea ecology in its different
+parts.
+\end{itemize}
 
 \paragraph{Introduce sections}
 
-
-% 
-% \paragraph{What are marine ecosystem models}
-% ERSEM, NPZ.
-% 
-% \paragraph{Marine ecosystem models have scientific and practical applications}
-% Forecasting, harmful algae blooms, scientific inquiry when not enough data.
-% 
-% \paragraph{Complex 3D ecological models have limitations}
-% Indetermination and computational cost.
-% 
-% \paragraph{Assimilation in necessary but increases the computational cost}
-% Ecological systems are chaotic system that require assimilation to
-% maintain a good prediction skill. But assimilation increases the computational
-% cost. Assimilation of eco models remains a challenge.
-% 
-% \paragraph{The hybrid-SEIK}
-% Has never been use for eco models before.
-% 
-% \paragraph{Ocean colour data has been assimilated a lot to eco models}
-% chlorophyll is a green colored pigment critical for photosynthesis and found
-% in plants and algae \citep{Pal2014}. Give a detectable green coloration
-% to the water when phytoplankton is present \citep{Robinson2010}.
-% Remotely sensed ocean colour data give highly available data with 
-% high coverage both in time and space \citep{Robinson2010}. Ocean colour
-% data products like chl are very good proxy for phytoplankton concentration.
-% 
-% \paragraph{But has some limitations}
-% CHL dataset have missing data because of clouds. Which is a big problem in 
-% the southern Red Sea in summer where the coverage is almost zero
-% \cite{Racault}. Moreover the chl is difficult to estimate in case II
-% optically complex waters, especially near the caosts. It also particularly
-% affects the southern Red Sea which is very shallow.
-% 
-% \paragraph{The Red Sea is a relatively unexplored sea}
-% Not a lot of studies, not a lot of in situ data.
-% Must use models and remotely-sensed data.
-% RS is TTS with strong stratification that limits vertical diffusion of nutrients.
-% \citep{Mann2006}.
-% Other than the gulf of Aden \citep{Yao2015}, 
-% the RS has no known significant input of nutrients and
-% is oligotrophic \citep{Raitsos2013, Weikert1987}.
-% Red Sea has a rich ecosystem and unique ecosystem that has adapted its
-% extreme environment \citep{Raitsos2011}.
-% RS relatively well preserved but increasingly fragilized by human activities.
-% Sharp increase of temperature in the past decade threatend the RS environment.
-% \citep{Raitsos2011}.
-% 
-% \paragraph{Major biological patterns}
-% Current hypotheses about primary production in Red Sea.
-% There is a lack of missing data therefore the large scale ecological 
-% dynamics is poorly known \citep{Raitsos2013, Triantafyllou2014}.
-% The role of aerosol deposition could be important but has not been investigated
-% yet \citep{Raitsos2013}.
-% Eddies are believed to play important role \citep{Raitsos2013, Zhan2014}.
-% Chlorophyll increase from north to south \citep{Raitsos2013}.
-% Secondary summer bloom (but not in NRS) \citep{Raitsos2013}.
-% Strong Interannual variability \citep{Raitsos2013}.
-% Exchange of water with GOA is a major driver of productivity for the 
-% whole Red Sea \citep{Triantafyllou2014}.
-% SRS winter bloom attributed to wind-driven intrusion \citep{Raitsos2013}.
-% Deep convection in winter plays a big role in the northern Red Sea
-% \citep{Raitsos2013}.
-% Red Sea circulation impacted by eddies that could impact productivity
-% \citep{Zhai2013}. Central red Sea anti cyclonic eddy is believed to
-% control June peak \citep{Raitsos2013}.
-% Climate mode indices have impact ton the Red Sea \citep{Raitsos2015}.
-% 
-% 
-% \paragraph{Objective:}
-% 3D ecological models are expensive to run. Can we divide the Red Sea into
-% regions and have 1D models running in each of them in parallel?
-% In this article we cluster the Red Sea in 3 different eco-regions using
-% automatic unsupervised learning algorithms. We then run an assimilative 1D
-% ecological model on each of the region and analyze the results.
-% 
-% \paragraph{Introduce chapters}

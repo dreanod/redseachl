@@ -1,4 +1,4 @@
-\section{Model and Assimilation}
+\section{Clustered 1D Modeling and Assimilation}
 
 \subsection{1D-ERSEM model}
 
@@ -23,7 +23,7 @@
 
 \subsection{Data Assimilation}
 
-\paragraph{We chose hybrid-SEIK DA scheme because...}
+\paragraph{We chose SEIK DA scheme because...}
 
 \begin{itemize}
   \item Data assimilation is necessary to improve the forecasting skill of
@@ -33,19 +33,16 @@ difficult to do.
   \item SEEK has a long history in assimilation into ecological models.
   \item Its ensemble variant SEIK, has been shown to behave better for very
 nonlinear systems
-  \item However, SEIK requires to run the model many time in parallel.
-  \item To reduce the ensemble size and improve the efficiency, we use the
-hybrid formulation proposed in \citet{Hamill2011}.
 \end{itemize}
 
-\paragraph{Equations of hybrid-SEIK}
+\paragraph{Brief description of the SEIK algorithm}
 
 \begin{itemize}
-  \item Show the steps of the hybrid-SEIK scheme
+  \item Show the steps of the SEIK scheme
 \end{itemize}
 
-\paragraph{Parameters}
+\paragraph{Implementations}
 
 \begin{itemize}
-  \item How we choose the scheme parameters and why.
+  \item How we implemented the filter.
 \end{itemize}

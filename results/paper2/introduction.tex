@@ -1,14 +1,6 @@
 \section{Introduction}
 
-\paragraph{3D marine ecological models...}
-
-\begin{itemize}
-  \item marine ecology models represent biogeochemical interactions as
-differential equations.
-  \item Can be as minimal as NPZ or as complete as NPZ
-\end{itemize}
-
-\paragraph{...are useful because...}
+\paragraph{Marine ecosystem forecasting is needed because...}
 
 \begin{itemize}
   \item HAB affect public health, desalination and coastal economy
@@ -18,20 +10,38 @@ differential equations.
 phenomena
 \end{itemize}
 
-\paragraph{...But expensive and difficult to run}
+\paragraph{Marine ecological models are one way to make such forecasting}
 
 \begin{itemize}
-  \item \citep{Anderson2005} lot of underdetermination
-  \item circulation model very expensive, because very small grid
+  \item marine ecology models represent biogeochemical interactions as
+differential equations.
+  \item Can be as simple as NPZ or as complex and complete as ERSEM.
 \end{itemize}
 
-\paragraph{In this article we look at ways to simulate 3D ecosystems more
-cheaply by running many parallel 1D regional models}
+\paragraph{...But are expensive and difficult to tune, and subject to
+various sources of uncertainties}
 
 \begin{itemize}
-  \item Divide the Red sea in small regions with similar ecology
-  \item Reduces underdetermination
+  \item \citep{Anderson2005} lot of under-determination
+  \item require coupling physics + biology
+  \item Circulation models very expensive, because high-resolution grids
+and number of involved PDEs.
+\end{itemize}
+
+\paragraph{Data assimilation and parameter estimation techniques are
+used to improve and tune the models, but 3D models are still expensive
+to run}
+
+\paragraph{In this article we investigate ways to simulate and predict
+3D ecosystems more cheaply by running many parallel 1D regional models}
+
+\begin{itemize}
+  \item Divide the domain into small regions with similar ecology using
+advanced clustering techniques
+  \item Build 1D model for each identified region
   \item Ensure parametrization is better for each region
+  \item apply data assimilation techniques on the 1D models for efficient
+calculations.
 \end{itemize}
 
 \paragraph{We are going to test that idea on the Red Sea because...}
@@ -44,17 +54,17 @@ salinity
   \item Lack of data: therefore developing models is important
 \end{itemize}
 
-\paragraph{We will use the hybrid-SEIK data assimilation scheme, because...}
+\paragraph{We will use the SEIK data assimilation scheme, because...}
 
 \begin{itemize}
-  \item Assimilation constrains the model and reduces underdetermination
-  \item Mitigates the fact that initial conditions are unknown
+  \item Assimilation constrains the model, reduces underdetermination,
+and imporves forecasting
+  \item Mitigates the fact that initial conditions, parameters and physics
+are subject to uncertainties.
   \item SEIK is better than SEEK for strongly nonlinear models
-  \item SEIK is better than EnKF when fewer observations than states
-  \item hybridization reduces the ensemble size and the computational cost
 \end{itemize}
 
-\paragraph{We will assimilate Chl data even if it is imperfect because it is
+\paragraph{We will assimilate Chl data because it is currently
 the best available data for the Red Sea}
 
 \begin{itemize}
@@ -66,8 +76,6 @@ and expensive.
   \item Also bad values near the coast, case II waters
   \item Both problem particularly affect the southern Red Sea, that has
 nearly no observation in the summer during some months.
-  \item However as lack of in situ data, this is the best we have
-currently in the Red Sea
 \end{itemize}
 
 \paragraph{What we are going to do in this paper step by step}
@@ -75,7 +83,7 @@ currently in the Red Sea
 \begin{itemize}
   \item Fill the data with DINEOF
   \item Apply clustering to the Red Sea
-  \item Implement 1D models
+  \item Implement 1D models and assimilation schemes
   \item Run models with assimilation
   \item Analyze results and compare to findings in previous studies
 \end{itemize}

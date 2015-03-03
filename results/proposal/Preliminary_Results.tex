@@ -111,9 +111,10 @@ is modeled with the MITgcm.
 The physical forcing from the MITgcm are those of \citet{Yao2014, Yao2014b}, in
 which a simulation of the Red Sea and part of the Gulf of Aden circulation was
 run over 50 years. The NCEP data were used for atmospheric forcing, and the
-ocean ECCO data for the open boundary conditions in the Gulf of Aden. The
-output of the 50 years run are used for the temperature and vertical
-circulation at the modeled points.
+data from the group Estimating the Circulation and the Climate of the Ocean
+(ECCO) for the open boundary conditions in the Gulf of Aden. The output of the
+50 years run are used for the temperature and vertical circulation at the
+modeled points.
 
 ERSEM simulates the complete water column with the pelagic and benthic
 ecosystems, as well a their coupling. The equations model the flow of carbon,
@@ -158,16 +159,17 @@ is a subsurface chlorophyll maximum in the three regions.
 
 \section{Data Assimilation into 1D Ecological Models}
 
-The assimilation scheme for the ecological models has been implemented and is
-operational. The chosen scheme is a hybrid-SEIK, with the hybrid approach
-implemented as described in \citet{Hamill2000}.  The scheme is called hybrid as
-it combines the flow-dependent background estimates from the ensemble of an
-EnKF with as static background, taken for example from a three-dimensional
-variational 3DVAR system. The idea behind it is to complete the rank-deficient
-EnKF background by another background that has been designed to capture the
-climatological variability of the system.  In our hybrid implementation, the
-covariance is a linear combination of the 3DVAR covariance and the
-time-evolving SEIK covariance matrix.
+Two assimilation schemes for the ecological models have been implemented and
+are operational: SEIK and hybrid-SEIK, with the hybrid approach implemented as
+described in \citet{Hamill2000}. The scheme is called hybrid as it combines the
+flow-dependent background estimates from the ensemble of an EnKF with as static
+background, taken for example from a three-dimensional variational 3DVAR
+system. The idea behind it is to complete the rank-deficient EnKF background by
+another background that has been designed to capture the climatological
+variability of the system.  In our hybrid implementation, the covariance is a
+linear combination of the 3DVAR covariance and the time-evolving SEIK
+covariance matrix. We plan to investigate other assimilations scheme, in
+particular the EnKF.
 
 The problem of optimal filtering can be solved exactly by the Kalman Filter for
 linear systems. For nonlinear models, one can use the Extended Kalman (EK)
@@ -196,7 +198,7 @@ estimates of chlorophyll concentration.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=.15]{figures/chl_models2.png}
+    \includegraphics[scale=.12]{figures/chl_models2.png}
     \caption{Surface chlorophyll in the northern Red Sea from CCI data,
              assimilated, and non assimilated 1D ecological model}
     \label{chl_models2}
@@ -204,7 +206,7 @@ estimates of chlorophyll concentration.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=.15]{figures/chl_models1.png}
+    \includegraphics[scale=.12]{figures/chl_models1.png}
     \caption{Surface chlorophyll in the central Red Sea from CCI data,
              assimilated, and non assimilated 1D ecological model}
     \label{chl_models1}
@@ -212,7 +214,7 @@ estimates of chlorophyll concentration.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=.15]{figures/chl_models3.png}
+    \includegraphics[scale=.12]{figures/chl_models3.png}
     \caption{Surface chlorophyll in the southern Red Sea from CCI data,
              assimilated, and non assimilated 1D ecological model}
     \label{chl_models3}

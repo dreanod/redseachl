@@ -1,6 +1,5 @@
 import scipy.io as sio
 import numpy as np
-import numpy.ma as ma
 
 DATA = sio.loadmat('data/chl_oc_cci/aggregate/chl_oc_cci.mat')
 lon = DATA['lon']
@@ -20,3 +19,4 @@ if not os.path.exists('data/chl_oc_cci/clustering'):
 lon.dump('data/chl_oc_cci/clustering/lon.npy')
 lat.dump('data/chl_oc_cci/clustering/lat.npy')
 chl.dump('data/chl_oc_cci/clustering/chl.npy')
+mask.dump('data/chl_oc_cci/clustering/mask.npy')

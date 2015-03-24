@@ -6,17 +6,24 @@ import numpy.ma as ma
 nb_lats = 408
 nb_lons = 288
 T = 685
-outputDir = 'derived/data_filling'
+inputDir = 'derived/data_filling'
+outputDir = 'data/filled_data'
 
-mask = sio.loadmat(os.path.join(outputDir, 'mask.mat'))['mask']
+if not os.path.exists(outputDir):
+    os.makedirs(outputDir)
+
+mask = sio.loadmat(os.path.join(inputDir, 'mask.mat'))['mask']
 mask = mask == 0
 
-eofs     = np.genfromtxt(os.path.join(outputDir, 'outputEof.lftvec'))
-time_fct = np.genfromtxt(os.path.join(outputDir, 'outputEof.rghvec'))
-s_values = np.genfromtxt(os.path.join(outputDir, 'outputEof.vlsng'))
-varEx    = np.genfromtxt(os.path.join(outputDir, 'outputEof.varEx'))[:, 3]
+eofs     = np.genfromtxt(os.path.join(inputDir, 'outputEof.lftvec'))
+time_fct = np.genfromtxt(os.path.join(inputDir, 'outputEof.rghvec'))
+s_values = np.genfromtxt(os.path.join(inputDir, 'outputEof.vlsng'))
+varEx    = np.genfromtxt(os.path.join(inputDir, 'outputEof.varEx'))[:, 3]
 
-sio.savemat(os.path.join(outputDir, 'eofs.mat'), {'eofs': eofs})
-sio.savemat(os.path.join(outputDir, 's_values.mat'), {'s_values': s_values})
-sio.savemat(os.path.join(outputDir, 'varEx.mat'), {'varEx': varEx})
-sio.savemat(os.path.join(outputDir, 'time_fct.mat'), {'time_fct': time_fct})
+sio.savemat(os.path.join(inputDir, 'eofs.mat'), {'eofs': eofs})
+sio.savemat(os.path.join(inputDir, 's_values.mat'), {'s_values': s_values})
+sio.savemat(os.path.join(inputDir, 'varEx.mat'), {'varEx': varEx})
+sio.savemat(os.path.join(inputDir, 'time_fct.mat'), {'time_fct': time_fct})
+
+mask[mask] = 1
+sio.savemat(os.path.join(outputDir, 'mask.mat'), {'mask': mask})

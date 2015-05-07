@@ -1,7 +1,12 @@
 library(raster)
 
+out_dir <- 'data/chl_oc_cci/projected'
+
+dir.create(out_dir, recursive=TRUE)
+
 clusters <- raster('derived/clustering/with_seasonal_filling/clusters.grd')
 chl <- brick('data/chl_oc_cci/filled/seasonal_filling/chl_filled.grd')
+chl <- log(chl)
 
 N <- nlayers(chl)
 
@@ -45,3 +50,4 @@ for (i in 1:N) {
 }
 
 df <- data.frame(year=y, week=w, chl_1, chl_2, chl_3, chl_4, row.names=d)
+write.csv(df, file=paste(out_dir, 'chl_oc_cci.csv', sep='/'))

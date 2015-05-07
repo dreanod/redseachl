@@ -23,6 +23,7 @@ p <- p + geom_polygon(aes(x=long, y=lat, group=group),
                       fill='tan')
 p <- p + ggtitle('GMM clustering with 5 clusters')
 p <- p + ylab('Latitude') + xlab('Longitude')
+p <- p + theme(text=element_text(size=16))
 
 fn <- paste(outputDir, '/clusters_k5.png', sep='')
 ggsave(fn, plot=p)

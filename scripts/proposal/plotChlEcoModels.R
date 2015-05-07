@@ -28,6 +28,7 @@ p <- p + scale_colour_manual(name='', values=c('Assimilated'='red',
 p <- p + ylab('chl concentration in mg/m3')
 p <- p + coord_cartesian(ylim=c(0, 0.5))
 p <- p + ggtitle('Central Red Sea')
+p <- p + theme(text=element_text(size=20))
 ggsave('results/proposal/figures/chl_models1.png', p, units='cm', height=16,
        width=28)
 
@@ -56,6 +57,7 @@ p <- p + scale_colour_manual(name='', values=c('Assimilated'='red',
 p <- p + ylab('chl concentration in mg/m3')
 #p <- p + coord_cartesian(ylim=c(0, 0.5))
 p <- p + ggtitle('Northern Red Sea')
+p <- p + theme(text=element_text(size=20))
 ggsave('results/proposal/figures/chl_models2.png', p, units='cm', height=16,
        width=28)
 
@@ -85,5 +87,6 @@ p <- p + ylab('chl concentration in mg/m3')
 #p <- p + coord_cartesian(ylim=c(0, 0.5))
 p <- p + ggtitle('Southern Red Sea')
 p <- p + coord_cartesian(ylim=c(0, 0.85))
+p <- p + theme(text=element_text(size=20))
 ggsave('results/proposal/figures/chl_models3.png', p, units='cm', height=16,
        width=28)

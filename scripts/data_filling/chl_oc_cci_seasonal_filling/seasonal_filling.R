@@ -55,5 +55,7 @@ fn <- paste(out_dir, 'chl_filled.mat', sep='/')
 writeMat(fn, chl=chl_r)
 
 mask_r <- as.array(mask)
+mask_r[mask_r] <- 1
+mask_r <- mask_r[,,1]
 fn <- paste(out_dir, 'mask.mat', sep='/')
 writeMat(fn, mask=mask_r)

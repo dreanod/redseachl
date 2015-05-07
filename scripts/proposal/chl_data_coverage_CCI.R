@@ -58,5 +58,6 @@ p <- p + geom_polygon(aes(x=long, y=lat, group=group),
                       fill='tan')
 p <- p + ggtitle('Missing values in CCI data for summers between 1997 and 2012')
 p <- p + ylab('Latitude') + xlab('Longitude')
+p <- p + theme(text=element_text(size=16))
 
 ggsave(paste(outputDir, '/cci_missing_values_summer.png', sep=''), p)

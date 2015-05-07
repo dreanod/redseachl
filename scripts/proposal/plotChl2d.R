@@ -28,6 +28,7 @@ p <- p + scale_y_discrete(limits = rev(levels(df$level)))
 p <- p + scale_fill_brewer(name='chl (mg/m3)', palette='PRGn')
 p <- p + ggtitle('Assimilated chlorophyll for the Central Red Sea')
 p <- p + ylab('level (m)')
+p <- p + theme(text=element_text(size=16))
 ggsave('results/proposal/figures/chl1.png', p)
 
 ##########################################################################
@@ -51,6 +52,7 @@ p <- p + scale_y_discrete(limits = rev(levels(df$level)))
 p <- p + scale_fill_brewer(name='chl (mg/m3)', palette='PRGn')
 p <- p + ggtitle('Assimilated chlorophyll for the Northern Red Sea')
 p <- p + ylab('level (m)')
+p <- p + theme(text=element_text(size=16))
 ggsave('results/proposal/figures/chl2.png', p)
 
 ##########################################################################
@@ -76,6 +78,7 @@ p <- p + scale_y_discrete(limits = rev(levels(df$level)))
 p <- p + scale_fill_brewer(name='chl (mg/m3)', palette='PRGn')
 p <- p + ggtitle('Assimilated chlorophyll for the Southern Red Sea')
 p <- p + ylab('level (m)')
+p <- p + theme(text=element_text(size=16))
 ggsave('results/proposal/figures/chl3.png', p)
 
 

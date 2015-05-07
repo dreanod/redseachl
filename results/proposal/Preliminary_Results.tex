@@ -4,7 +4,7 @@
 
 All the datasets necessary for the analysis has been gathered. Most of it has
 been downloaded from public sources on the Internet, using Shell and R scripts.
-The wind dataset has been provided by Yesubabu Viswanadhapalli, and is the
+The wind dataset has been provided by Dr. Yesubabu Viswanadhapalli, and is the
 result of the assimilation of all available atmospheric satellite and in situ
 data in the Red Sea into the Weather Research and Forecasting (WRF) regional
 Red Sea model. There are additional datasets that will be useful for the
@@ -15,7 +15,7 @@ to obtain. The downloaded data is listed and described in table \ref{tab:data}.
 So far, the MODIS and CCI data have been cropped over the region of interest,
 cleaned and exported to the format TIFF, which can be easily read by most
 software, R in particular. Each dataset has then been aggregated in a single
-file in the native R raster format. Applying this processing to the remaining
+file in the native R raster format. Applying this procedure to the remaining
 grid data should be straightforward. Then, the data will need to be aligned
 and aggregated on the same temporal and spatial resolution, before aggregating
 it in table format.
@@ -27,10 +27,11 @@ it in table format.
 The MODIS and CCI chlorophyll data products have been explored and compared.
 The MODIS data include an important amount of missing data, which may reach
 100\% during summer in the southern Red Sea, increasing the complexity of any
-analysis in this region. The CCI data product solves this issue by merging
+analysis in this region. The CCI data product addresses this issue by merging
 three sources of remotely-sensed chlorophyll data (MODIS, MERIS and SeaWiFS)
-and using a new algorithm for retrieving chlorophyll values when the cloud
-cover is important.  This increases the coverage to 70\% during summer months
+and using a new algorithm for retrieving chlorophyll values even in regions
+with important cloud coverage. This increases the coverage to 70\% during 
+summer months
 in the southern Red Sea.
 
 The SeaWiFS chlorophyll data has been used in the submitted companion article
@@ -45,19 +46,19 @@ seasonal and interannual variability are distinct.
 
 \section{Red Sea Regional Clustering}
 
-I used clustering algorithms in order to derive the Red Sea eco-regions. These
-were applied to monthly log-concentration of chlorophyll. I used SeaWiFS data,
+I used clustering algorithms in order to characterize the Red Sea eco-regions. These
+were applied to monthly log-concentrations of chlorophyll. I used SeaWiFS data,
 that has been filled using DINEOF. I used the popular K-means, and the Gaussian
 Mixture Model (GMM) clustering algorithms.
 
 I found that GMM provides more robust results. With any number of clusters, we
 obtain a division of the Red Sea into regions of comparable sizes.  With 5
-clusters, the regions (shown in figure \ref{cluster}) are very similar to those identified by
-\citet{Raitsos2013}.  Contrary to the purely latitudinal division proposed by
-the former, we observe that the separation between clusters is curved at the
-position of major Red Sea eddies.  The fact that the curvature is oriented
-toward the south suggests that most nutrients propagate northward from the Gulf
-of Aden.
+clusters, the regions (shown in figure \ref{cluster}) are very similar to those
+identified by \citet{Raitsos2013}.  Contrary to the purely latitudinal division
+proposed by \citet{Raitsos2013}, we observe that the separation between the
+clusters is curved at the position of major Red Sea eddies.  The fact that the
+curvature is oriented toward the south may suggest that most of the nutrients
+propagate northward from the Gulf of Aden.
 
 \begin{figure}[h]
     \centering
@@ -70,16 +71,17 @@ of Aden.
 In Chapter 2, I plan to use the dataset constructed in Chapter 1.  By using CCI
 chlorophyll data instead of SeaWiFS, the need for data filling is minimized.
 This is desirable, as data filling may introduce biases. It will also be
-possible to use additional variables. For example, we can expect the
+possible to apply clustering using additional variables. For example, one can expect the
 temperature and the bathymetry to have a large impact on the Red Sea
-phytoplankton biology. Sea level anomaly can be useful in that it indicates the
+phytoplankton biology. Sea level anomaly can also be useful in that it indicates the
 presence of mesoscale eddies. Finally, alternative clustering algorithms will
-be tested.
+be tested, such as hierarchical clustering, MeanShift, etc.
 
 \section{A Global Geostatistical Model}
 
 The research described in Chapter 3 of the thesis has mostly been
-done and, is the object of an article currently under review. The current version
+done and, is the object of an article currently under minor revision in
+Journal of Spatial Statistics. The current version
 of the manuscript can be found in the appendix. We include the abstract below:
 
 \begin{quotation}
@@ -102,7 +104,7 @@ prediction.}
 \section{Regional 1D Ecological Models}
 
 The 1D regional ecological models have been configured and
-are operational. Three models will be used: for the northern, central and
+are operational. Three models will be configured; for the northern, central and
 southern Red Sea. The extreme south of the Red Sea is not modeled, as its
 dynamics is poorly understand and no in situ data are available to validate the
 satellite products. The ecology is modeled with ERSEM, and the hydrodynamics
@@ -159,41 +161,43 @@ is a subsurface chlorophyll maximum in the three regions.
 
 \section{Data Assimilation into 1D Ecological Models}
 
-Two assimilation schemes for the ecological models have been implemented and
-are operational: SEIK and hybrid-SEIK, with the hybrid approach implemented as
+The problem of optimal filtering can be solved exactly by the Kalman Filter for
+linear systems. For nonlinear models, one can use the Extended Kalman (EK)
+filter, in which the model is linearized.  However, when the state is large, as
+is often the case for oceanographic applications, the EK becomes
+computationally intractable. In that case, SEEK can be used, where the error
+covariance function is projected onto a lower dimension subspace. This amounts
+to interpolate the forecast along certain directions only often referred to as
+the filter's correction directions.  This subspace further evolves with the
+model dynamics to ensure that most of the error is represented and filtered out
+\citep{Pham1998, Hoteit2002}. SEIK can be viewed as an ensemble variant of the
+SEEK, where the error covariance function is represented by an ensemble of
+state vectors \citep{Hoteit2002}. This avoids the computation of
+model gradients, and allows the assimilation scheme to perform better when this
+model is strongly non-linear. SEIK has been shown to be efficient for
+large-scale 3D ecosystem data assimilation \citep{Triantafyllou2003}.
+
+Two assimilation schemes have been implemented for chlorophyll data assimilation into the 1D ecological models described in the previous section and
+are also operational: SEIK and hybrid-SEIK, with the hybrid approach implemented as
 described in \citet{Hamill2000}. The scheme is called hybrid as it combines the
 flow-dependent background estimates from the ensemble of an EnKF with as static
 background, taken for example from a three-dimensional variational 3DVAR
-system. The idea behind it is to complete the rank-deficient EnKF background by
+system. The idea behind it is to complement the rank-deficient EnKF background by
 another background that has been designed to capture the climatological
 variability of the system.  In our hybrid implementation, the covariance is a
-linear combination of the 3DVAR covariance and the time-evolving SEIK
+linear combination of a climatological covariance and the time-evolving SEIK
 covariance matrix. We plan to investigate other assimilations scheme, in
-particular the EnKF.
+particular the EnKF, and the particle filter.
 
-The problem of optimal filtering can be solved exactly by the Kalman Filter for
-linear systems. For nonlinear models, one can use the Extended Kalman (EK)
-filter, in which the model is linearized by computing the error covariance
-function.  However, when the state is large, as is often the case for
-oceanographic applications, the EK is intractable. In that case, SEEK can be
-used, where the error covariance function is projected into a smaller subspace.
-This subspace evolves to ensure that most of the error is represented and
-filtered out. SEIK can be viewed as an ensemble variant of the SEEK, where the
-error covariance function is represented exactly by an ensemble of states. This
-avoids the computation of model gradients, and allows the assimilation scheme
-to perform better when this model is strongly non-linear. SEIK has been shown
-to be efficient for large-scale 3D ecosystem data assimilation
-\citep{Triantafyllou2003}.
-
-We show the chlorophyll surface concentration predicted by the models (with and
+We show the chlorophyll surface concentration as predicted by the 1D models (with and
 without assimilation), and the satellite measurements in the three regions in
 Figures \ref{chl_models2}, \ref{chl_models1} and \ref{chl_models3}.  The models
-reproduce the seasonality of the chlorophyll concentration with low
-concentrations in the summer, and a winter bloom. However, the model tends to
+successfully reproduce the seasonality of the chlorophyll concentration with low
+concentrations in the summer, and winter blooms. However, the model tends to
 overestimate the chlorophyll concentration in winter in the northern Red Sea,
 and to underestimate it in the summer in the southern and central Red Sea.
 Furthermore, the summer bloom in the southern Red Sea is not well predicted.
-However, the assimilation is able to correct these biases, and leads to better
+Assimilation of chlorophyll data corrects these biases, and leads to better
 estimates of chlorophyll concentration.
 
 \begin{figure}
@@ -220,10 +224,13 @@ estimates of chlorophyll concentration.
     \label{chl_models3}
 \end{figure}
 
-The Expectation-Maximization (EM) scheme to estimate the filter parameters has
-also been derived. It is similar to that proposed by \citet{Tandeo2014}, which
-we generalize to nonlinear models. The scheme will be further extended to estimate
-of the observation and model covariance errors. We outline the steps of the EM
+\section{An Expectation-Maximization Joint Ensemble Kalman Smoother for State-Space
+Estimation of Ecological Models}
+
+An Expectation-Maximization (EM) algorithm has been derived to estimate the hyper-parameters of the ensemble Kalman filter or smoother.
+It is similar to that proposed by \citet{Tandeo2014}, which
+we generalize here to nonlinear models. The scheme is used here extended to estimate
+the observations and model errors covariance. We outline the steps of the EM
 scheme hereafter.
 
 \newcommand\x{\mathbf{x}}
@@ -232,17 +239,18 @@ scheme hereafter.
 \newcommand\vvarepsilon{\mathbf{\boldsymbol\varepsilon}}
 
 We consider the state-space system:
-\begin{IEEEeqnarray}{rClR}
-  \x_k & = & f_k(\x_{k-1}) + \eeta_k,    & k=0,...,K\\
-  \y_k & = & h_k(\x_k) + \vvarepsilon_k, & k=1,...,K.
+\begin{IEEEeqnarray}{rCl}
+  \x_k & = & f_k(\x_{k-1}) + \eeta_k,i\\
+  \y_k & = & h_k(\x_k) + \vvarepsilon_k,
 \end{IEEEeqnarray}
-The first equation is the state equation, where $\x_k$ is a vector representing
+The first equation represents the dynamical model (here ERSEM),
+where $\x_k$ is a vector representing
 the state of the system (unknown), $f_k$ is the nonlinear model that integrates
 the state between time $t_{k-1}$ and $t_k$, and $\eeta_k \sim N(0,Q)$ iid is
-the model error. The second equation is the measurement equation, where $\y_k$
+the model error. The second equation is the measurement model, where $\y_k$
 is the observation available at time $t_k$, $h$ is the observation operator
-that maps the system state to the observation, and $\vvarepsilon_k \sim N(0,R)$
-iid is the measurement error. The initial state follows a distribution $\x_0
+that maps the system state to the observation space, and $\vvarepsilon_k \sim N(0,R)$
+iid is the measurement error. The initial state is assumed to follow a distribution $\x_0
 \sim N(\x_b, B)$.
 
 We use the EM scheme in order to estimate the unknown parameters $Q$, $R$,
@@ -251,8 +259,8 @@ procedure to compute the maximum likelihood estimator:
 \begin{IEEEeqnarray}{c}
   \Theta_{\text{ML}} = \text{arg}\max(\log p(\y_{1:K}|\Theta)),
 \end{IEEEeqnarray}
-when it is impossible to analytically express the function to optimize.
-$\y_{1:K}$ designates all the observations from time step 1 to time step
+when it is not possible to analytically express the function to optimize.
+$\y_{1:K}$ designates all available observations from time step 1 to time step
 $K$.
 
 Given an initial estimate $\Theta^{(0)}$, the following two steps are iterated
@@ -260,7 +268,7 @@ until convergence:
 
 \paragraph{Expectation Step:}
 The function $G(\Theta) = E_{|\Theta=\Theta^{(r)}}[\log p(\x_{0:K}|\Theta,
-y_{1:K})]$ is computed. In the case where $f$ and $h$ are linear, the
+y_{1:K})]$ is first computed. In the case where $f$ and $h$ are linear, the
 distribution can be exactly computed using the Kalman smoother procedure
 \citep{Shumway1982}. Otherwise, the distribution can be estimated using, for
 example, an ensemble smoother \citep{Tandeo2014}. This is the strategy we
@@ -273,4 +281,4 @@ The function $G$ is maximized to compute a new estimate of the parameters:
 \end{IEEEeqnarray}
 EM is guaranteed to converge when $G$ can be exactly computed. Results from
 preliminary experiments with a linear system showed that EM may still converge
-when using an ensemble smoother.
+when applied in the framework of an ensemble Kalman smoother.

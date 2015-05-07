@@ -1,0 +1,317 @@
+\documentclass{article}
+\begin{document}
+\title{Red Sea data Exploratory Analysis}
+\author{Denis Dreano}
+\maketitle
+
+<<>>=
+library(ggplot2)
+print(getwd())
+df <- read.csv('../../data/merged/data_reduced.csv')
+df$X <- as.Date(df$X)
+
+df$wndpwr_1 <- df$uwnd1^2 + df$vwnd1^2
+df$wndpwr_2 <- df$uwnd2^2 + df$vwnd2^2
+df$wndpwr_3 <- df$uwnd3^2 + df$vwnd3^2
+df$wndpwr_4 <- df$uwnd4^2 + df$vwnd4^2
+@
+
+\section{Region 1 (Southern Red Sea)}
+
+\subsection{Correlation with other variables}
+
+The Correlation level between CHL in the south  and other environmental variable.
+The most important are in the order: PAR, CHL (clusters 2 and 3), IMI,
+and wind power in cluster 1.
+
+<<>>=
+tot_cor <- cor(df[,-c(1,2,3)], use='complete.obs')
+chl_1_cor <- tot_cor['chl_1',]
+chl_1_cor <- sort(chl_1_cor, decreasing=TRUE)
+names(chl_1_cor) <- factor(names(chl_1_cor), levels=names(chl_1_cor))
+qplot(factor(names(chl_1_cor), levels=names(chl_1_cor)), chl_1_cor, geom='bar', stat='identity') + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+@
+
+\subsection{Linear Regression}
+
+<<>>=
+summary(lm(chl_1~sst_1+par_1+par_2+par_3+par_4+ssh_1+ssh_2+ssh_3+ssh_4+aot_1+chl_2+chl_3+aot_2, data=df))
+@
+
+\subsection{Chlorophyll and chlorophyll}
+
+<<>>=
+qplot(chl_1, chl_2, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$chl_2, use='complete.obs')
+ccf(df$chl_1, df$chl_2)
+@
+
+<<>>=
+qplot(chl_1, chl_3, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$chl_3, use='complete.obs')
+ccf(df$chl_1, df$chl_3)
+@
+
+<<>>=
+qplot(chl_1, chl_4, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$chl_4, use='complete.obs')
+ccf(df$chl_1, df$chl_4)
+@
+
+\subsection{Chlorophyll and temperatures}
+
+<<>>=
+qplot(chl_1, sst_1, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$sst_1, use='complete.obs')
+ccf(df$chl_1, df$sst_1, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, sst_2, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$sst_2, use='complete.obs')
+ccf(df$chl_1, df$sst_2, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, sst_3, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$sst_3, use='complete.obs')
+ccf(df$chl_1, df$sst_3, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, sst_4, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$sst_4, use='complete.obs')
+ccf(df$chl_1, df$sst_4, na.action=na.pass)
+@
+
+\subsection{Chlorophyll and SLA}
+
+<<>>=
+qplot(chl_1, ssh_1, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$ssh_1, use='complete.obs')
+ccf(df$chl_1, df$ssh_1, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, ssh_2, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$ssh_2, use='complete.obs')
+ccf(df$chl_1, df$ssh_2, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, ssh_3, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$ssh_3, use='complete.obs')
+ccf(df$chl_1, df$ssh_3, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, ssh_4, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$ssh_4, use='complete.obs')
+ccf(df$chl_1, df$ssh_4, na.action=na.pass)
+@
+
+\subsection{Chlorophyll and PAR}
+
+<<>>=
+qplot(chl_1, par_1, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$par_1, use='complete.obs')
+ccf(df$chl_1, df$par_1, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, par_2, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$par_2, use='complete.obs')
+ccf(df$chl_1, df$par_2, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, par_3, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$par_3, use='complete.obs')
+ccf(df$chl_1, df$par_3, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, par_4, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$par_4, use='complete.obs')
+ccf(df$chl_1, df$par_4, na.action=na.pass)
+@
+
+\subsection{Chlorophyll and AOT}
+
+<<>>=
+qplot(chl_1, aot_1, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$aot_1, use='complete.obs')
+ccf(df$chl_1, df$aot_1, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, aot_2, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$aot_2, use='complete.obs')
+ccf(df$chl_1, df$aot_2, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, aot_3, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$aot_3, use='complete.obs')
+ccf(df$chl_1, df$aot_3, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, aot_4, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$aot_4, use='complete.obs')
+ccf(df$chl_1, df$aot_4, na.action=na.pass)
+@
+
+\subsection{Chlorophyll and Rain}
+
+<<>>=
+qplot(chl_1, log(rain_1), data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, log(df$rain_1), use='complete.obs')
+ccf(df$chl_1, log(df$rain_1), na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, log(rain_2), data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, log(df$rain_2), use='complete.obs')
+ccf(df$chl_1, log(df$rain_2), na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, log(rain_3), data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, log(df$rain_3), use='complete.obs')
+ccf(df$chl_1, log(df$rain_3), na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, log(rain_4), data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, log(df$rain_4), use='complete.obs')
+ccf(df$chl_1, log(df$rain_4), na.action=na.pass)
+@
+
+\subsection{Chlorophyll and wind}
+
+<<>>=
+qplot(chl_1, wndpwr_1, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$wndpwr_1, use='complete.obs')
+ccf(df$chl_1, df$wndpwr_1, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, wndpwr_2, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$wndpwr_2, use='complete.obs')
+ccf(df$chl_1, df$wndpwr_2, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, wndpwr_3, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$wndpwr_3, use='complete.obs')
+ccf(df$chl_1, df$wndpwr_3, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, wndpwr_4, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$wndpwr_4, use='complete.obs')
+ccf(df$chl_1, df$wndpwr_4, na.action=na.pass)
+@
+
+\subsection{Chlorophyll and indices}
+
+<<>>=
+qplot(chl_1, imi, data=df, geom=c('point', 'smooth'))#, method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$imi, use='complete.obs')
+ccf(df$chl_1, df$imi, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, nao, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$nao, use='complete.obs')
+ccf(df$chl_1, df$nao, na.action=na.pass)
+@
+
+<<>>=
+qplot(chl_1, soi, data=df, geom=c('point', 'smooth'), method='lm', formula=y~x)
+## Correlation coefficient
+cor(df$chl_1, df$soi, use='complete.obs')
+ccf(df$chl_1, df$soi, na.action=na.pass)
+@
+
+\section{Region 2 (Southern Central Red Sea)}
+
+\subsection{Correlation with other variables}
+
+The Correlation level between CHL in the southern central cluster
+and other environmental variable.
+The most important are in the order: CHL (clusters 3 and 4), PAR, wind, 
+IMI, SSH, rain.
+
+<<>>=
+tot_cor <- cor(df[,-c(1,2,3)], use='complete')
+chl_cor <- tot_cor['chl_2',]
+chl_cor <- sort(chl_cor, decreasing=TRUE)
+names(chl_cor) <- factor(names(chl_cor), levels=names(chl_cor))
+qplot(factor(names(chl_cor), levels=names(chl_cor)), chl_cor, geom='bar', stat='identity') + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+@
+
+\section{Region 3 (Northern Central Red Sea)}
+
+\subsection{Correlation with other variables}
+
+The Correlation level between CHL in the northern central cluster
+and other environmental variable.
+The most important are in the order: CHL (clusters 2 and 4), wind, PAR,
+IMI, SSH, rain.
+
+<<>>=
+tot_cor <- cor(df[,-c(1,2,3)], use='complete')
+chl_cor <- tot_cor['chl_3',]
+chl_cor <- sort(chl_cor, decreasing=TRUE)
+names(chl_cor) <- factor(names(chl_cor), levels=names(chl_cor))
+qplot(factor(names(chl_cor), levels=names(chl_cor)), chl_cor, geom='bar', stat='identity') + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+@
+
+\section{Region 4 (Northern Red Sea)}
+
+\subsection{Correlation with other variables}
+
+The Correlation level between CHL in the northern cluster
+and other environmental variable.
+The most important are in the order: CHL (clusters 3 and 2), IMI, Wind, PAR, SSH.
+
+<<>>=
+tot_cor <- cor(df[,-c(1,2,3)], use='complete')
+chl_cor <- tot_cor['chl_4',]
+chl_cor <- sort(chl_cor, decreasing=TRUE)
+names(chl_cor) <- factor(names(chl_cor), levels=names(chl_cor))
+qplot(factor(names(chl_cor), levels=names(chl_cor)), chl_cor, geom='bar', stat='identity') + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+@
+
+\end{document}

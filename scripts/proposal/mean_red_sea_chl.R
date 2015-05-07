@@ -39,6 +39,7 @@ p <- p + geom_polygon(aes(x=long, y=lat, group=group),
                       fill='tan')
 p <- p + ggtitle('Chlorophyll average between 1997 and 2012')
 p <- p + ylab('Latitude') + xlab('Longitude')
+p <- p + theme(text=element_text(size=16))
 
 fn <- paste(outputDir, '/chl_average.png', sep='')
 ggsave(fn, plot=p)

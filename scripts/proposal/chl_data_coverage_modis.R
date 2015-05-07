@@ -62,5 +62,6 @@ p <- p + geom_polygon(aes(x=long, y=lat, group=group),
                       fill='tan')
 p <- p + ggtitle('Missing values in MODIS data for summers between 2002 and 2014')
 p <- p + ylab('Latitude') + xlab('Longitude')
+p <- p + theme(text=element_text(size=16))
 
 ggsave(paste(outputDir, '/modis_missing_values_summer.png', sep=''), p)
